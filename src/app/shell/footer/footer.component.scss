@@ -1,0 +1,46 @@
+@import "src/theme/theme-variables";
+@import "~bootstrap/scss/mixins/breakpoints";
+
+#footer {
+  background-color: $gray-800;
+  color: white;
+}
+
+.footer__logo {
+  max-width: 211px;
+  margin-bottom: 20px;
+}
+
+.footer__primary {
+  padding: 30px;
+  text-align: center;
+}
+
+.footer__social-icons {
+  display: flex;
+  justify-content: center;
+  color: white;
+
+  a {
+    color: white;
+    margin: 0 5px;
+  }
+}
+
+@include media-breakpoint-up(sm) {
+  .footer--start {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    .footer__primary {
+      padding: 10px 0;
+    }
+
+    .footer__logo,
+    .footer__secondary {
+      display: none !important;
+    }
+  }
+}

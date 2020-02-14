@@ -1,0 +1,39 @@
+.featured {
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.9) 0%, rgba(#161616, 0.76) 10%, rgba(0, 0, 0, 0) 50%),
+    url("./assets/content/featured.jpg") no-repeat;
+  background-size: cover, cover;
+  background-position: center, center;
+  height: 100vh;
+
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.featured__title {
+  color: white;
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 80px;
+}
+
+.featured__buttons {
+  .featured__button {
+    margin-bottom: 20px;
+  }
+}
+
+@include media-breakpoint-up(sm) {
+  .featured {
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.9) 0%, rgba(#161616, 0.76) 10%, rgba(0, 0, 0, 0) 50%),
+      url("./assets/content/featured-desktop.jpg") no-repeat;
+    background-size: cover, cover;
+    background-position: center, center;
+  }
+
+  .featured__title {
+    font-size: 36px;
+    margin-bottom: 40px;
+  }
+}

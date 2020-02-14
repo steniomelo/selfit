@@ -1,0 +1,18 @@
+@import "src/theme/theme-variables";
+@import "~bootstrap/scss/mixins/_breakpoints";
+
+#login {
+  padding: 30px 0;
+}
+
+@include media-breakpoint-up(sm) {
+  #login {
+    height: 100vh;
+    padding: 0;
+
+    .container,
+    .row {
+      height: 100%;
+    }
+  }
+}

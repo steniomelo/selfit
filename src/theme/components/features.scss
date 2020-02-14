@@ -1,0 +1,23 @@
+.features {
+  display: flex;
+  text-align: center;
+  flex-wrap: wrap;
+}
+
+.feature-item {
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 33%;
+  margin-bottom: 15px;
+
+  span {
+    font-size: 0.9rem;
+  }
+
+  svg-icon {
+    margin-bottom: 10px;
+    svg {
+      height: 35px;
+    }
+  }
+}

@@ -1,0 +1,31 @@
+/*
+ * Global application theme.
+ * Framework overrides and customization goes here.
+ */
+
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap");
+
+body {
+  font-family: "Open Sans", sans-serif;
+}
+
+@include media-breakpoint-up(sm) {
+  html {
+    font-size: 12px;
+  }
+}
+
+@import "components/featured";
+@import "components/buttons";
+@import "components/input";
+@import "components/newsletter-bar";
+@import "components/search-bar";
+@import "components/featured-about";
+@import "components/featured-plan";
+@import "components/structure";
+@import "components/news";
+@import "components/slick";
+@import "components/card";
+@import "components/list-group";
+@import "components/breadcrumb";
+@import "components/features";

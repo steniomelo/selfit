@@ -1,0 +1,19 @@
+@import "src/theme/theme-variables";
+@import "~bootstrap/scss/mixins/breakpoints";
+
+.search-result {
+  padding: $grid-gutter-width 0;
+}
+
+@include media-breakpoint-up(sm) {
+  .search-result__list {
+    .card {
+      button {
+        position: absolute;
+        right: -50px;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+    }
+  }
+}

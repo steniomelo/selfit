@@ -1,0 +1,230 @@
+<div class="areadoaluno__meuperfil areadoaluno__interna container">
+  <header class="areadoaluno__interna__header">
+    <div class="areadoaluno__breadcrumbs">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a routerLink="/areadoaluno">Conta</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Meu perfil</li>
+        </ol>
+      </nav>
+    </div>
+    <h1 class="areadoaluno__interna__header-title">Meu perfil</h1>
+  </header>
+
+  <div class="areadoaluno__internta__content">
+    <div class="row">
+      <div class="col-sm-7">
+        <h2 class="areadoaluno__interna__header-subtitle">Dados pessoais</h2>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">
+            <ng-container *ngIf="!editing">
+              <div class="item-content">
+                <strong>Nome</strong>
+                <p>Anderson da Silva Silveira</p>
+              </div>
+              <div class="item-action ml-auto">
+                <button class="btn btn-link" (click)="edit()">Editar</button>
+              </div>
+            </ng-container>
+
+            <ng-container *ngIf="editing">
+              <div class="item-content">
+                <strong>Nome</strong>
+                <div class="form-group">
+                  <input type="text" class="form-control" placeholder="Nome" />
+                </div>
+                <button class="btn btn-primary">Salvar</button>
+              </div>
+              <div class="item-action ml-auto">
+                <button class="btn btn-link" (click)="cancel()">Cancelar</button>
+              </div>
+            </ng-container>
+          </li>
+          <li class="list-group-item">
+            <ng-container *ngIf="!editing">
+              <div class="item-content">
+                <strong>E-mail</strong>
+                <p>aaaaaa@gmail.com</p>
+              </div>
+              <div class="item-action ml-auto">
+                <button class="btn btn-link" (click)="edit()">Editar</button>
+              </div>
+            </ng-container>
+
+            <ng-container *ngIf="editing">
+              <div class="item-content">
+                <strong>E-mail</strong>
+                <div class="form-group">
+                  <input type="text" class="form-control" placeholder="Nome" />
+                </div>
+                <button class="btn btn-primary">Salvar</button>
+              </div>
+              <div class="item-action ml-auto">
+                <button class="btn btn-link" (click)="cancel()">Cancelar</button>
+              </div>
+            </ng-container>
+          </li>
+          <li class="list-group-item">
+            <ng-container *ngIf="!editing">
+              <div class="item-content">
+                <strong>CPF</strong>
+                <p>000.000.000-00</p>
+              </div>
+              <div class="item-action ml-auto">
+                <button class="btn btn-link" (click)="edit()">Editar</button>
+              </div>
+            </ng-container>
+
+            <ng-container *ngIf="editing">
+              <div class="item-content">
+                <strong>CPF</strong>
+                <div class="form-group">
+                  <input type="text" class="form-control" placeholder="Nome" />
+                </div>
+                <button class="btn btn-primary">Salvar</button>
+              </div>
+              <div class="item-action ml-auto">
+                <button class="btn btn-link" (click)="cancel()">Cancelar</button>
+              </div>
+            </ng-container>
+          </li>
+          <li class="list-group-item">
+            <ng-container *ngIf="!editing">
+              <div class="item-content">
+                <strong>Data de nascimento</strong>
+                <p>10/10/2020</p>
+              </div>
+              <div class="item-action ml-auto">
+                <button class="btn btn-link" (click)="edit()">Editar</button>
+              </div>
+            </ng-container>
+
+            <ng-container *ngIf="editing">
+              <div class="item-content">
+                <strong>Data de nascimento</strong>
+                <div class="form-group">
+                  <input type="text" class="form-control" placeholder="Nome" />
+                </div>
+                <button class="btn btn-primary">Salvar</button>
+              </div>
+              <div class="item-action ml-auto">
+                <button class="btn btn-link" (click)="cancel()">Cancelar</button>
+              </div>
+            </ng-container>
+          </li>
+          <li class="list-group-item">
+            <ng-container *ngIf="!editing">
+              <div class="item-content">
+                <strong>Gênero</strong>
+                <p>Masculino</p>
+              </div>
+              <div class="item-action ml-auto">
+                <button class="btn btn-link" (click)="edit()">Editar</button>
+              </div>
+            </ng-container>
+
+            <ng-container *ngIf="editing">
+              <div class="item-content">
+                <strong>Gênero</strong>
+                <div class="form-group">
+                  <input type="text" class="form-control" placeholder="Nome" />
+                </div>
+                <button class="btn btn-primary">Salvar</button>
+              </div>
+              <div class="item-action ml-auto">
+                <button class="btn btn-link" (click)="cancel()">Cancelar</button>
+              </div>
+            </ng-container>
+          </li>
+        </ul>
+      </div>
+      <div class="col-sm-5">
+        <h2 class="areadoaluno__interna__header-subtitle">Endereço</h2>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">
+            <ng-container *ngIf="!editing">
+              <div class="item-content">
+                <strong>CEP</strong>
+                <p>00000-000</p>
+              </div>
+              <div class="item-action ml-auto">
+                <button class="btn btn-link" (click)="edit()">Editar</button>
+              </div>
+            </ng-container>
+
+            <ng-container *ngIf="editing">
+              <div class="item-content">
+                <strong>CEP</strong>
+                <div class="form-group">
+                  <input type="text" class="form-control" placeholder="Nome" />
+                </div>
+                <button class="btn btn-primary">Salvar</button>
+              </div>
+              <div class="item-action ml-auto">
+                <button class="btn btn-link" (click)="cancel()">Cancelar</button>
+              </div>
+            </ng-container>
+          </li>
+          <li class="list-group-item">
+            <ng-container *ngIf="!editing">
+              <div class="item-content">
+                <strong>Endereço</strong>
+                <p>Rua Enerto d Paula Santos, 3000</p>
+                <p>Apto 0000</p>
+                <p>Centro</p>
+                <p>Curitiba - Paraná</p>
+              </div>
+              <div class="item-action ml-auto">
+                <button class="btn btn-link" (click)="edit()">Editar</button>
+              </div>
+            </ng-container>
+
+            <ng-container *ngIf="editing">
+              <div class="item-content">
+                <strong>Endereço</strong>
+                <div class="form-group">
+                  <input type="text" class="form-control" placeholder="Nome" />
+                </div>
+                <button class="btn btn-primary">Salvar</button>
+              </div>
+              <div class="item-action ml-auto">
+                <button class="btn btn-link" (click)="cancel()">Cancelar</button>
+              </div>
+            </ng-container>
+          </li>
+        </ul>
+
+        <br />
+        <br />
+
+        <h2 class="areadoaluno__interna__header-subtitle">Contato</h2>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">
+            <ng-container *ngIf="!editing">
+              <div class="item-content">
+                <strong>Celular</strong>
+                <p>(00) 12345.6789</p>
+              </div>
+              <div class="item-action ml-auto">
+                <button class="btn btn-link" (click)="edit()">Editar</button>
+              </div>
+            </ng-container>
+
+            <ng-container *ngIf="editing">
+              <div class="item-content">
+                <strong>Celular</strong>
+                <div class="form-group">
+                  <input type="text" class="form-control" placeholder="Nome" />
+                </div>
+                <button class="btn btn-primary">Salvar</button>
+              </div>
+              <div class="item-action ml-auto">
+                <button class="btn btn-link" (click)="cancel()">Cancelar</button>
+              </div>
+            </ng-container>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,16 @@
+.form-control {
+  padding: 26px 25px;
+}
+
+.input-group {
+  .form-control {
+    padding: 26px 25px;
+  }
+}
+@include media-breakpoint-up(sm) {
+  .input-group {
+    .form-control {
+      font-size: 1rem;
+    }
+  }
+}

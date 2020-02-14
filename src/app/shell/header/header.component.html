@@ -1,0 +1,87 @@
+<header
+  id="header"
+  [ngClass]="{
+    'header--active': !menuHidden,
+    'header--stickly': topActive,
+    'header--static': activeRoute != '/home' && activeRoute != '/',
+    'header--start': activeRoute == '/'
+  }"
+>
+  <nav class="navbar navbar-expand-lg container">
+    <a
+      id="header-logo"
+      class="navbar-brand mr-auto"
+      *ngIf="!logado || (logado && !isAreadoaluno)"
+      routerLink="/home"
+      translate
+    >
+      <img
+        src="assets/selfit-logo-mobile.png"
+        srcset="assets/selfit-logo-mobile@2x.png 2x"
+        class="d-block d-sm-none"
+        alt=""
+      />
+      <img src="assets/selfit-logo.png" srcset="assets/selfit-logo@2x.png 2x" class="d-none d-sm-block" alt="" />
+    </a>
+
+    <span class="navbar-brand mr-auto" *ngIf="logado && isAreadoaluno" translate>
+      <i class="fas fa-user"></i> Olá, Aluno
+    </span>
+
+    <i
+      class="fas fa-user"
+      *ngIf="!logado || (logado && !isAreadoaluno)"
+      routerLink="/areadoaluno"
+      class="d-block d-sm-none"
+    ></i>
+
+    <button
+      class="navbar-toggler"
+      type="button"
+      aria-controls="navbar-menu"
+      aria-label="Toggle navigation"
+      (click)="toggleMenu()"
+      [attr.aria-expanded]="!menuHidden"
+    >
+      <i class="fas fa-bars" [hidden]="!menuHidden"></i>
+      <i class="fas fa-times" [hidden]="menuHidden"></i>
+    </button>
+
+    <div id="navbar-menu" class="collapse float-xs-none navbar-collapse" [ngbCollapse]="menuHidden">
+      <div class="navbar-nav ml-auto" *ngIf="!logado || (logado && !isAreadoaluno)">
+        <a class="nav-item nav-link" routerLink="/unidades" routerLinkActive="active">
+          <span translate>Unidades</span>
+        </a>
+        <a class="nav-item nav-link" routerLink="/aselfit" routerLinkActive="active">
+          <span translate>Conheça a Selfit</span>
+        </a>
+        <a class="nav-item nav-link" routerLink="/blog" routerLinkActive="active">
+          <span translate>Blog</span>
+        </a>
+        <a class="nav-item nav-link" routerLink="/contato" routerLinkActive="active">
+          <span translate>Fale conosco</span>
+        </a>
+      </div>
+      <div class="navbar-nav ml-auto">
+        <ng-container *ngIf="!logado || (logado && !isAreadoaluno)">
+          <div class="nav-item" ngbDropdown display="dynamic" placement="bottom-right">
+            <a id="user-dropdown" routerLink="/areadoaluno" class="nav-link">
+              <i class="fas fa-user"></i>
+              Área d@ alun@
+            </a>
+          </div>
+
+          <div class="nav-item pr-0">
+            <a href="" class="btn btn-large btn-outline btn-outline-light">Comece sua jornada</a>
+          </div>
+        </ng-container>
+
+        <ng-container *ngIf="logado && isAreadoaluno">
+          <button (click)="logout()" class="header-logout btn btn-link">
+            <i class="fas fa-sign-out-alt"></i> Sair
+          </button>
+        </ng-container>
+      </div>
+    </div>
+  </nav>
+</header>

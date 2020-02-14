@@ -1,0 +1,124 @@
+.structure {
+  margin-bottom: 60px;
+}
+
+.structure__header {
+  padding: $grid-gutter-width 0;
+}
+
+.structure__header__title-el {
+  color: $red;
+  font-weight: bold;
+}
+
+.structure__header__title {
+  p {
+    margin-bottom: 0;
+  }
+}
+
+.structure__header__pagination {
+  a {
+    color: $black;
+
+    i {
+      color: $red;
+    }
+  }
+}
+
+.structure__header__pagination-icon {
+  margin-right: 10px;
+  svg {
+    width: 40px;
+  }
+}
+
+.structure__list__item {
+  margin-right: 20px;
+  figure {
+    overflow: hidden;
+    position: relative;
+    border-radius: $border-radius;
+    img {
+      max-width: 100%;
+    }
+
+    figcaption {
+      background-color: $red;
+      color: white;
+      padding: 20px;
+
+      a {
+        color: white;
+      }
+    }
+
+    .structure__list__item-title {
+      font-weight: bold;
+      margin-bottom: 20;
+      @include transition();
+    }
+  }
+
+  &:first-child {
+    figure {
+      border-radius: 0 $border-radius $border-radius 0;
+    }
+  }
+}
+
+@include media-breakpoint-up(sm) {
+  .structure__header__pagination-icon {
+    margin-left: 10px;
+    margin-right: 0;
+  }
+  .structure__list__item {
+    margin-right: 40px;
+    figure {
+      overflow: visible;
+      border-radius: 0;
+    }
+    figcaption {
+      position: absolute;
+      top: calc(50% - 30px);
+      transform: translateY(-50%);
+      right: -70px;
+      background-color: $red;
+      padding: 10px !important;
+      color: white;
+      border-radius: 0 $border-radius $border-radius 0;
+      width: 200px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      height: 45px;
+      @include transition();
+
+      .structure__list__item-content {
+        opacity: 0;
+        margin-bottom: -70px;
+        @include transition();
+
+        a {
+          color: white;
+        }
+      }
+    }
+    &:hover {
+      figcaption {
+        height: 100%;
+        top: 50%;
+
+        .structure__list__item-title {
+          margin-top: -60px;
+        }
+
+        .structure__list__item-content {
+          opacity: 1;
+          position: relative;
+        }
+      }
+    }
+  }
+}

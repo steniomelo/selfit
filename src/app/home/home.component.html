@@ -1,0 +1,325 @@
+<div class="featured">
+  <div class="container">
+    <div class="row">
+      <div class="col-10 col-sm-4 ">
+        <h2 class="featured__title mb-5">Te ajudamos a encontrar sua melhor versão</h2>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="featured__buttons col-12 col-sm-5  ">
+        <div class="row flex-column flex-sm-row">
+          <div class="col">
+            <a routerLink="/home" class="featured__button btn  btn-danger btn-lg">Comece sua jornada</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="newsletter-bar d-none d-sm-block p-4">
+  <div class="container">
+    <div class="row">
+      <div class="col-9 mx-auto">
+        <div class="row align-items-center">
+          <div class="col-5">
+            <span class="newsletter-bar__title">Receba nossas novidades e promoções</span>
+          </div>
+          <div class="col-7">
+            <div class="input-group newsletter-bar__input">
+              <input
+                type="email"
+                class="form-control"
+                placeholder="Seu e-mail"
+                aria-label="Seu e-mail"
+                aria-describedby="button-addon2"
+              />
+              <div class="input-group-append">
+                <button class="btn btn-primary" type="button" id="button-addon2">Enviar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="search-bar">
+  <div class="container">
+    <h2 class="search-bar__title">Estamos em mais de 15 estados</h2>
+    <div class="row">
+      <div class="col-12 mx-auto">
+        <div class="row align-items-center flex-column flex-sm-row">
+          <div class="col-12 col-sm-3 search-bar__text d-flex align-items-center">
+            <i class="fas fa-angle-right search-bar__text__icon"></i>
+            <span class="d-none d-sm-block">Encontre a Selfit mais próxima ou veja o mapa</span>
+            <span class="d-block d-sm-none">Veja todas as unidades</span>
+          </div>
+          <div class="col-12 col-sm-9">
+            <div class="input-group search-bar__input">
+              <input
+                type="text"
+                id="busca"
+                class="form-control"
+                placeholder="Unidade, CEP, Cidade, Estado"
+                aria-label="Unidade, CEP, Cidade, Estado"
+                aria-describedby="button-addon2"
+              />
+              <label for="busca" class="fas fa-search search-bar__input__icon"></label>
+              <div class="input-group-append d-none d-sm-block">
+                <button class="btn btn-primary" type="button" id="button-addon2" routerLink="/busca">Buscar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="featured-about">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-12 col-sm-3 featured-about__col-red">
+        <h2 class="featured-about__title">Exercício é sobre se sentir bem</h2>
+        <p class="featured-about__description d-none d-sm-block">
+          Porque treinar é deixar a energia fluir, é descobrir novos movimentos todos os dias.
+        </p>
+        <a href="#"> <i class="fas fa-angle-right"></i> Conheça a Selfit</a>
+      </div>
+      <div class="col-12 col-sm-3 offset-sm-1 text-center align-self-end featured-about__col-girl">
+        <img src="assets/layout/about-girl.png" width="324" alt="" />
+      </div>
+      <div class="col-12 col-sm-5 featured-about__col-gray">
+        <ul class="featured-about__features-list">
+          <li class="featured-about__features-item">
+            <svg-icon
+              src="../../assets/layout/icons/about-user.svg"
+              class="featured-about__features-item__icon"
+            ></svg-icon>
+
+            <div>
+              <h5 class="featured-about__features-item__title">Somos do seu jeito</h5>
+              <p class="featured-about__features-item__description">
+                A gente se adapta ao seu estilo de vida e de treino.
+              </p>
+            </div>
+          </li>
+          <li class="featured-about__features-item">
+            <svg-icon
+              src="../../assets/layout/icons/about-gym-weigth.svg"
+              class="featured-about__features-item__icon"
+            ></svg-icon>
+
+            <div>
+              <h5 class="featured-about__features-item__title">Estrutura exclusiva</h5>
+              <p class="featured-about__features-item__description">
+                Espaços especiais conectados às principais tendências.
+              </p>
+            </div>
+          </li>
+          <li class="featured-about__features-item">
+            <svg-icon
+              src="../../assets/layout/icons/about-wifi.svg"
+              class="featured-about__features-item__icon"
+            ></svg-icon>
+
+            <div>
+              <h5 class="featured-about__features-item__title">Self Conect</h5>
+              <p class="featured-about__features-item__description">Free wi-fi de qualidade em todas as unidades</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="structure">
+  <header class="structure__header ">
+    <div class="container">
+      <div class="d-flex align-sm-items-center flex-column flex-sm-row">
+        <div class="structure__header__title">
+          <h2 class="structure__header__title-el">Estrutura inovadora</h2>
+          <p class="d-none d-sm-block">
+            Nossas academias são exclusivamente ambientadas para você aproveitar ao máximo das aulas
+          </p>
+        </div>
+
+        <div
+          class="structure__header__pagination ml-sm-auto text-left text-sm-right d-flex flex-column-reverse flex-sm-column "
+        >
+          <div class="pagination__arrows">
+            <svg-icon
+              src="../../assets/layout/icons/arrow-left.svg"
+              (click)="slickModal.slickPrev()"
+              class="structure__header__pagination-icon"
+            ></svg-icon>
+            <svg-icon
+              src="../../assets/layout/icons/arrow-right.svg"
+              (click)="slickModal.slickNext()"
+              class="structure__header__pagination-icon"
+            ></svg-icon>
+          </div>
+          <a href="#"><i class="fas fa-angle-right"></i> Todas as modalidades</a>
+        </div>
+      </div>
+    </div>
+  </header>
+  <div>
+    <ngx-slick-carousel #slickModal="slick-carousel" class="structure__list " [config]="slideConfig">
+      <div ngxSlickItem class="structure__list__item col-sm-4">
+        <figure>
+          <img src="assets/content/structure-mark.jpg" class="structure__list__item-image img-responsive" alt="" />
+          <figcaption>
+            <h3 class="structure__list__item-title">Self Speed</h3>
+            <div class="structure__list__item-content">
+              <p>Sala equipada com aparelhos para exercícios cardio</p>
+              <a href="#"><i class="fas fa-angle-right"></i> Saiba mais</a>
+            </div>
+          </figcaption>
+        </figure>
+      </div>
+      <div ngxSlickItem class="structure__list__item col-sm-4">
+        <figure>
+          <img src="assets/content/structure-mark.jpg" class="structure__list__item-image img-responsive" alt="" />
+          <figcaption>
+            <h3 class="structure__list__item-title">Self Speed</h3>
+            <div class="structure__list__item-content">
+              <p>Sala equipada com aparelhos para exercícios cardio</p>
+              <a href="#"><i class="fas fa-angle-right"></i> Saiba mais</a>
+            </div>
+          </figcaption>
+        </figure>
+      </div>
+      <div ngxSlickItem class="structure__list__item col-sm-4">
+        <figure>
+          <img src="assets/content/structure-mark.jpg" class="structure__list__item-image img-responsive" alt="" />
+          <figcaption>
+            <h3 class="structure__list__item-title">Self Speed</h3>
+            <div class="structure__list__item-content">
+              <p>Sala equipada com aparelhos para exercícios cardio</p>
+              <a href="#"><i class="fas fa-angle-right"></i> Saiba mais</a>
+            </div>
+          </figcaption>
+        </figure>
+      </div>
+      <div ngxSlickItem class="structure__list__item col-sm-4">
+        <figure>
+          <img src="assets/content/structure-mark.jpg" class="structure__list__item-image img-responsive" alt="" />
+          <figcaption>
+            <h3 class="structure__list__item-title">Self Speed</h3>
+            <div class="structure__list__item-content">
+              <p>Sala equipada com aparelhos para exercícios cardio</p>
+              <a href="#"><i class="fas fa-angle-right"></i> Saiba mais</a>
+            </div>
+          </figcaption>
+        </figure>
+      </div>
+      <div ngxSlickItem class="structure__list__item col-sm-4">
+        <figure>
+          <img src="assets/content/structure-mark.jpg" class="structure__list__item-image img-responsive" alt="" />
+          <figcaption>
+            <h3 class="structure__list__item-title">Self Speed</h3>
+            <div class="structure__list__item-content">
+              <p>Sala equipada com aparelhos para exercícios cardio</p>
+              <a href="#"><i class="fas fa-angle-right"></i> Saiba mais</a>
+            </div>
+          </figcaption>
+        </figure>
+      </div>
+    </ngx-slick-carousel>
+  </div>
+</div>
+
+<div class="news">
+  <header class="news__header ">
+    <div class="container">
+      <div class="d-flex align-sm-items-center flex-column flex-sm-row">
+        <div class="news__header__title">
+          <h2 class="news__header__title-el">Últimas notícias</h2>
+          <a href="#"><i class="fas fa-angle-right"></i> Ver todas</a>
+        </div>
+      </div>
+    </div>
+  </header>
+  <div class="container">
+    <ngx-slick-carousel #slickNews="slick-carousel" class="news__list row" [config]="slickNewsConfig">
+      <div ngxSlickItem class="news__list__item col-sm-4">
+        <figure>
+          <div class="news__list__item-figure">
+            <span>Transpira</span>
+            <img src="assets/content/news-mark.jpg" class="news__list__item-image img-responsive" alt="" />
+          </div>
+          <figcaption>
+            <p class="news__list__item-date">10/01/2019</p>
+            <div class="news__list__item-title">
+              <h4>Sala equipada com aparelhos para exercícios cardio</h4>
+            </div>
+          </figcaption>
+        </figure>
+      </div>
+      <div ngxSlickItem class="news__list__item col-sm-4">
+        <figure>
+          <div class="news__list__item-figure">
+            <span>Transpira</span>
+            <img src="assets/content/news-mark.jpg" class="news__list__item-image img-responsive" alt="" />
+          </div>
+          <figcaption>
+            <p class="news__list__item-date">10/01/2019</p>
+            <div class="news__list__item-title">
+              <h4>Sala equipada com aparelhos para exercícios cardio</h4>
+            </div>
+          </figcaption>
+        </figure>
+      </div>
+      <div ngxSlickItem class="news__list__item col-sm-4">
+        <figure>
+          <div class="news__list__item-figure">
+            <span>Transpira</span>
+            <img src="assets/content/news-mark.jpg" class="news__list__item-image img-responsive" alt="" />
+          </div>
+          <figcaption>
+            <p class="news__list__item-date">10/01/2019</p>
+            <div class="news__list__item-title">
+              <h4>Sala equipada com aparelhos para exercícios cardio</h4>
+            </div>
+          </figcaption>
+        </figure>
+      </div>
+      <div ngxSlickItem class="news__list__item col-sm-4">
+        <figure>
+          <div class="news__list__item-figure">
+            <span>Transpira</span>
+            <img src="assets/content/news-mark.jpg" class="news__list__item-image img-responsive" alt="" />
+          </div>
+          <figcaption>
+            <p class="news__list__item-date">10/01/2019</p>
+            <div class="news__list__item-title">
+              <h4>Sala equipada com aparelhos para exercícios cardio</h4>
+            </div>
+          </figcaption>
+        </figure>
+      </div>
+    </ngx-slick-carousel>
+  </div>
+</div>
+
+<div class="featured-plan">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-12 col-sm-3 featured-plan__col-red">
+        <h2 class="featured-plan__title">E aí, vamos começar?</h2>
+      </div>
+      <div class="col-12 col-sm-4 align-self-end text-center featured-plan__col-girl">
+        <img src="assets/layout/featured-plan.png" widht="300px" class="img-responsive" alt="" />
+      </div>
+      <div class="col-12 col-sm-5 featured-plan__col-gray">
+        <h2 class="featured-plan__title">Planos a partir de 69,90 mês</h2>
+        <button class="btn btn-light btn-block btn-lg">Comece sua jornada</button>
+      </div>
+    </div>
+  </div>
+</div>

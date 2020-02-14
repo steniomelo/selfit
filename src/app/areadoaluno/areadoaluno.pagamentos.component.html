@@ -1,0 +1,78 @@
+<div class="areadoaluno__pagamentos areadoaluno__interna container">
+  <header class="areadoaluno__interna__header">
+    <div class="areadoaluno__breadcrumbs">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a routerLink="/areadoaluno">Conta</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Pagamentos</li>
+        </ol>
+      </nav>
+    </div>
+    <h1 class="areadoaluno__interna__header-title">Pagamentos</h1>
+  </header>
+
+  <div class="areadoaluno__internta__content">
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item align-items-sm-center flex-column flex-sm-row">
+        <div class="flex-grow-1">
+          <strong class="text-danger">Parcelas em aberto</strong>
+          <table class="table mt-3 table__pagamentos">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">Parcela</th>
+                <th scope="col">Vencimento</th>
+                <th scope="col"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="table-active">
+                <th scope="row" class="align-middle">Parcela 4</th>
+                <td class="align-middle">22/22/2020</td>
+                <td class="align-middle"><button class="btn btn-danger">Pagar</button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </li>
+      <li class="list-group-item list-group-item-action">
+        <div class="flex-grow-1">
+          <div
+            class="d-flex align-items-start"
+            (click)="isCollapsed1 = !isCollapsed1"
+            [attr.aria-expanded]="!isCollapsed2"
+            aria-controls="collapseExample1"
+          >
+            <div>
+              <strong class="text-danger mr-3">Parcelas pagas</strong>
+              <i class="fas fa-chevron-down text-danger"></i>
+            </div>
+          </div>
+
+          <div id="collapseExample1" [ngbCollapse]="!isCollapsed1">
+            asd
+          </div>
+        </div>
+      </li>
+
+      <li class="list-group-item list-group-item-action">
+        <div class="flex-grow-1">
+          <div
+            class="d-flex align-items-start"
+            (click)="isCollapsed2 = !isCollapsed2"
+            [attr.aria-expanded]="!isCollapsed2"
+            aria-controls="collapseExample2"
+          >
+            <div>
+              <strong class="text-danger mr-3">Alterar cartão de crédito</strong>
+              <i class="fas fa-chevron-down text-danger"></i>
+            </div>
+          </div>
+
+          <div id="collapseExample2" [ngbCollapse]="!isCollapsed2">
+            asd
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>

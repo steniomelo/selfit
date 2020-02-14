@@ -1,0 +1,50 @@
+<div id="areadoaluno">
+  <header class="areadoaluno__header">
+    <nav class="navbar navbar-expand-lg ">
+      <div class="container d-flex">
+        <div class="d-flex col-sm-3 align-items-center navbar-item__plandetails">
+          <svg-icon src="../../assets/layout/icons/trevo.svg"></svg-icon>
+
+          <span class="mr-auto">Detalhes do seu plano</span>
+          <button
+            class="navbar-toggler ml-auto"
+            type="button"
+            aria-controls="navbar-menu"
+            aria-label="Toggle navigation"
+            (click)="toggleMenu()"
+            [attr.aria-expanded]="!menuHidden"
+          >
+            <i class="fas fa-angle-down" [hidden]="!menuHidden"></i>
+            <i class="fas fa-angle-up" [hidden]="menuHidden"></i>
+          </button>
+        </div>
+
+        <div
+          id="navbar-menu"
+          class="collapse float-xs-none navbar-collapse navbar-item__menu "
+          [ngbCollapse]="menuHidden"
+        >
+          <div class="nav-item">
+            <strong>Situação do contrato</strong>
+            <span>Ativo</span>
+          </div>
+          <div class="nav-item">
+            <strong>Unidade</strong>
+            <span>Boa viagem</span>
+          </div>
+          <div class="nav-item">
+            <strong>Meu plano</strong>
+            <span>Plano Self Plus Site</span>
+          </div>
+          <div class="nav-item">
+            <a href="#" class="btn btn-outline-secondary">Ver detalhes</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main class="areadoaluno__main">
+    <router-outlet></router-outlet>
+  </main>
+</div>

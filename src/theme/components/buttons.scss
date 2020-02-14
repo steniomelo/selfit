@@ -1,0 +1,10 @@
+.btn {
+  font-weight: bold;
+  padding: 15px 25px;
+}
+
+@include media-breakpoint-up(sm) {
+  .btn-lg {
+    font-size: 14px;
+  }
+}

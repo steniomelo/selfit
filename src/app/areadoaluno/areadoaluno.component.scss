@@ -1,0 +1,87 @@
+@import "src/theme/theme-variables";
+@import "~bootstrap/scss/mixins/_breakpoints";
+
+.areadoaluno__header {
+  .navbar {
+    border-bottom: 1px solid $gray-500;
+    padding: 0;
+  }
+
+  .navbar-item__plandetails {
+    background-color: $gray-400;
+    padding: 15px;
+  }
+
+  .navbar-item__menu {
+    align-items: stretch;
+    .nav-item {
+      flex: 1 1 33%;
+      padding: 15px;
+      border-bottom: 1px solid $gray-400;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      strong {
+        color: $red;
+      }
+
+      &:last-child {
+        border: 0;
+      }
+    }
+  }
+}
+
+.areadoaluno__main {
+  padding: $grid-gutter-width 0;
+}
+
+.areadoaluno__home__header {
+  margin-bottom: 40px;
+}
+
+.areadoaluno__home__header-title {
+  color: $red;
+}
+
+.areadoaluno__interna__header {
+  margin-bottom: 30px;
+}
+
+.areadoaluno__interna__header-title {
+  font-size: 24px;
+}
+
+.areadoaluno__interna__header-subtitle {
+  color: $red;
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+
+.table__pagamentos {
+  margin: 0 -20px;
+  font-size: 0.8rem;
+  width: calc(100% + 40px);
+}
+
+@include media-breakpoint-up(sm) {
+  .table__pagamentos {
+    margin: 0px;
+    font-size: 1rem;
+    width: 100%;
+  }
+  .areadoaluno__header {
+    .navbar-item__menu {
+      .nav-item {
+        border-left: 1px solid $gray-400;
+        border-bottom: 0;
+      }
+    }
+  }
+
+  .areadoaluno__interna__header-title {
+    font-size: 30px;
+  }
+}

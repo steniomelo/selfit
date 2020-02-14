@@ -1,0 +1,23 @@
+.list-group-item {
+  padding: 20px 0;
+  display: flex;
+  font-size: 1.1rem;
+}
+
+.item-content {
+  flex-grow: 1;
+  .form-control {
+    margin: 10px 0;
+  }
+
+  p {
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+}
+
+.item-action {
+  .btn-link {
+    padding: 0;
+  }
+}

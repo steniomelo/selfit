@@ -1,0 +1,13 @@
+@import "src/theme/theme-variables";
+@import "~bootstrap/scss/mixins/breakpoints";
+
+#footer .footer__secondary {
+  display: none !important;
+}
+
+body {
+  display: none !important;
+}
+
+@include media-breakpoint-up(sm) {
+}

@@ -1,0 +1,76 @@
+<div class="areadoaluno__meutreino areadoaluno__interna container">
+  <header class="areadoaluno__interna__header">
+    <div class="areadoaluno__breadcrumbs">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a routerLink="/areadoaluno">Conta</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Meu treino</li>
+        </ol>
+      </nav>
+    </div>
+    <h1 class="areadoaluno__interna__header-title">Meu treino</h1>
+  </header>
+
+  <div class="areadoaluno__internta__content">
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item align-items-sm-center flex-column flex-sm-row">
+        <h4 class="text-danger flex-grow-1">Prog 01202002002</h4>
+        <div class="flex-grow-1 ">
+          <strong>Instrutor responsável</strong>
+          <p>Anderson da Silva Silveira</p>
+        </div>
+        <div class="flex-grow-1">
+          <button class="btn btn-danger mr-2 d-none d-sm-inline"><i class="fas fa-print"></i></button>
+          <button class="btn btn-danger">Solicitar mudança de série</button>
+        </div>
+      </li>
+
+      <li class="list-group-item list-group-item-action">
+        <div
+          class="flex-grow-1"
+          (click)="isCollapsed = !isCollapsed"
+          [attr.aria-expanded]="!isCollapsed"
+          aria-controls="collapseExample1"
+        >
+          <div class="d-flex align-items-start">
+            <div class="flex-grow-1">
+              <strong class="text-danger">01 Self Training - Intermédio FEM A</strong>
+              <p>Alternado</p>
+            </div>
+
+            <button type="button" class="btn btn-link">
+              <i class="fas fa-chevron-down"></i>
+            </button>
+          </div>
+
+          <div id="collapseExample1" [ngbCollapse]="!isCollapsed">
+            asd
+          </div>
+        </div>
+      </li>
+      <li class="list-group-item list-group-item-action">
+        <div class="flex-grow-1">
+          <div
+            class="d-flex align-items-start"
+            (click)="isCollapsed2 = !isCollapsed2"
+            [attr.aria-expanded]="!isCollapsed2"
+            aria-controls="collapseExample2"
+          >
+            <div class="flex-grow-1">
+              <strong class="text-danger">01 Self Training - Intermédio FEM A</strong>
+              <p>Alternado</p>
+            </div>
+
+            <button type="button" class="btn btn-link">
+              <i class="fas fa-chevron-down"></i>
+            </button>
+          </div>
+
+          <div id="collapseExample2" [ngbCollapse]="!isCollapsed2">
+            asd
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
