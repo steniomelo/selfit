@@ -8,7 +8,7 @@ const routes: Routes = [
   {
     path: '',
     component: AselfitComponent,
-    data: { title: extract('Fale conosco') }
+    data: { title: extract('A Selfit') }
   }
 ];
 
