@@ -8,6 +8,9 @@ import { environment } from '@env/environment';
   styleUrls: ['./areadoaluno.component.scss']
 })
 export class AreadoalunoPagamentosComponent implements OnInit {
+  isCollapsed: any;
+  isCollapsed1: any;
+  isCollapsed2: any;
   constructor() {}
 
   ngOnInit() {}
