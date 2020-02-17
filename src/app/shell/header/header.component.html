@@ -49,7 +49,7 @@
 
     <div id="navbar-menu" class="collapse float-xs-none navbar-collapse" [ngbCollapse]="menuHidden">
       <div class="navbar-nav ml-auto" *ngIf="!logado || (logado && !isAreadoaluno)">
-        <a class="nav-item nav-link" routerLink="/unidades" routerLinkActive="active">
+        <a class="nav-item nav-link" routerLink="/busca" routerLinkActive="active">
           <span translate>Unidades</span>
         </a>
         <a class="nav-item nav-link" routerLink="/aselfit" routerLinkActive="active">
@@ -58,7 +58,7 @@
         <a class="nav-item nav-link" routerLink="/blog" routerLinkActive="active">
           <span translate>Blog</span>
         </a>
-        <a class="nav-item nav-link" routerLink="/contato" routerLinkActive="active">
+        <a class="nav-item nav-link" routerLink="/faleconosco" routerLinkActive="active">
           <span translate>Fale conosco</span>
         </a>
       </div>
@@ -72,7 +72,7 @@
           </div>
 
           <div class="nav-item pr-0">
-            <a href="" class="btn btn-large btn-outline btn-outline-light">Comece sua jornada</a>
+            <a routerLink="/busca" class="btn btn-large btn-outline btn-outline-light">Comece sua jornada</a>
           </div>
         </ng-container>
 
