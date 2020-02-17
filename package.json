@@ -46,7 +46,9 @@
     "ngx-slick-carousel": "^0.4.7",
     "rxjs": "^6.5.2",
     "slick-carousel": "^1.8.1",
-    "zone.js": "^0.9.1"
+    "zone.js": "^0.9.1",
+    "typescript": "~3.4.0",
+    "@types/node": "^10.9.0"
   },
   "devDependencies": {
     "@angular/cli": "~8.1.0",
