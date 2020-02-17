@@ -66,7 +66,7 @@ overriding flag to the `ng` command in package.json:
 ```javascript
 {
   "scripts": {
-    "build:client-and-server-bundles:qa": "NG_BUILD_OVERRIDES='--sourceMap=true' npm run build:client-and-server-bundles",
+    "build:client-and-server-bundles:qa": "NG_BUILD_OVERRIDES='--sourceMap=false' npm run build:client-and-server-bundles",
     "build:client-and-server-bundles": "npm run build:client-bundles && npm run build:server-bundles",
     "build:client-bundles": "npm run env && ng build --prod $NG_BUILD_OVERRIDES",
   }
