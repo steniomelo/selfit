@@ -6,4 +6,28 @@
     url("./../../assets/content/unidade-mark.jpg") no-repeat;
   padding: $grid-gutter-width 0;
   color: white;
+
+  .btn-matriculese {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 99;
+    padding: 20px;
+    background-color: white;
+  }
+}
+
+@include media-breakpoint-up(sm) {
+  .unidade__header {
+    .btn-matriculese {
+      position: relative;
+      bottom: 0;
+      left: 0;
+      width: auto;
+      z-index: 99;
+      padding: 0;
+      background-color: transparent;
+    }
+  }
 }

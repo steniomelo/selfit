@@ -6,7 +6,9 @@
         <h1>Campolim</h1>
         <p>Sorocaba - SP</p>
       </div>
-      <button class="btn btn-danger ml-auto">Matricule-se</button>
+      <div class="btn-matriculese ml-auto">
+        <button class="btn btn-danger  btn-block">Matricule-se</button>
+      </div>
     </div>
   </header>
 
@@ -48,8 +50,8 @@
           </div>
         </div>
         <div class="col-sm-5">
-          <div class="unidade__gallery">
-            <div class="unidade__gallery-item">
+          <ngx-slick-carousel #slick="slick-carousel" class="unidade__gallery" [config]="slideConfig">
+            <div ngxSlickItem class="unidade__gallery-item">
               <div class="card border-light">
                 <img src="assets/content/unidade-gallery-mark.jpg" class="img-fluid" />
                 <div class="card-body bg-light">
@@ -57,7 +59,15 @@
                 </div>
               </div>
             </div>
-          </div>
+            <div ngxSlickItem class="unidade__gallery-item">
+              <div class="card border-light">
+                <img src="assets/content/unidade-gallery-mark.jpg" class="img-fluid" />
+                <div class="card-body bg-light">
+                  <p class="card-text text-center">Vestiário</p>
+                </div>
+              </div>
+            </div>
+          </ngx-slick-carousel>
         </div>
         <div class="col-sm-4">
           <div class="card bg-light border-light">
@@ -76,12 +86,28 @@
                   <span>Sala de Ginastica</span>
                 </div>
                 <div class="feature-item">
-                  <svg-icon src="../../assets/layout/icons/icon-salaginastica.svg"></svg-icon>
+                  <svg-icon src="../../assets/layout/icons/icon-ambienteclimatizado.svg"></svg-icon>
                   <span>Ambiente climatizado</span>
                 </div>
                 <div class="feature-item">
-                  <svg-icon src="../../assets/layout/icons/icon-salaginastica.svg"></svg-icon>
-                  <span>Estacionamento</span>
+                  <svg-icon src="../../assets/layout/icons/icon-musica.svg"></svg-icon>
+                  <span>Música ambiente</span>
+                </div>
+                <div class="feature-item">
+                  <svg-icon src="../../assets/layout/icons/icon-self.svg"></svg-icon>
+                  <span>Self Intense (Funcinoal)</span>
+                </div>
+                <div class="feature-item">
+                  <svg-icon src="../../assets/layout/icons/icon-extreme.svg"></svg-icon>
+                  <span>Self Extreme (Circuito Hit)</span>
+                </div>
+                <div class="feature-item">
+                  <svg-icon src="../../assets/layout/icons/icon-wifi.svg"></svg-icon>
+                  <span>Self Connect (Wi-fi)</span>
+                </div>
+                <div class="feature-item">
+                  <svg-icon src="../../assets/layout/icons/icon-coracao.svg"></svg-icon>
+                  <span>Música ambiente</span>
                 </div>
               </div>
             </div>
