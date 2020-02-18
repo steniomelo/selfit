@@ -13,7 +13,6 @@ import { AreadoalunoPagamentosComponent } from './areadoaluno.pagamentos.compone
 import { AreadoalunoCancelamentoComponent } from './areadoaluno.cancelamento.component';
 
 const routes: Routes = [
-  // Module is lazy loaded, see app-routing.module.ts
   {
     path: '',
     component: AreadoalunoComponent,

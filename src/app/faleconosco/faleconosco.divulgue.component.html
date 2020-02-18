@@ -1,25 +1,23 @@
 <div id="fale-conosco">
   <div class="container">
+    <header class="mb-4 d-block d-sm-none">
+      <a href="#" class="h3 text-danger mr-5" routerLink="/faleconosco"><u>Fale conosco</u></a>
+      <a href="#" class="h3 text-muted" routerLink="/faleconosco/divulgue">Divulgue sua marca</a>
+    </header>
+
     <div class="row">
-      <div class="card rounded-lg border-0 col-sm-8 mx-auto">
+      <div class="card rounded-lg border-0 col-sm-8 mx-auto shadow ">
         <div class="card-body p-4 py-5">
-          <header class="mb-5">
-            <a href="#" class="h3 text-muted mr-5">Fale conosco</a>
-            <a href="#" class="h3 text-danger"><u>Divulge sua marca</u></a>
+          <header class="mb-5 d-none d-sm-block">
+            <a href="#" class="h3 text-muted mr-5" routerLink="/faleconosco">Fale conosco</a>
+            <a href="#" class="h3 text-danger" routerLink="/faleconosco/divulgue"><u>Divulgue sua marca</u></a>
           </header>
 
           <div class="row">
             <div class="col-sm-6">
               <p class="mb-5">
-                Nosso canal de relacionamento com o cliente é por meio de nossas redes sociais ou pelo formulário de
-                contato ao lado. Tem alguma sugestão, comentário ou dúvida? Entre em contato conosco ou visite nossa
-                área de Dúvidas Frequentes, a resposta para os seus questionamentos pode estar lá.
-              </p>
-
-              <h4>Imprensa</h4>
-              <p>
-                Se você é jornalista, entre em contato com a nossa Assessoria de Imprensa! Envie um e-mail para:
-                <b>selfit@maquinacohnwolfe.com.br</b>
+                Gostaria de ter sua marca exposta em nossas unidades? Entre em contato conosco através do formulário de
+                contato ou por meio de nossas redes sociais.
               </p>
             </div>
 
@@ -33,32 +31,15 @@
                 </div>
 
                 <div class="form-group">
-                  <div class="custom-control custom-radio custom-control-inline">
-                    <input
-                      type="radio"
-                      id="customRadioInline1"
-                      name="customRadioInline1"
-                      class="custom-control-input"
-                    />
-                    <label class="custom-control-label" for="customRadioInline1">Sou aluno</label>
-                  </div>
-                  <div class="custom-control custom-radio custom-control-inline">
-                    <input
-                      type="radio"
-                      id="customRadioInline2"
-                      name="customRadioInline1"
-                      class="custom-control-input"
-                    />
-                    <label class="custom-control-label" for="customRadioInline2">Não sou aluno</label>
-                  </div>
+                  <input type="text" class="form-control" placeholder="Telefone" />
                 </div>
 
                 <div class="form-group">
-                  <input type="text" class="form-control" placeholder="Assunto" />
+                  <input type="text" class="form-control" placeholder="Site da empresa" />
                 </div>
 
                 <div class="form-group">
-                  <textarea class="form-control" placeholder="Assunto"></textarea>
+                  <textarea class="form-control" placeholder="Sua proposta"></textarea>
                 </div>
 
                 <button class="btn btn-lg btn-block btn-danger">Enviar contato</button>
