@@ -1,16 +1,93 @@
 <footer id="footer" [ngClass]="{ 'footer--start': activeRoute == '/' }">
   <div class="footer__primary">
-    <div class="container">
-      <img src="assets/selfit-logo.png" class="footer__logo" />
+    <div class="container d-flex flex-column flex-sm-row align-items-center">
+      <img
+        src="assets/selfit-logo.png"
+        srcset="assets/selfit-logo.png 1x, assets/selfit-logo@2x.png 2x"
+        class="footer__logo"
+      />
 
-      <div class="footer__social-icons">
-        <a href="#"><i class="fab fa-facebook-square" class="d-block"></i></a>
-        <a href="#"><i class="fab fa-twitter-square" class="d-block"></i></a>
-        <a href="#"><i class="fab fa-instagram" class="d-block"></i></a>
-        <a href="#"><i class="fab fa-youtube" class="d-block"></i></a>
-        <a href="#"><i class="fab fa-linkedin" class="d-block"></i></a>
+      <div class="footer__social-icons ml-sm-auto">
+        <a href="#"><i class="fab fa-facebook-square"></i></a>
+        <a href="#"><i class="fab fa-twitter-square"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-youtube"></i></a>
+        <a href="#"><i class="fab fa-linkedin"></i></a>
       </div>
     </div>
   </div>
-  <div class="footer__secondary d-none d-sm-block"></div>
+
+  <div class="footer__secondary d-none d-sm-block">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-2">
+          <a href="#"><strong>Unidades</strong></a>
+          <ul class="list-unstyled">
+            <li>
+              <a href="">Alagoas</a>
+              <a href="">Amazonas</a>
+              <a href="">Bahia</a>
+              <a href="">...</a>
+            </li>
+          </ul>
+        </div>
+        <div class="col-sm-2">
+          <a href="#"><strong>Conheça a selfit</strong></a>
+        </div>
+        <div class="col-sm-2">
+          <a href="#"><strong>Fale conosco</strong></a>
+          <ul class="list-unstyled">
+            <li>
+              <a href="">Entre em contato</a>
+              <a href="">Divulgue sua marca</a>
+              <a href="">Indique um ponto</a>
+              <a href="">Trabalhe conosco</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="col-sm-2">
+          <a href="#"><strong>Seja um franqueado</strong></a>
+          <ul class="list-unstyled">
+            <li>
+              <a href="">Entre em contato</a>
+              <a href="">Divulgue sua marca</a>
+              <a href="">Indique um ponto</a>
+              <a href="">Trabalhe conosco</a>
+            </li>
+          </ul>
+        </div>
+        <div class="col-sm-2">
+          <a href="#"><strong>Dúvidas Frequentes</strong></a>
+          <ul class="list-unstyled">
+            <li>
+              <a href="">Quero ser aluno Selfit</a>
+              <a href="">Avaliação médica</a>
+              <a href="">Sou aluno e tô com dúvidas</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer__copyright pb-5  d-none d-sm-block">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-6">
+          <p>
+            A Selfit é uma academia para todos: para quem tem o objetivo de treinar e ficar mais forte, mais fit,
+            acelerar ou desestressar. Com mais de 30 unidades em 10 estados brasileiros, a Selfit tem estrutura única,
+            com ambientes espaçosos, equipamentos modernos e programas que se adaptam ao seu estilo de vida e ritmo de
+            treino.
+          </p>
+          <p>
+            Conheça nossas aulas e estruturas: Self Intense (treino funcional), Self Extreme (treino de circuito), Self
+            Velo (treino de cardio), Self Force (musculação), Painel Hit (treino de hit) e Self Ritmo (aulas de
+            ginástica).
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
 </footer>

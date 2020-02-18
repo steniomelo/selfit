@@ -13,7 +13,6 @@
 
 .footer__primary {
   padding: 30px;
-  text-align: center;
 }
 
 .footer__social-icons {
@@ -24,6 +23,7 @@
   a {
     color: white;
     margin: 0 5px;
+    font-size: 15px;
   }
 }
 
@@ -36,11 +36,47 @@
 
     .footer__primary {
       padding: 10px 0;
+      text-align: center;
+      border: 0;
     }
 
     .footer__logo,
-    .footer__secondary {
+    .footer__secondary,
+    .footer__copyright {
       display: none !important;
+    }
+  }
+
+  .footer__primary {
+    border-bottom: 1px solid $gray-700;
+  }
+
+  .footer__secondary {
+    padding: 40px;
+
+    color: white;
+
+    strong {
+      margin-bottom: 20px;
+      display: block;
+      font-size: 14px;
+    }
+
+    a {
+      color: white;
+    }
+
+    ul {
+      li {
+        display: block;
+        margin-bottom: 10px;
+
+        a {
+          display: block;
+          color: white;
+          margin-bottom: 7px;
+        }
+      }
     }
   }
 }
