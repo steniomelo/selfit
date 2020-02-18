@@ -17,7 +17,7 @@
     "prettier:check": "prettier --list-different \"./{src,e2e}/**/*.{ts,js,html,scss}\"",
     "postinstall": "npm run prettier -s",
     "generate": "ng generate",
-    "heroku-postbuild": "ng build --prod"
+    "heroku-postbuild": "npm run env -s && ng build --prod"
   },
   "dependencies": {
     "@angular/cli": "~8.1.0",
@@ -112,7 +112,7 @@
     }
   },
   "engines": {
-    "node": "12.13.0",
-    "npm": "3.10.10"
+    "node": "10.16.1",
+    "npm": "6.13.4"
   }
 }
