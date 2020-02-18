@@ -5,7 +5,7 @@
   "scripts": {
     "ng": "ng",
     "build": "npm run env -s && ng build --prod",
-    "start": "npm run env -s && ng serve --proxy-config proxy.conf.js",
+    "start": "node server.js",
     "lint": "ng lint && stylelint \"src/**/*.scss\" --syntax scss && htmlhint \"src\" --config .htmlhintrc",
     "test": "npm run env -s && ng test",
     "test:ci": "npm run env -s && npm run lint -s && ng test --configuration=ci",
@@ -16,7 +16,8 @@
     "prettier": "prettier --write \"./{src,e2e}/**/*.{ts,js,html,scss}\"",
     "prettier:check": "prettier --list-different \"./{src,e2e}/**/*.{ts,js,html,scss}\"",
     "postinstall": "npm run prettier -s",
-    "generate": "ng generate"
+    "generate": "ng generate",
+    "heroku-postbuild": "ng build --prod"
   },
   "dependencies": {
     "@angular/cli": "~8.1.0",
@@ -111,6 +112,7 @@
     }
   },
   "engines": {
-    "node": "12.13.0"
+    "node": "12.13.0",
+    "npm": "3.10.10"
   }
 }
