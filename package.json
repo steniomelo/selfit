@@ -43,7 +43,7 @@
     "@ng-bootstrap/ng-bootstrap": "^5.0.0-rc.1",
     "@ngx-rocket/scripts": "^4.0.0",
     "@ngx-translate/core": "^11.0.1",
-    "@sweetalert2/ngx-sweetalert2": "^8.0.0",
+    "@sweetalert2/ngx-sweetalert2": "^7.2.0",
     "angular-svg-icon": "^8.0.0",
     "angulartics2": "^7.2.4",
     "bootstrap": "^4.1.1",
@@ -55,7 +55,7 @@
     "ngx-slick-carousel": "^0.4.7",
     "rxjs": "^6.5.2",
     "slick-carousel": "^1.8.1",
-    "sweetalert2": "^9.8.2",
+    "sweetalert2": "^9.6.0",
     "typescript": "~3.4.0",
     "zone.js": "^0.9.1"
   },
