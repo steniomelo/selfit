@@ -15,8 +15,14 @@
 
   <div class="areadoaluno__internta__content">
     <ul class="list-group list-group-flush">
-      <li class="list-group-item "><i class="fas fa-file-download mr-3 text-danger"></i> Contrato</li>
-      <li class="list-group-item "><i class="fas fa-file-download mr-3 text-danger"></i> Normas</li>
+      <li class="list-group-item btn btn-link" (click)="gerarContrato()">
+        <i class="fas fa-file-download mr-3 text-danger"></i> Contratos
+      </li>
+      <li class="list-group-item btn btn-link">
+        <a href="https://cdn.selfitacademias.com.br/documentos/Normas.De.Utilizacao.pdf"
+          ><i class="fas fa-file-download mr-3 text-danger"></i> Normas</a
+        >
+      </li>
     </ul>
   </div>
 </div>

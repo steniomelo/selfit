@@ -8,6 +8,8 @@ import { Logger } from '../logger.service';
 
 const log = new Logger('ErrorHandlerInterceptor');
 
+import Swal from 'sweetalert2';
+
 /**
  * Adds a default error handler to all requests.
  */
@@ -25,6 +27,9 @@ export class ErrorHandlerInterceptor implements HttpInterceptor {
       // Do something with the error
       log.error('Request error', response);
     }
+
+    Swal.fire('Erro', 'Houve um erro inesperado!', 'error');
+
     throw response;
   }
 }

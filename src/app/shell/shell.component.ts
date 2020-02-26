@@ -15,7 +15,7 @@ export class ShellComponent implements OnInit {
   constructor(public router: Router) {
     router.events.subscribe((event: any) => {
       if (event instanceof NavigationEnd) {
-        console.log('ROTEVENTO', event);
+        //console.log('ROTEVENTO', event);
         this.closeMenu = true;
         this.activeRoute = event.url;
 

@@ -8,19 +8,19 @@
         </ol>
       </nav>
     </div>
-    <h1 class="areadoaluno__interna__header-title">Transferencia de unidade</h1>
+    <h1 class="areadoaluno__interna__header-title">Transferência de unidade</h1>
   </header>
 
-  <div class="areadoaluno__internta__content">
+  <form [formGroup]="transferenciaForm" (ngSubmit)="confirmarTransferencia()" class="areadoaluno__internta__content">
     <ul class="list-group list-group-flush">
       <li class="list-group-item align-items-sm-center flex-column flex-sm-row">
         <div class="mr-5">
           <h4 class="text-danger">Unidade atual</h4>
-          <p>Boa viagem</p>
+          <p>{{ credentials.nomeEmpresa }}</p>
         </div>
         <div>
           <h4 class="text-danger">Mensalidade atual</h4>
-          <p>R$ 99,90</p>
+          <p>{{ credentials.plano.valorMensal | currency: 'BRL' }}</p>
         </div>
       </li>
 
@@ -28,42 +28,62 @@
         <div>
           <p>Escolha a unidade para qual deseja transferênia</p>
           <div class="form-group">
-            <select class="form-control">
-              <option value="1">Mag Shopping</option>
+            <select name="unidade" formControlName="unidade" class="form-control" (change)="selectUnidade()">
+              <option *ngFor="let unidade of unidades" [ngValue]="unidade">{{ unidade.nome }}</option>
             </select>
           </div>
         </div>
       </li>
 
-      <li class="list-group-item align-items-sm-center flex-column flex-sm-row">
+      <li
+        *ngIf="unidadeSelected && unidadeSelectedPlano"
+        class="list-group-item align-items-sm-center flex-column flex-sm-row"
+      >
         <div class="mr-5">
           <h4 class="text-danger">Unidade atual</h4>
-          <p>Boa viagem</p>
+          <p>{{ unidadeSelectedPlano.nome }}</p>
         </div>
         <div>
           <h4 class="text-danger">Mensalidade atual</h4>
-          <p>R$ 99,90</p>
+          <p>{{ unidadeSelectedPlano.manutencao | currency: 'BRL' }}</p>
         </div>
       </li>
-      <li class="list-group-item align-items-sm-center flex-column flex-sm-row">
+      <li *ngIf="unidadeSelected" class="list-group-item align-items-sm-center flex-column flex-sm-row">
         <div>
           <h4 class="text-danger">Facilidades desta unidade</h4>
-          <div></div>
+          <div *ngFor="let conveniencia of unidadeSelected.unidadeConveniencias">
+            <img
+              src="{{
+                'https://www.selfitacademias.com.br/uploads/conveniencia/f_' + conveniencia.conveniencia.imagem
+              }}"
+            />
+          </div>
         </div>
       </li>
       <li class="list-group-item align-items-sm-center flex-column flex-sm-row">
         <div>
           <div class="form-check mb-5">
-            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" />
-            <label class="form-check-label" for="defaultCheck1">
-              Default checkbox
+            <input class="form-check-input" formControlName="aceite" type="checkbox" id="aceite" />
+            <label class="form-check-label" for="aceite">
+              <small
+                >Li e aceito o termo de adesão. Estou ciente que o upgrade pode modificar o valor da mensalidade. Para
+                mais informações, consulte as unidades e valores no site.</small
+              >
             </label>
           </div>
           <div>
-            <button class="btn btn-danger">Confirmar transferência</button>
+            <button
+              class="btn btn-danger"
+              type="submit"
+              [disabled]="
+                transferenciaForm.invalid || transferenciaForm.controls['aceite'].value === false || isLoading
+              "
+            >
+              Confirmar transferência
+            </button>
           </div>
         </div>
       </li>
     </ul>
-  </div>
+  </form>
 </div>

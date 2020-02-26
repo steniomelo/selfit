@@ -2,8 +2,9 @@ import { Injectable } from '@angular/core';
 
 export interface Credentials {
   // Customize received credentials here
-  username: string;
-  token: string;
+  email: string;
+  senha: string;
+  // token: string;
 }
 
 const credentialsKey = 'credentials';
@@ -16,12 +17,14 @@ const credentialsKey = 'credentials';
   providedIn: 'root'
 })
 export class CredentialsService {
-  private _credentials: Credentials | null = null;
+  private _credentials: any = null;
 
   constructor() {
     const savedCredentials = sessionStorage.getItem(credentialsKey) || localStorage.getItem(credentialsKey);
     if (savedCredentials) {
       this._credentials = JSON.parse(savedCredentials);
+    } else {
+      this._credentials = null;
     }
   }
 
@@ -37,7 +40,13 @@ export class CredentialsService {
    * Gets the user credentials.
    * @return The user credentials or null if the user is not authenticated.
    */
-  get credentials(): Credentials | null {
+  get credentials() {
+    const savedCredentials = sessionStorage.getItem(credentialsKey) || localStorage.getItem(credentialsKey);
+    if (savedCredentials) {
+      this._credentials = JSON.parse(savedCredentials);
+    } else {
+      this._credentials = null;
+    }
     return this._credentials;
   }
 
@@ -48,8 +57,10 @@ export class CredentialsService {
    * @param credentials The user credentials.
    * @param remember True to remember credentials across sessions.
    */
-  setCredentials(credentials?: Credentials, remember?: boolean) {
+  setCredentials(credentials?: any, remember?: boolean) {
     this._credentials = credentials || null;
+
+    console.log(this._credentials);
 
     if (credentials) {
       const storage = remember ? localStorage : sessionStorage;
@@ -57,6 +68,18 @@ export class CredentialsService {
     } else {
       sessionStorage.removeItem(credentialsKey);
       localStorage.removeItem(credentialsKey);
+    }
+  }
+
+  setPlano(dados: any, remember: any) {
+    if (dados) {
+      const oldcredentials = this.credentials;
+      oldcredentials.plano = dados[0];
+      const newcredentials = oldcredentials;
+      console.log(newcredentials);
+
+      const storage = remember ? localStorage : sessionStorage;
+      storage.setItem(credentialsKey, JSON.stringify(newcredentials));
     }
   }
 }

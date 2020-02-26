@@ -30,7 +30,7 @@
     </a>
 
     <span class="navbar-brand mr-auto" *ngIf="logado && isAreadoaluno" translate>
-      <i class="fas fa-user"></i> Olá, Aluno
+      <i class="fas fa-user" *ngIf="username"></i> Olá, {{ username }}
     </span>
 
     <i

@@ -11,128 +11,158 @@
     <h1 class="areadoaluno__interna__header-title">Meu perfil</h1>
   </header>
 
-  <div class="areadoaluno__internta__content">
+  <form class="areadoaluno__internta__content" (ngSubmit)="editarPerfil()" [formGroup]="editForm">
     <div class="row">
       <div class="col-sm-7">
         <h2 class="areadoaluno__interna__header-subtitle">Dados pessoais</h2>
         <ul class="list-group list-group-flush">
           <li class="list-group-item">
-            <ng-container *ngIf="!editing">
+            <ng-container *ngIf="!editNome">
               <div class="item-content">
                 <strong>Nome</strong>
-                <p>Anderson da Silva Silveira</p>
+                <p>{{ credentials.nomecliente }}</p>
               </div>
               <div class="item-action ml-auto">
-                <button class="btn btn-link" (click)="edit()">Editar</button>
+                <button class="btn btn-link" (click)="editNome = true">Editar</button>
               </div>
             </ng-container>
 
-            <ng-container *ngIf="editing">
+            <ng-container *ngIf="editNome">
               <div class="item-content">
                 <strong>Nome</strong>
                 <div class="form-group">
-                  <input type="text" class="form-control" placeholder="Nome" />
+                  <input
+                    type="text"
+                    class="form-control"
+                    formControlName="nome"
+                    placeholder="Nome"
+                    value="{{ credentials.nomecliente }}"
+                  />
                 </div>
-                <button class="btn btn-primary">Salvar</button>
+                <button class="btn btn-primary" type="submit">Salvar</button>
               </div>
               <div class="item-action ml-auto">
-                <button class="btn btn-link" (click)="cancel()">Cancelar</button>
+                <button class="btn btn-link" (click)="editNome = false">Cancelar</button>
               </div>
             </ng-container>
           </li>
           <li class="list-group-item">
-            <ng-container *ngIf="!editing">
+            <ng-container *ngIf="!editEmail">
               <div class="item-content">
                 <strong>E-mail</strong>
-                <p>aaaaaa@gmail.com</p>
+                <p>{{ credentials.email }}</p>
               </div>
               <div class="item-action ml-auto">
-                <button class="btn btn-link" (click)="edit()">Editar</button>
+                <button class="btn btn-link" (click)="editEmail = true">Editar</button>
               </div>
             </ng-container>
 
-            <ng-container *ngIf="editing">
+            <ng-container *ngIf="editEmail">
               <div class="item-content">
                 <strong>E-mail</strong>
                 <div class="form-group">
-                  <input type="text" class="form-control" placeholder="Nome" />
+                  <input
+                    type="text"
+                    class="form-control"
+                    formControlName="email"
+                    placeholder="E-mail"
+                    value="{{ credentials.email }}"
+                  />
                 </div>
                 <button class="btn btn-primary">Salvar</button>
               </div>
               <div class="item-action ml-auto">
-                <button class="btn btn-link" (click)="cancel()">Cancelar</button>
+                <button class="btn btn-link" (click)="editEmail = false">Cancelar</button>
               </div>
             </ng-container>
           </li>
           <li class="list-group-item">
-            <ng-container *ngIf="!editing">
+            <ng-container *ngIf="!editCpf">
               <div class="item-content">
                 <strong>CPF</strong>
-                <p>000.000.000-00</p>
+                <p>{{ credentials.cpf }}</p>
               </div>
               <div class="item-action ml-auto">
-                <button class="btn btn-link" (click)="edit()">Editar</button>
+                <button class="btn btn-link" (click)="editCpf = true">Editar</button>
               </div>
             </ng-container>
 
-            <ng-container *ngIf="editing">
+            <ng-container *ngIf="editCpf">
               <div class="item-content">
                 <strong>CPF</strong>
                 <div class="form-group">
-                  <input type="text" class="form-control" placeholder="Nome" />
+                  <input
+                    type="text"
+                    class="form-control"
+                    formControlName="cpf"
+                    placeholder="CPF"
+                    value="{{ credentials.cpf }}"
+                  />
                 </div>
                 <button class="btn btn-primary">Salvar</button>
               </div>
               <div class="item-action ml-auto">
-                <button class="btn btn-link" (click)="cancel()">Cancelar</button>
+                <button class="btn btn-link" (click)="editCpf = false">Cancelar</button>
               </div>
             </ng-container>
           </li>
           <li class="list-group-item">
-            <ng-container *ngIf="!editing">
+            <ng-container *ngIf="!editNascimento">
               <div class="item-content">
                 <strong>Data de nascimento</strong>
-                <p>10/10/2020</p>
+                <p>{{ credentials.datanascimento }}</p>
               </div>
               <div class="item-action ml-auto">
-                <button class="btn btn-link" (click)="edit()">Editar</button>
+                <button class="btn btn-link" (click)="editNascimento = true">Editar</button>
               </div>
             </ng-container>
 
-            <ng-container *ngIf="editing">
+            <ng-container *ngIf="editNascimento">
               <div class="item-content">
                 <strong>Data de nascimento</strong>
                 <div class="form-group">
-                  <input type="text" class="form-control" placeholder="Nome" />
+                  <input
+                    type="text"
+                    class="form-control"
+                    formControlName="nascimento"
+                    placeholder="Data de nascimento"
+                    value="{{ credentials.datanascimento }}"
+                  />
                 </div>
                 <button class="btn btn-primary">Salvar</button>
               </div>
               <div class="item-action ml-auto">
-                <button class="btn btn-link" (click)="cancel()">Cancelar</button>
+                <button class="btn btn-link" (click)="editNascimento = false">Cancelar</button>
               </div>
             </ng-container>
           </li>
           <li class="list-group-item">
-            <ng-container *ngIf="!editing">
+            <ng-container *ngIf="!editGenero">
               <div class="item-content">
                 <strong>Gênero</strong>
-                <p>Masculino</p>
+                <p>{{ credentials.sexocliente }}</p>
               </div>
               <div class="item-action ml-auto">
-                <button class="btn btn-link" (click)="edit()">Editar</button>
+                <button class="btn btn-link" (click)="editGenero = true">Editar</button>
               </div>
             </ng-container>
 
-            <ng-container *ngIf="editing">
+            <ng-container *ngIf="editGenero">
               <div class="item-content">
                 <strong>Gênero</strong>
                 <div class="form-group">
-                  <input type="text" class="form-control" placeholder="Nome" />
+                  <input
+                    type="text"
+                    class="form-control"
+                    formControlName="genero"
+                    placeholder="Sexo"
+                    value="{{ credentials.sexocliente }}"
+                  />
                 </div>
                 <button class="btn btn-primary">Salvar</button>
               </div>
               <div class="item-action ml-auto">
-                <button class="btn btn-link" (click)="cancel()">Cancelar</button>
+                <button class="btn btn-link" (click)="editGenero = false">Cancelar</button>
               </div>
             </ng-container>
           </li>
@@ -142,53 +172,116 @@
         <h2 class="areadoaluno__interna__header-subtitle">Endereço</h2>
         <ul class="list-group list-group-flush">
           <li class="list-group-item">
-            <ng-container *ngIf="!editing">
+            <ng-container *ngIf="!editCep">
               <div class="item-content">
                 <strong>CEP</strong>
-                <p>00000-000</p>
+                <p>{{ credentials.cep }}</p>
               </div>
               <div class="item-action ml-auto">
-                <button class="btn btn-link" (click)="edit()">Editar</button>
+                <button class="btn btn-link" (click)="editCep = true">Editar</button>
               </div>
             </ng-container>
 
-            <ng-container *ngIf="editing">
+            <ng-container *ngIf="editCep">
               <div class="item-content">
                 <strong>CEP</strong>
                 <div class="form-group">
-                  <input type="text" class="form-control" placeholder="Nome" />
+                  <input
+                    type="text"
+                    class="form-control"
+                    formControlName="cep"
+                    placeholder="CEP"
+                    value="{{ credentials.cep }}"
+                  />
                 </div>
                 <button class="btn btn-primary">Salvar</button>
               </div>
               <div class="item-action ml-auto">
-                <button class="btn btn-link" (click)="cancel()">Cancelar</button>
+                <button class="btn btn-link" (click)="editCep = false">Cancelar</button>
               </div>
             </ng-container>
           </li>
           <li class="list-group-item">
-            <ng-container *ngIf="!editing">
+            <ng-container *ngIf="!editEndereco">
               <div class="item-content">
                 <strong>Endereço</strong>
-                <p>Rua Enerto d Paula Santos, 3000</p>
-                <p>Apto 0000</p>
-                <p>Centro</p>
-                <p>Curitiba - Paraná</p>
+                <p>{{ credentials.endereco }}</p>
+                <p>{{ credentials.numero }}</p>
+                <p>{{ credentials.bairro }}</p>
+                <p>{{ credentials.codigoCidade }} - {{ credentials.codigoEstado }}</p>
               </div>
               <div class="item-action ml-auto">
-                <button class="btn btn-link" (click)="edit()">Editar</button>
+                <button class="btn btn-link" (click)="editEndereco = true">Editar</button>
               </div>
             </ng-container>
 
-            <ng-container *ngIf="editing">
+            <ng-container *ngIf="editEndereco">
               <div class="item-content">
                 <strong>Endereço</strong>
                 <div class="form-group">
-                  <input type="text" class="form-control" placeholder="Nome" />
+                  <input
+                    type="text"
+                    class="form-control"
+                    formControlName="endereco"
+                    placeholder="Endereço"
+                    value="{{ credentials.endereco }}"
+                  />
+                </div>
+                <div class="form-group">
+                  <input
+                    type="text"
+                    class="form-control"
+                    formControlName="enderecoNumero"
+                    placeholder="Número"
+                    value="{{ credentials.numero }}"
+                  />
+                </div>
+                <div class="form-group">
+                  <input
+                    type="text"
+                    class="form-control"
+                    formControlName="enderecoComplemento"
+                    placeholder="Complemento"
+                    value=""
+                  />
+                </div>
+                <div class="form-group">
+                  <input
+                    type="text"
+                    class="form-control"
+                    formControlName="enderecoBairro"
+                    placeholder="Bairro"
+                    value="{{ credentials.bairro }}"
+                  />
+                </div>
+                <div class="form-group">
+                  <select
+                    name="enderecoEstado"
+                    class="form-control"
+                    (change)="getCidadesPorEstado($event.target.value)"
+                    formControlName="enderecoEstado"
+                  >
+                    <option
+                      *ngFor="let estado of estados"
+                      [selected]="estado.codigo == credentials.codigoEstado"
+                      value="{{ estado.codigo }}"
+                      >{{ estado.nome }}</option
+                    >
+                  </select>
+                </div>
+                <div class="form-group">
+                  <select name="enderecoCidade" class="form-control" formControlName="enderecoCidade">
+                    <option
+                      *ngFor="let cidade of cidadesSelect"
+                      [selected]="cidade.codigo == credentials.codigoCidade"
+                      >{{ cidade.nome }}</option
+                    >
+                  </select>
                 </div>
                 <button class="btn btn-primary">Salvar</button>
               </div>
               <div class="item-action ml-auto">
-                <button class="btn btn-link" (click)="cancel()">Cancelar</button>
+                <button class="btn btn-link" (click)="editEndereco = false">Cancelar</button>
               </div>
             </ng-container>
           </li>
@@ -200,31 +293,31 @@
         <h2 class="areadoaluno__interna__header-subtitle">Contato</h2>
         <ul class="list-group list-group-flush">
           <li class="list-group-item">
-            <ng-container *ngIf="!editing">
+            <ng-container *ngIf="!editCelular">
               <div class="item-content">
                 <strong>Celular</strong>
-                <p>(00) 12345.6789</p>
+                <p>{{ credentials.telcelular }}</p>
               </div>
               <div class="item-action ml-auto">
-                <button class="btn btn-link" (click)="edit()">Editar</button>
+                <button class="btn btn-link" (click)="editCelular = true">Editar</button>
               </div>
             </ng-container>
 
-            <ng-container *ngIf="editing">
+            <ng-container *ngIf="editCelular">
               <div class="item-content">
                 <strong>Celular</strong>
                 <div class="form-group">
-                  <input type="text" class="form-control" placeholder="Nome" />
+                  <input type="text" class="form-control" formControlName="celular" placeholder="Celular" />
                 </div>
                 <button class="btn btn-primary">Salvar</button>
               </div>
               <div class="item-action ml-auto">
-                <button class="btn btn-link" (click)="cancel()">Cancelar</button>
+                <button class="btn btn-link" (click)="editCelular = false">Cancelar</button>
               </div>
             </ng-container>
           </li>
         </ul>
       </div>
     </div>
-  </div>
+  </form>
 </div>

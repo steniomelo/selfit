@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { environment } from '@env/environment';
+import { Credentials, CredentialsService } from '../core/authentication/credentials.service';
 
 @Component({
   selector: 'app-areadoaluno',
@@ -9,10 +10,16 @@ import { environment } from '@env/environment';
 })
 export class AreadoalunoComponent implements OnInit {
   menuHidden = true;
+  credentials: Credentials;
 
-  constructor() {}
+  constructor(private credentialsService: CredentialsService) {
+    //this.credentials = this.credentialsService.credentials;
+  }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.credentials = this.credentialsService.credentials;
+    console.log(this.credentials);
+  }
 
   toggleMenu() {
     this.menuHidden = !this.menuHidden;

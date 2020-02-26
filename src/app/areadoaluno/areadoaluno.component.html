@@ -1,4 +1,4 @@
-<div id="areadoaluno">
+<div id="areadoaluno" *ngIf="credentials">
   <header class="areadoaluno__header">
     <nav class="navbar navbar-expand-lg ">
       <div class="container d-flex">
@@ -26,15 +26,15 @@
         >
           <div class="nav-item">
             <strong>Situação do contrato</strong>
-            <span>Ativo</span>
+            <span>{{ credentials.situacao | setSituacao }}</span>
           </div>
           <div class="nav-item">
             <strong>Unidade</strong>
-            <span>Boa viagem</span>
+            <span>{{ credentials.nomeEmpresa }}</span>
           </div>
           <div class="nav-item">
             <strong>Meu plano</strong>
-            <span>Plano Self Plus Site</span>
+            <span>{{ credentials.nomeplano }}</span>
           </div>
           <div class="nav-item">
             <a href="#" class="btn btn-outline-secondary">Ver detalhes</a>

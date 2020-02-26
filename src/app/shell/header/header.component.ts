@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, HostListener, SimpleChanges } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { AuthenticationService, CredentialsService, I18nService } from '@app/core';
+import { AuthenticationService, CredentialsService, I18nService, Credentials } from '@app/core';
 
 @Component({
   selector: 'app-header',
@@ -11,6 +11,8 @@ import { AuthenticationService, CredentialsService, I18nService } from '@app/cor
 export class HeaderComponent implements OnInit {
   menuHidden = true;
   topActive = false;
+  credentials: Credentials;
+
   @Input() activeRoute: any;
   @Input() closeMenu: any;
   @Input() isAreadoaluno: boolean;
@@ -30,9 +32,12 @@ export class HeaderComponent implements OnInit {
     private i18nService: I18nService
   ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.credentials = this.credentialsService.credentials;
+  }
 
   ngOnChanges(changes: SimpleChanges): void {
+    this.credentials = this.credentialsService.credentials;
     this.menuHidden = this.closeMenu;
   }
 
@@ -58,7 +63,7 @@ export class HeaderComponent implements OnInit {
 
   get username(): string | null {
     const credentials = this.credentialsService.credentials;
-    return credentials ? credentials.username : null;
+    return credentials ? credentials.nomecliente : null;
   }
 
   get logado(): boolean {

@@ -66,13 +66,13 @@
                 <input
                   type="text"
                   class="form-control"
-                  formControlName="username"
-                  autocomplete="username"
+                  formControlName="email"
+                  autocomplete="email"
                   [placeholder]="'CPF ou E-mail' | translate"
                 />
-                <span hidden translate>Username</span>
+                <span hidden translate>E-mail</span>
                 <small
-                  [hidden]="loginForm.controls.username.valid || loginForm.controls.username.untouched"
+                  [hidden]="loginForm.controls.email.valid || loginForm.controls.email.untouched"
                   class="text-danger"
                   translate
                 >
@@ -83,14 +83,14 @@
                 <input
                   type="password"
                   class="form-control"
-                  formControlName="password"
+                  formControlName="senha"
                   autocomplete="current-password"
                   [placeholder]="'Senha' | translate"
                   required
                 />
-                <span hidden translate>Password</span>
+                <span hidden translate>senha</span>
                 <small
-                  [hidden]="loginForm.controls.password.valid || loginForm.controls.password.untouched"
+                  [hidden]="loginForm.controls.senha.valid || loginForm.controls.senha.untouched"
                   class="text-danger"
                   translate
                 >

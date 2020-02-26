@@ -45,8 +45,10 @@ export class LoginComponent implements OnInit, OnDestroy {
         untilDestroyed(this)
       )
       .subscribe(
-        credentials => {
-          log.debug(`${credentials.username} successfully logged in`);
+        response => {
+          console.log('Logou', response);
+
+          this.consultarContrato(response.codigo, response.remember);
           this.router.navigate([this.route.snapshot.queryParams.redirect || '/areadoaluno'], { replaceUrl: true });
         },
         error => {
@@ -54,6 +56,18 @@ export class LoginComponent implements OnInit, OnDestroy {
           this.error = error;
         }
       );
+  }
+
+  consultarContrato(codigo: number, remember: any) {
+    this.authenticationService.consultarContrato(codigo, remember).subscribe(
+      response => {
+        console.log(response);
+      },
+      error => {
+        log.debug(`Login error: ${error}`);
+        this.error = error;
+      }
+    );
   }
 
   setLanguage(language: string) {
@@ -70,8 +84,8 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   private createForm() {
     this.loginForm = this.formBuilder.group({
-      username: ['', Validators.required],
-      password: ['', Validators.required],
+      email: ['', Validators.required],
+      senha: ['', Validators.required],
       remember: true
     });
   }

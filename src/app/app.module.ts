@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { TranslateModule } from '@ngx-translate/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { Angulartics2Module } from 'angulartics2';
+// import { Angulartics2Module } from 'angulartics2';
 
 import { CoreModule } from '@app/core';
 import { SharedModule } from '@app/shared';
@@ -20,6 +20,7 @@ import { far } from '@fortawesome/free-regular-svg-icons';
 
 import { AngularSvgIconModule } from 'angular-svg-icon';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 
 @NgModule({
   imports: [
@@ -35,7 +36,8 @@ import { SlickCarouselModule } from 'ngx-slick-carousel';
     FontAwesomeModule,
     AngularSvgIconModule,
     SlickCarouselModule,
-    Angulartics2Module.forRoot(),
+    SweetAlert2Module.forRoot(),
+    // Angulartics2Module.forRoot(),
     AppRoutingModule // must be imported as the last module as it contains the fallback route
   ],
   declarations: [AppComponent],

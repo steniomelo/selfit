@@ -15,8 +15,18 @@ import { AreadoalunoCancelamentoComponent } from './areadoaluno.cancelamento.com
 
 import { AngularSvgIconModule } from 'angular-svg-icon';
 
+import { SetSituacaoPipe } from '../shared/pipes/set-situacao.pipe';
+import { ReactiveFormsModule } from '@angular/forms';
+
 @NgModule({
-  imports: [CommonModule, TranslateModule, NgbModule, AreadoalunoRoutingModule, AngularSvgIconModule],
+  imports: [
+    CommonModule,
+    TranslateModule,
+    NgbModule,
+    AreadoalunoRoutingModule,
+    AngularSvgIconModule,
+    ReactiveFormsModule
+  ],
   declarations: [
     AreadoalunoComponent,
     AreadoalunoHomeComponent,
@@ -25,7 +35,8 @@ import { AngularSvgIconModule } from 'angular-svg-icon';
     AreadoalunoTransferenciaComponent,
     AreadoalunoDocumentosComponent,
     AreadoalunoPagamentosComponent,
-    AreadoalunoCancelamentoComponent
+    AreadoalunoCancelamentoComponent,
+    SetSituacaoPipe
   ]
 })
 export class AreadoalunoModule {}
