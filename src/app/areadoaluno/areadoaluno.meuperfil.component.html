@@ -11,7 +11,7 @@
     <h1 class="areadoaluno__interna__header-title">Meu perfil</h1>
   </header>
 
-  <form class="areadoaluno__internta__content" (ngSubmit)="editarPerfil()" [formGroup]="editForm">
+  <form class="areadoaluno__interna__content" (ngSubmit)="editarPerfil()" [formGroup]="editForm">
     <div class="row">
       <div class="col-sm-7">
         <h2 class="areadoaluno__interna__header-subtitle">Dados pessoais</h2>
@@ -124,7 +124,7 @@
                   <input
                     type="text"
                     class="form-control"
-                    formControlName="nascimento"
+                    formControlName="datanasc"
                     placeholder="Data de nascimento"
                     value="{{ credentials.datanascimento }}"
                   />
@@ -154,7 +154,7 @@
                   <input
                     type="text"
                     class="form-control"
-                    formControlName="genero"
+                    formControlName="sexo"
                     placeholder="Sexo"
                     value="{{ credentials.sexocliente }}"
                   />
@@ -231,7 +231,7 @@
                   <input
                     type="text"
                     class="form-control"
-                    formControlName="enderecoNumero"
+                    formControlName="numero"
                     placeholder="Número"
                     value="{{ credentials.numero }}"
                   />
@@ -240,7 +240,7 @@
                   <input
                     type="text"
                     class="form-control"
-                    formControlName="enderecoComplemento"
+                    formControlName="complemento"
                     placeholder="Complemento"
                     value=""
                   />
@@ -249,33 +249,25 @@
                   <input
                     type="text"
                     class="form-control"
-                    formControlName="enderecoBairro"
+                    formControlName="bairro"
                     placeholder="Bairro"
                     value="{{ credentials.bairro }}"
                   />
                 </div>
                 <div class="form-group">
-                  <select
-                    name="enderecoEstado"
-                    class="form-control"
-                    (change)="getCidadesPorEstado($event.target.value)"
-                    formControlName="enderecoEstado"
-                  >
-                    <option
+                  <select name="estado" class="form-control" (change)="getCidadesPorEstado()" formControlName="estado">
+                    <option *ngFor="let estado of estados" [ngValue]="estado">{{ estado.nome }}</option>
+                    <!--<option
                       *ngFor="let estado of estados"
                       [selected]="estado.codigo == credentials.codigoEstado"
                       value="{{ estado.codigo }}"
                       >{{ estado.nome }}</option
-                    >
+                    >-->
                   </select>
                 </div>
                 <div class="form-group">
-                  <select name="enderecoCidade" class="form-control" formControlName="enderecoCidade">
-                    <option
-                      *ngFor="let cidade of cidadesSelect"
-                      [selected]="cidade.codigo == credentials.codigoCidade"
-                      >{{ cidade.nome }}</option
-                    >
+                  <select name="cidade" class="form-control" formControlName="cidade">
+                    <option *ngFor="let cidade of cidadesSelect" [ngValue]="cidade">{{ cidade.nome }}</option>
                   </select>
                 </div>
                 <button class="btn btn-primary">Salvar</button>
@@ -307,7 +299,7 @@
               <div class="item-content">
                 <strong>Celular</strong>
                 <div class="form-group">
-                  <input type="text" class="form-control" formControlName="celular" placeholder="Celular" />
+                  <input type="text" class="form-control" formControlName="telcelular" placeholder="Celular" />
                 </div>
                 <button class="btn btn-primary">Salvar</button>
               </div>

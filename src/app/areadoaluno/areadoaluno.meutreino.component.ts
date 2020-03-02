@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { environment } from '@env/environment';
 import { AreadoalunoService } from './areadoaluno.service';
 import { CredentialsService } from '@app/core/authentication/credentials.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-areadoaluno-meutreino',
@@ -17,7 +18,11 @@ export class AreadoalunoMeutreinoComponent implements OnInit {
   treinos: any;
   atividades: any = [];
 
-  constructor(private credentialsService: CredentialsService, private areadoalunoService: AreadoalunoService) {}
+  constructor(
+    private credentialsService: CredentialsService,
+    private areadoalunoService: AreadoalunoService,
+    private spinner: NgxSpinnerService
+  ) {}
 
   ngOnInit() {
     this.credentials = this.credentialsService.credentials;
@@ -26,11 +31,15 @@ export class AreadoalunoMeutreinoComponent implements OnInit {
   }
 
   getTreinos() {
+    this.spinner.show();
     this.areadoalunoService.getTreinos(this.credentials.codigo).subscribe(
       response => {
         this.treinos = response;
-
-        this.getAtividades();
+        if (this.treinos.programa > 0) {
+          this.getAtividades();
+        } else {
+          this.spinner.hide();
+        }
       },
       error => {
         console.log('ERRO', error);
@@ -43,6 +52,7 @@ export class AreadoalunoMeutreinoComponent implements OnInit {
       this.areadoalunoService.getAtividades(item.codigo).subscribe(
         response => {
           this.treinos.programa[0].programatreinoficha[0][index].atividades = response;
+          this.spinner.hide();
 
           // this.atividades.push({
           //   ficha: fichaCliente,

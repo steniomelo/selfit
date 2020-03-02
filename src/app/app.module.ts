@@ -21,6 +21,9 @@ import { far } from '@fortawesome/free-regular-svg-icons';
 import { AngularSvgIconModule } from 'angular-svg-icon';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+import { NgxSpinnerModule } from 'ngx-spinner';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgxMaskModule } from 'ngx-mask';
 
 @NgModule({
   imports: [
@@ -37,6 +40,9 @@ import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
     AngularSvgIconModule,
     SlickCarouselModule,
     SweetAlert2Module.forRoot(),
+    NgxSpinnerModule,
+    BrowserAnimationsModule,
+    NgxMaskModule.forRoot(),
     // Angulartics2Module.forRoot(),
     AppRoutingModule // must be imported as the last module as it contains the fallback route
   ],

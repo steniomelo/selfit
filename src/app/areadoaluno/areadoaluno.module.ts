@@ -17,6 +17,8 @@ import { AngularSvgIconModule } from 'angular-svg-icon';
 
 import { SetSituacaoPipe } from '../shared/pipes/set-situacao.pipe';
 import { ReactiveFormsModule } from '@angular/forms';
+import { NgxSpinnerModule } from 'ngx-spinner';
+import { NgxMaskModule } from 'ngx-mask';
 
 @NgModule({
   imports: [
@@ -25,7 +27,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     NgbModule,
     AreadoalunoRoutingModule,
     AngularSvgIconModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxSpinnerModule,
+    NgxMaskModule
   ],
   declarations: [
     AreadoalunoComponent,

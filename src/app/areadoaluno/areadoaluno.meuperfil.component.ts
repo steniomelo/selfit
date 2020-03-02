@@ -28,31 +28,31 @@ export class AreadoalunoMeuperfilComponent implements OnInit {
     private sharedService: SharedService,
     private formBuilder: FormBuilder,
     private areadoalunoService: AreadoalunoService
-  ) {
-    this.createForm();
-  }
+  ) {}
 
   ngOnInit() {
     this.credentials = this.credentialsService.credentials;
     this.setEstadoUsuario(this.credentials.codigoEstado);
     this.setCidadeUsuario(this.credentials.codigoEstado, this.credentials.codigoCidade);
+    this.createForm();
   }
 
   private createForm() {
     this.editForm = this.formBuilder.group({
+      codigoPessoa: [this.credentials.codigopessoa],
       nome: ['', Validators.required],
       email: ['', Validators.required],
       cpf: ['', Validators.required],
-      nascimento: ['', Validators.required],
-      genero: ['', Validators.required],
+      datanasc: ['', Validators.required],
+      sexo: ['', Validators.required],
       cep: ['', Validators.required],
       endereco: ['', Validators.required],
-      enderecoNumero: ['', Validators.required],
-      enderecoComplemento: ['', Validators.required],
-      enderecoBairro: ['', Validators.required],
-      enderecoEstado: ['', Validators.required],
-      enderecoCidade: ['', Validators.required],
-      celular: ['', Validators.required]
+      numero: ['', Validators.required],
+      complemento: ['', Validators.required],
+      bairro: ['', Validators.required],
+      estado: ['', Validators.required],
+      cidade: ['', Validators.required],
+      telcelular: ['', Validators.required]
     });
   }
 
@@ -69,6 +69,8 @@ export class AreadoalunoMeuperfilComponent implements OnInit {
           this.estados = response;
 
           const estado = response.filter((x: any) => x.codigo == codigoEstado);
+          console.log('Estado', estado);
+          this.editForm.controls['estado'].setValue(estado[0], { onlySelf: true });
           this.estadoUsuario = estado[0].nome;
         },
         error => {
@@ -78,32 +80,30 @@ export class AreadoalunoMeuperfilComponent implements OnInit {
   }
 
   setCidadeUsuario(codigoEstado: number, codigoCidade: number) {
-    this.sharedService
-      .getCidadesPorEstado(codigoEstado)
-      .pipe(
-        finalize(() => {
-          //this.isLoading = false;
-        })
-      )
-      .subscribe(
-        response => {
-          this.cidades = response;
+    console.log(codigoEstado);
+    console.log(codigoCidade);
+    this.sharedService.getCidadesPorEstado(codigoEstado).subscribe(
+      response => {
+        this.cidadesSelect = response;
 
-          console.log(this.cidades);
+        console.log(this.cidades);
 
-          const cidade = response.filter((x: any) => x.codigo == codigoCidade);
-          this.cidadeUsuario = cidade[0].nome;
-        },
-        error => {
-          console.log(error);
-        }
-      );
+        const cidade = response.filter((x: any) => x.codigo == codigoCidade);
+        console.log(cidade);
+        this.editForm.controls['cidade'].setValue(cidade[0], { onlySelf: true });
+
+        this.cidadeUsuario = cidade[0].nome;
+      },
+      error => {
+        console.log(error);
+      }
+    );
   }
 
-  getCidadesPorEstado(codigoEstado: any) {
-    console.log('evento', codigoEstado);
+  getCidadesPorEstado() {
+    console.log('evento', this.editForm.get('estado').value);
     this.sharedService
-      .getCidadesPorEstado(codigoEstado)
+      .getCidadesPorEstado(this.editForm.get('estado').value.codigo)
       .pipe(
         finalize(() => {
           //this.isLoading = false;
@@ -121,7 +121,7 @@ export class AreadoalunoMeuperfilComponent implements OnInit {
 
   editarPerfil() {
     this.areadoalunoService
-      .getCidadesPorEstado(this.editForm.value)
+      .editarPerfil(this.editForm.value)
       .pipe(
         finalize(() => {
           //this.isLoading = false;
@@ -129,7 +129,7 @@ export class AreadoalunoMeuperfilComponent implements OnInit {
       )
       .subscribe(
         response => {
-          this.cidadesSelect = response;
+          console.log(response);
         },
         error => {
           console.log(error);

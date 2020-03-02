@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { environment } from '@env/environment';
 import { AreadoalunoService } from './areadoaluno.service';
 import { finalize } from 'rxjs/operators';
+import { CredentialsService } from '@app/core';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-areadoaluno-documentos',
@@ -10,14 +12,22 @@ import { finalize } from 'rxjs/operators';
   styleUrls: ['./areadoaluno.component.scss']
 })
 export class AreadoalunoDocumentosComponent implements OnInit {
-  constructor(private areadoalunoService: AreadoalunoService) {}
+  credentials: any;
+
+  constructor(
+    private areadoalunoService: AreadoalunoService,
+    private credentialsService: CredentialsService,
+    private spinner: NgxSpinnerService
+  ) {}
 
   ngOnInit() {}
 
   gerarContrato() {
-    console.log('oi');
+    this.spinner.show();
+    this.credentials = this.credentialsService.credentials;
+
     this.areadoalunoService
-      .gerarContrato()
+      .gerarContrato(this.credentials.codigocontrato)
       .pipe(
         finalize(() => {
           //this.isLoading = false;
@@ -26,6 +36,7 @@ export class AreadoalunoDocumentosComponent implements OnInit {
       .subscribe(
         response => {
           console.log(response);
+          //this.spinner.hide();
 
           return (window.location.href = response.dados);
         },

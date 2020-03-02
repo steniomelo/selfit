@@ -11,23 +11,34 @@
     <h1 class="areadoaluno__interna__header-title">Cancelamento</h1>
     <h2 class="text-danger">Você quer mesmo cancelar? :(</h2>
     <p>Valor de cancelamento de acordo com seu contrato</p>
-    <button class="btn btn-outline-danger btn-lg">R$ 155,08</button>
+    <button class="btn btn-outline-danger btn-lg">{{ valorCancelamento | currency: 'BRL' }}</button>
   </header>
 
-  <div class="areadoaluno__internta__content">
+  <form [formGroup]="cancelamentoForm" (ngSubmit)="confirmarCancelamento()" class="areadoaluno__interna__content">
     <ul class="list-group list-group-flush">
       <hr />
       <li class="list-group-item ">
         <div>
           <p>Diz pra gente porque está nos deixando:</p>
           <div class="form-group">
-            <select class="form-control">
+            <select class="form-control" name="motivo" formControlName="motivo">
+              <option value="">Selecione um motivo</option>
               <option value="1">Mudança de cidade</option>
+              <option value="0">Não tenho mais interesse</option>
+              <option value="0">Vou mudar de academia</option>
+              <option value="2">Motivo de saúde</option>
+              <option value="0">Estrutura da academia</option>
+              <option value="0">Equipamentos insuficientes</option>
+              <option value="0">Atendimento</option>
+              <option value="0">Preço</option>
+              <option value="0">Outros</option>
             </select>
           </div>
-          <button class="btn btn-danger">Efetuar cancelamento</button>
+          <button class="btn btn-danger" [disabled]="cancelamentoForm.invalid || isLoading" type="submit">
+            Efetuar cancelamento
+          </button>
         </div>
       </li>
     </ul>
-  </div>
+  </form>
 </div>

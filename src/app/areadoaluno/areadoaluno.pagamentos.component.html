@@ -11,30 +11,43 @@
     <h1 class="areadoaluno__interna__header-title">Pagamentos</h1>
   </header>
 
-  <div class="areadoaluno__internta__content">
+  <div class="areadoaluno__interna__content">
     <ul class="list-group list-group-flush">
       <li class="list-group-item align-items-sm-center flex-column flex-sm-row">
         <div class="flex-grow-1">
-          <strong class="text-danger">Parcelas em aberto</strong>
-          <table class="table mt-3 table__pagamentos">
-            <thead class="thead-dark">
-              <tr>
-                <th scope="col">Parcela</th>
-                <th scope="col">Vencimento</th>
-                <th scope="col"></th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr class="table-active">
-                <th scope="row" class="align-middle">Parcela 4</th>
-                <td class="align-middle">22/22/2020</td>
-                <td class="align-middle"><button class="btn btn-danger">Pagar</button></td>
-              </tr>
-            </tbody>
-          </table>
+          <div
+            class="d-flex align-items-start collapse-title"
+            (click)="isCollapsed = !isCollapsed"
+            [attr.aria-expanded]="!isCollapsed"
+            aria-controls="collapseExample"
+          >
+            <div>
+              <strong class="text-danger mr-3">Parcelas em aberto</strong>
+              <i class="fas fa-chevron-down text-danger"></i>
+            </div>
+          </div>
+          <div id="collapseExample" [ngbCollapse]="isCollapsed" class="collapse-content">
+            <p *ngIf="parcelasPendentes && parcelasPendentes.length == 0">Nenhuma parcela em aberto</p>
+            <table class="table mt-3 table__pagamentos" *ngIf="parcelasPendentes && parcelasPendentes.length > 0">
+              <thead class="thead-dark">
+                <tr>
+                  <th scope="col">Parcela</th>
+                  <th scope="col">Vencimento</th>
+                  <th scope="col"></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="table-active" *ngFor="let parcela of parcelasPendentes">
+                  <th scope="row" class="align-middle">{{ parcela.descricao }}</th>
+                  <td class="align-middle">{{ parcela.datavencimento }}</td>
+                  <td class="align-middle"><button class="btn btn-danger">Pagar</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </li>
-      <li class="list-group-item list-group-item-action">
+      <li class="list-group-item  ">
         <div class="flex-grow-1">
           <div
             class="d-flex align-items-start"
@@ -49,12 +62,25 @@
           </div>
 
           <div id="collapseExample1" [ngbCollapse]="!isCollapsed1">
-            asd
+            <table class="table mt-3 table__pagamentos" *ngIf="parcelasPagas && parcelasPagas.length > 0">
+              <thead class="thead-dark">
+                <tr>
+                  <th scope="col">Parcela</th>
+                  <th scope="col">Vencimento</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="table-active" *ngFor="let parcela of parcelasPagas">
+                  <th scope="row" class="align-middle">{{ parcela.descricao }}</th>
+                  <td class="align-middle">{{ parcela.datavencimento }}</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
       </li>
 
-      <li class="list-group-item list-group-item-action">
+      <li class="list-group-item  ">
         <div class="flex-grow-1">
           <div
             class="d-flex align-items-start"
@@ -69,7 +95,120 @@
           </div>
 
           <div id="collapseExample2" [ngbCollapse]="!isCollapsed2">
-            asd
+            <br />
+            <small
+              >Se, por algum motivo, você precisar alterar o cartão de crédito, utilize este espaço. Mas, lembre-se: não
+              trabalhamos com cartões pré-pagos.</small
+            >
+            <br />
+            <br />
+
+            <form [formGroup]="cartaoForm" (ngSubmit)="alterarCartao()">
+              <div class="form-group">
+                <label for="">Nome como impresso no cartão</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  formControlName="nometitularcartao"
+                  placeholder="Nome no cartão"
+                  (keyup)="setNome($event.target.value)"
+                />
+              </div>
+              <div class="form-group">
+                <label for="">CPF do Títular do cartão</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  formControlName="cpftitular"
+                  mask="000.000.000-00"
+                  placeholder="XXX.XXX.XXX-XX"
+                />
+              </div>
+              <div class="form-group">
+                <label for="">Número do cartão</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  formControlName="numerocartao"
+                  placeholder="0000 0000 0000 0000"
+                  [hiddenInput]="true"
+                  [showMaskTyped]="true"
+                  placeHolderCharacter="*"
+                  mask="0000 XXXX XXXX XXXX"
+                  (keyup)="setCardnumber($event.target.value)"
+                />
+              </div>
+              <div class="form-group">
+                <label for="">Vencimento</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  [dropSpecialCharacters]="false"
+                  formControlName="validadecartao"
+                  mask="09/09"
+                  [showMaskTyped]="true"
+                  placeholder="MM/AA"
+                  (keyup)="setVencimento($event.target.value)"
+                />
+              </div>
+
+              <br />
+              <br />
+              <div class="form-row">
+                <div>
+                  <div class="rccs">
+                    <div class="rccs__card rccs__card--unknown">
+                      <div class="rccs__card--front">
+                        <div class="rccs__card__background"></div>
+                        <div class="rccs__issuer"></div>
+                        <div class="rccs__cvc__front">000</div>
+                        <div class="rccs__number">{{ numberCard ? numberCard : '•••• •••• •••• ••••' }}</div>
+                        <div class="rccs__name">{{ nome ? nome : 'NOME DO TITULAR' }}</div>
+                        <div class="rccs__expiry  rccs--filled">
+                          <div class="rccs__expiry__valid">Validade</div>
+                          <div class="rccs__expiry__value">{{ validade ? validade : 'MM/AA' }}</div>
+                        </div>
+                        <div class="rccs__chip"></div>
+                      </div>
+                      <div class="rccs__card--back">
+                        <div class="rccs__card__background"></div>
+                        <div class="rccs__stripe"></div>
+                        <div class="rccs__signature"></div>
+                        <div class="rccs__cvc">000</div>
+                        <div class="rccs__issuer"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <br />
+              <br />
+
+              <small
+                >Ressaltamos que é de sua inteira responsabilidade o pagamento do plano através do cartão de crédito de
+                terceiros. Os pagamentos são realizados via cartão de crédito. O boleto está disponível apenas para
+                pagamento total do plano. Esta operação deve ser realizada na recepção da unidade.</small
+              >
+
+              <br />
+              <br />
+
+              <div class="form-check mb-5">
+                <input class="form-check-input" formControlName="aceite" type="checkbox" id="aceite" />
+                <label class="form-check-label" for="aceite">
+                  <small>Sou responsável pelos dados informados</small>
+                </label>
+              </div>
+
+              <button
+                class="btn btn-danger"
+                type="submit"
+                [disabled]="cartaoForm.invalid || cartaoForm.controls['aceite'].value === false || isLoading"
+              >
+                Alterar cartão
+              </button>
+            </form>
           </div>
         </div>
       </li>

@@ -11,7 +11,7 @@
     <h1 class="areadoaluno__interna__header-title">Transferência de unidade</h1>
   </header>
 
-  <form [formGroup]="transferenciaForm" (ngSubmit)="confirmarTransferencia()" class="areadoaluno__internta__content">
+  <form [formGroup]="transferenciaForm" (ngSubmit)="confirmarTransferencia()" class="areadoaluno__interna__content">
     <ul class="list-group list-group-flush">
       <li class="list-group-item align-items-sm-center flex-column flex-sm-row">
         <div class="mr-5">
@@ -29,6 +29,7 @@
           <p>Escolha a unidade para qual deseja transferênia</p>
           <div class="form-group">
             <select name="unidade" formControlName="unidade" class="form-control" (change)="selectUnidade()">
+              <option value="">Selecione uma unidade</option>
               <option *ngFor="let unidade of unidades" [ngValue]="unidade">{{ unidade.nome }}</option>
             </select>
           </div>

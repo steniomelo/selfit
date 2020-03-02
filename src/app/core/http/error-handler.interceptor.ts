@@ -22,13 +22,21 @@ export class ErrorHandlerInterceptor implements HttpInterceptor {
   }
 
   // Customize the default error handler here if needed
-  private errorHandler(response: HttpEvent<any>): Observable<HttpEvent<any>> {
+  private errorHandler(response: any): Observable<HttpEvent<any>> {
     if (!environment.production) {
       // Do something with the error
       log.error('Request error', response);
     }
 
-    Swal.fire('Erro', 'Houve um erro inesperado!', 'error');
+    if (response.error) {
+      if (response.error.msgValidacao) {
+        Swal.fire('Erro', response.error.msgValidacao, 'error');
+      } else {
+        Swal.fire('Erro', response.error.error, 'error');
+      }
+    } else {
+      Swal.fire('Erro', 'Houve um erro inesperado!', 'error');
+    }
 
     throw response;
   }
