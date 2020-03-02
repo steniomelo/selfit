@@ -6,7 +6,7 @@ import { Angulartics2Module } from 'angulartics2';
 import { CoreModule } from '@app/core';
 import { SharedModule } from '@app/shared';
 import { HomeComponent } from './home.component';
-import { QuoteService } from './quote.service';
+import { HomeService } from './home.service';
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
@@ -16,7 +16,7 @@ describe('HomeComponent', () => {
     TestBed.configureTestingModule({
       imports: [RouterTestingModule, Angulartics2Module.forRoot(), CoreModule, SharedModule, HttpClientTestingModule],
       declarations: [HomeComponent],
-      providers: [QuoteService]
+      providers: [HomeService]
     }).compileComponents();
   }));
 

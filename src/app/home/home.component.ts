@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { finalize } from 'rxjs/operators';
 
-import { QuoteService } from './quote.service';
+import { HomeService } from './home.service';
 
 @Component({
   selector: 'app-home',
@@ -48,9 +48,17 @@ export class HomeComponent implements OnInit {
     ]
   };
 
-  constructor(private quoteService: QuoteService) {}
+  constructor(private homeService: HomeService) {}
 
   ngOnInit() {
     this.isLoading = true;
+
+    this.getLocation();
+  }
+
+  getLocation() {
+    this.homeService.getPosition().then(pos => {
+      console.log(`Positon: ${pos.lng} ${pos.lat}`);
+    });
   }
 }
