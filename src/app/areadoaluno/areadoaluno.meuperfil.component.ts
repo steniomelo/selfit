@@ -22,6 +22,15 @@ export class AreadoalunoMeuperfilComponent implements OnInit {
   editForm!: FormGroup;
   estadoUsuario: string;
   cidadeUsuario: string;
+  editNome: any;
+  editEmail: any;
+  editCpf: any;
+  editNascimento: any;
+  editGenero: any;
+  editCep: any;
+  editEndereco: any;
+  editCelular: any;
+  isLoading: any;
 
   constructor(
     private credentialsService: CredentialsService,
