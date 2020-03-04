@@ -1,0 +1,33 @@
+@import "src/theme/theme-variables";
+@import "~bootstrap/scss/mixins/breakpoints";
+@import "~bootstrap/scss/mixins/transition";
+
+.matricula {
+  padding-bottom: 100px;
+}
+
+.matricula__header {
+  padding: 50px;
+  text-align: center;
+}
+
+.matricula__content {
+  h3 {
+    color: $red;
+  }
+}
+
+form {
+  .row {
+    margin-bottom: 25px;
+  }
+}
+
+.card-body {
+  .infos {
+    > div {
+      margin-bottom: 5px;
+      display: block;
+    }
+  }
+}
