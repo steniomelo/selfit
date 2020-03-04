@@ -53,12 +53,6 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     this.isLoading = true;
 
-    this.getLocation();
-  }
-
-  getLocation() {
-    this.homeService.getPosition().then(pos => {
-      console.log(`Positon: ${pos.lng} ${pos.lat}`);
-    });
+    //this.getLocation();
   }
 }

@@ -1,12 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { finalize } from 'rxjs/operators';
 
 @Component({
-  selector: 'app-busca',
-  templateUrl: './busca.component.html',
-  styleUrls: ['./busca.component.scss']
+  selector: 'app-unidades',
+  templateUrl: './unidades.component.html',
+  styleUrls: ['./unidades.component.scss']
 })
-export class BuscaComponent implements OnInit {
+export class UnidadesComponent implements OnInit {
   isLoading = false;
   slideConfig = {
     slidesToShow: 3,

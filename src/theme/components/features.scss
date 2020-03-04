@@ -9,15 +9,24 @@
   flex-direction: column;
   flex: 0 0 33%;
   margin-bottom: 15px;
+  text-align: center;
+  align-items: center;
 
   span {
     font-size: 0.9rem;
   }
 
-  svg-icon {
+  svg-icon,
+  img {
     margin-bottom: 10px;
-    svg {
+    svg,
+    img {
       height: 35px;
     }
+  }
+
+  img {
+    height: 50px;
+    width: 50px;
   }
 }

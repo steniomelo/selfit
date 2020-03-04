@@ -7,8 +7,7 @@ const routes: Routes = [
     { path: 'areadoaluno', loadChildren: './areadoaluno/areadoaluno.module#AreadoalunoModule' },
     { path: 'home', loadChildren: './home/home.module#HomeModule' },
     { path: 'login', loadChildren: './login/login.module#LoginModule' },
-    { path: 'busca', loadChildren: './busca/busca.module#BuscaModule' },
-    { path: 'unidade', loadChildren: './unidade/unidade.module#UnidadeModule' },
+    { path: 'unidades', loadChildren: './unidades/unidades.module#UnidadesModule' },
     { path: 'faleconosco', loadChildren: './faleconosco/faleconosco.module#FaleconoscoModule' },
     { path: 'aselfit', loadChildren: './aselfit/aselfit.module#AselfitModule' }
   ]),

@@ -5,22 +5,22 @@ import { Angulartics2Module } from 'angulartics2';
 
 import { CoreModule } from '@app/core';
 import { SharedModule } from '@app/shared';
-import { BuscaComponent } from './busca.component';
+import { UnidadesComponent } from './unidades.component';
 
 describe('HomeComponent', () => {
-  let component: BuscaComponent;
-  let fixture: ComponentFixture<BuscaComponent>;
+  let component: UnidadesComponent;
+  let fixture: ComponentFixture<UnidadesComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [RouterTestingModule, Angulartics2Module.forRoot(), CoreModule, SharedModule, HttpClientTestingModule],
-      declarations: [BuscaComponent],
+      declarations: [UnidadesComponent],
       providers: []
     }).compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(BuscaComponent);
+    fixture = TestBed.createComponent(UnidadesComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

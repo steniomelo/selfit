@@ -10,7 +10,7 @@
       <div class="featured__buttons col-12 col-sm-5  ">
         <div class="row flex-column flex-sm-row">
           <div class="col">
-            <a routerLink="/busca" class="featured__button btn  btn-danger btn-lg">Comece sua jornada</a>
+            <a routerLink="/unidades" class="featured__button btn  btn-danger btn-lg">Comece sua jornada</a>
           </div>
         </div>
       </div>
@@ -46,38 +46,7 @@
   </div>
 </div>
 
-<div class="search-bar">
-  <div class="container">
-    <h2 class="search-bar__title">Estamos em mais de 15 estados</h2>
-    <div class="row">
-      <div class="col-12 mx-auto">
-        <div class="row align-items-center flex-column flex-sm-row">
-          <div class="col-12 col-sm-3 search-bar__text d-flex align-items-center">
-            <i class="fas fa-angle-right search-bar__text__icon"></i>
-            <span class="d-none d-sm-block">Encontre a Selfit mais próxima ou veja o mapa</span>
-            <span class="d-block d-sm-none">Veja todas as unidades</span>
-          </div>
-          <div class="col-12 col-sm-9">
-            <div class="input-group search-bar__input">
-              <input
-                type="text"
-                id="busca"
-                class="form-control"
-                placeholder="Unidade, CEP, Cidade, Estado"
-                aria-label="Unidade, CEP, Cidade, Estado"
-                aria-describedby="button-addon2"
-              />
-              <label for="busca" class="fas fa-search search-bar__input__icon"></label>
-              <div class="input-group-append d-none d-sm-block">
-                <button class="btn btn-primary" type="button" id="button-addon2" routerLink="/busca">Buscar</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+<app-unidade-busca></app-unidade-busca>
 
 <div class="featured-about">
   <div class="container">
@@ -318,7 +287,7 @@
       </div>
       <div class="col-12 col-sm-5 featured-plan__col-gray">
         <h2 class="featured-plan__title">Planos a partir de 69,90 mês</h2>
-        <button routerLink="/busca" class="btn btn-light btn-block btn-lg">Comece sua jornada</button>
+        <button routerLink="/unidades" class="btn btn-light btn-block btn-lg">Comece sua jornada</button>
       </div>
     </div>
   </div>

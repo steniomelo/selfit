@@ -3,8 +3,8 @@
     <div class="container d-flex align-items-start">
       <i class="fas fa-map-marker-alt fa-2x  mt-2 mr-3 text-danger"></i>
       <div>
-        <h1>Campolim</h1>
-        <p>Sorocaba - SP</p>
+        <h1>{{ unidade.nome }}</h1>
+        <p>{{ unidade.cidade.nome + '-' + unidade.estado.nome }}</p>
       </div>
       <div class="btn-matriculese ml-auto">
         <button class="btn btn-danger  btn-block">Matricule-se</button>
@@ -21,7 +21,7 @@
               <i class="fas fa-map-marker-alt fa-2x text-black-50 mr-3"></i>
               <div>
                 <h3 class="text-danger">Endereço</h3>
-                <p>Rua Sra. M. A. Pessutti Milego, 250 Sorocaba- SP</p>
+                <p>{{ unidade.endereco }}</p>
                 <a href="#" class="text-danger">Como chegar</a>
               </div>
             </div>
@@ -34,15 +34,15 @@
                 <h3 class="text-danger">Horários</h3>
                 <p>
                   <strong>Segunda a sexta</strong><br />
-                  <span>06 às 23h</span>
+                  <span *ngIf="unidade.horario_1">{{ unidade.horario_1 }}</span>
                 </p>
                 <p>
                   <strong>Sábado</strong><br />
-                  <span>06 às 23h</span>
+                  <span *ngIf="unidade.horario_2">{{ unidade.horario_2 }}</span>
                 </p>
                 <p>
                   <strong>Domingos e Feriados</strong><br />
-                  <span>08 às 14h</span>
+                  <span *ngIf="unidade.horario_3">{{ unidade.horario_3 }}</span>
                 </p>
                 <button class="btn btn-danger btn-block">Matricule-se</button>
               </div>
@@ -53,20 +53,24 @@
           <ngx-slick-carousel #slick="slick-carousel" class="unidade__gallery" [config]="slideConfig">
             <div ngxSlickItem class="unidade__gallery-item">
               <div class="card border-light">
-                <img src="assets/content/unidade-gallery-mark.jpg" class="img-fluid" />
-                <div class="card-body bg-light">
+                <img
+                  src="https://www.selfitacademias.com.br/uploads/unidade/f_{{ unidade.imagem }}"
+                  class="img-fluid"
+                />
+
+                <!--<div class="card-body bg-light">
                   <p class="card-text text-center">Vestiário</p>
-                </div>
+                </div>-->
               </div>
             </div>
-            <div ngxSlickItem class="unidade__gallery-item">
+            <!--<div ngxSlickItem class="unidade__gallery-item">
               <div class="card border-light">
                 <img src="assets/content/unidade-gallery-mark.jpg" class="img-fluid" />
                 <div class="card-body bg-light">
                   <p class="card-text text-center">Vestiário</p>
                 </div>
               </div>
-            </div>
+            </div>-->
           </ngx-slick-carousel>
         </div>
         <div class="col-sm-4">
@@ -77,37 +81,13 @@
                 <h3 class="">Facilidades</h3>
               </div>
               <div class="features ">
-                <div class="feature-item">
-                  <svg-icon src="../../assets/layout/icons/icon-estacionamento.svg"></svg-icon>
-                  <span>Estacionamento</span>
-                </div>
-                <div class="feature-item">
-                  <svg-icon src="../../assets/layout/icons/icon-salaginastica.svg"></svg-icon>
-                  <span>Sala de Ginastica</span>
-                </div>
-                <div class="feature-item">
-                  <svg-icon src="../../assets/layout/icons/icon-ambienteclimatizado.svg"></svg-icon>
-                  <span>Ambiente climatizado</span>
-                </div>
-                <div class="feature-item">
-                  <svg-icon src="../../assets/layout/icons/icon-musica.svg"></svg-icon>
-                  <span>Música ambiente</span>
-                </div>
-                <div class="feature-item">
-                  <svg-icon src="../../assets/layout/icons/icon-self.svg"></svg-icon>
-                  <span>Self Intense (Funcinoal)</span>
-                </div>
-                <div class="feature-item">
-                  <svg-icon src="../../assets/layout/icons/icon-extreme.svg"></svg-icon>
-                  <span>Self Extreme (Circuito Hit)</span>
-                </div>
-                <div class="feature-item">
-                  <svg-icon src="../../assets/layout/icons/icon-wifi.svg"></svg-icon>
-                  <span>Self Connect (Wi-fi)</span>
-                </div>
-                <div class="feature-item">
-                  <svg-icon src="../../assets/layout/icons/icon-coracao.svg"></svg-icon>
-                  <span>Música ambiente</span>
+                <div class="feature-item" *ngFor="let unidadeConveniencia of unidade.unidadeConveniencias">
+                  <img
+                    src="https://www.selfitacademias.com.br/uploads/conveniencia/f_{{
+                      unidadeConveniencia.conveniencia.imagem
+                    }}"
+                  />
+                  <span>{{ unidadeConveniencia.conveniencia.titulo }}</span>
                 </div>
               </div>
             </div>
@@ -117,7 +97,7 @@
     </div>
   </div>
 
-  <section class="unidade__aulas">
+  <section class="unidade__aulas d-none">
     <div class="container">
       <header class="unidade__aulas-title">
         <i class="fas fa-dumbbell"></i>
@@ -175,8 +155,8 @@
             <div class="card">
               <div class="card-header">
                 <span class="badge badge-light">Recomendado</span>
-                <h1>Plus</h1>
-                <strong>89,90*</strong>
+                <h1>Light</h1>
+                <strong>{{ unidade.unidadePlanos[0].mensalidade }}*</strong>
                 <small>mensais</small>
               </div>
               <div class="card-body">
@@ -184,41 +164,10 @@
                   <h5 class="text-center">Este plano inclui</h5>
                 </div>
                 <ul class="list-unstyled mt-4">
-                  <li>
+                  <li *ngFor="let unidadeplanoinclusos of unidade.unidadePlanos[0].planoInclusos">
                     <i class="fas fa-check"></i>
-                    <span>Horário live</span>
-                  </li>
-                  <li>
-                    <i class="fas fa-check"></i>
-                    <span>Musculação</span>
-                  </li>
-                  <li>
-                    <i class="fas fa-check"></i>
-                    <span>Ergometria</span>
-                  </li>
-                  <li>
-                    <i class="fas fa-check"></i>
-                    <span>Acompanhante gratuito 4 vezes por mês</span>
-                  </li>
-                  <li>
-                    <i class="fas fa-check"></i>
-                    <span>Ginástica e dança</span>
-                  </li>
-                  <li>
-                    <i class="fas fa-check"></i>
-                    <span>Livre acesso a todas as unidades</span>
-                  </li>
-                  <li>
-                    <i class="fas fa-check"></i>
-                    <span>Multa de cancelamento Camisa exclusiva Self intense</span>
-                  </li>
-                  <li>
-                    <i class="fas fa-check"></i>
-                    <span>Anuidade com vencimento em outubro</span>
-                  </li>
-                  <li>
-                    <i class="fas fa-check"></i>
-                    <span>Camisa exclusiva Self intense</span>
+                    <span *ngIf="!unidadeplanoinclusos.riscado">{{ unidadeplanoinclusos.incluso.texto }}</span>
+                    <del *ngIf="unidadeplanoinclusos.riscado">{{ unidadeplanoinclusos.incluso.texto }}</del>
                   </li>
                 </ul>
               </div>
@@ -231,7 +180,7 @@
             <div class="card card-white">
               <div class="card-header">
                 <h1>Plus</h1>
-                <strong>89,90*</strong>
+                <strong>{{ unidade.unidadePlanos[1].mensalidade }}*</strong>
                 <small>mensais</small>
               </div>
               <div class="card-body">
@@ -239,17 +188,10 @@
                   <h5 class="text-center">Este plano inclui</h5>
                 </div>
                 <ul class="list-unstyled mt-4">
-                  <li>
+                  <li *ngFor="let unidadeplanoinclusos of unidade.unidadePlanos[1].planoInclusos">
                     <i class="fas fa-check"></i>
-                    <span>Horário live</span>
-                  </li>
-                  <li>
-                    <i class="fas fa-check"></i>
-                    <span>Musculação</span>
-                  </li>
-                  <li>
-                    <i class="fas fa-check"></i>
-                    <span>Ergometria</span>
+                    <span *ngIf="!unidadeplanoinclusos.riscado">{{ unidadeplanoinclusos.incluso.texto }}</span>
+                    <del *ngIf="unidadeplanoinclusos.riscado">{{ unidadeplanoinclusos.incluso.texto }}</del>
                   </li>
                 </ul>
               </div>

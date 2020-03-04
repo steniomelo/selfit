@@ -1,0 +1,41 @@
+<div class="search-bar">
+  <div class="container">
+    <h2 class="search-bar__title">Estamos em mais de 15 estados</h2>
+    <div class="row">
+      <div class="col-12 mx-auto">
+        <div class="row align-items-center flex-column flex-sm-row">
+          <div class="col-12 col-sm-3 search-bar__text d-flex align-items-center">
+            <i class="fas fa-angle-right search-bar__text__icon"></i>
+            <span class="d-none d-sm-block">Encontre a Selfit mais próxima ou veja o mapa</span>
+            <span class="d-block d-sm-none">Veja todas as unidades</span>
+          </div>
+          <div class="col-12 col-sm-9">
+            <div class="input-group search-bar__input">
+              <input
+                type="text"
+                id="busca"
+                class="form-control"
+                placeholder="CEP ou Estado"
+                aria-label="CEP ou Estado"
+                aria-describedby="button-addon2"
+                [ngbTypeahead]="search"
+                [inputFormatter]="formatter"
+                [resultTemplate]="rt"
+                (selectItem)="setInputValue($event.item)"
+                (change)="setInputValue($event.target.value)"
+              />
+              <label for="busca" class="fas fa-search search-bar__input__icon"></label>
+
+              <ng-template #rt let-r="result" let-t="term">
+                <ngb-highlight [result]="r.nome" [term]="t"></ngb-highlight>
+              </ng-template>
+              <div class="input-group-append d-none d-sm-block">
+                <button class="btn btn-primary" type="submit" [routerLink]="['/unidades', inputvalue]">Buscar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

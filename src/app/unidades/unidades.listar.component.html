@@ -1,0 +1,34 @@
+<app-unidade-busca></app-unidade-busca>
+
+<div class="search-result" *ngIf="unidades">
+  <div class="container">
+    <strong class="mb-3">{{ unidades.length }} unidades encontradas</strong>
+
+    <div class="row">
+      <div class="search-result__list mt-3 col-sm-11">
+        <div class="card mb-3" [routerLink]="['/unidades/unidade', unidade.slug]" *ngFor="let unidade of unidades">
+          <div class="row no-gutters">
+            <div class="col-md-4">
+              <img
+                src="https://www.selfitacademias.com.br/uploads/unidade/f_{{ unidade.imagem }}"
+                class="card-img"
+                alt="..."
+              />
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <strong class="text-danger"><i class="fas fa-map-marker-alt"></i> 2 km</strong>
+                <h2 class="card-title">{{ unidade.nome }}</h2>
+                <p class="card-text">{{ unidade.endereco }}</p>
+                <p class="card-text">{{ unidade.cidade.nome + '-' + unidade.estado.nome }}</p>
+                <a href="#" class="card-text text-danger"><small>Como chegar</small></a>
+              </div>
+            </div>
+          </div>
+
+          <button class="btn btn-danger text-uppercase d-none d-sm-block">Comece sua jornada</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
