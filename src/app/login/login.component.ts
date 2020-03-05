@@ -21,6 +21,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   loginForm!: FormGroup;
   esquecisenhaForm!: FormGroup;
   isLoading = false;
+  esquecisenha = false;
 
   constructor(
     private router: Router,
