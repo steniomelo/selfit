@@ -103,8 +103,7 @@ export class AreadoalunoService {
           '/prest/negociacao/producao/gerarBoletoParcela?codigoPessoa=' +
           codigoPessoa +
           '&codigoParcela=' +
-          codigoParcela +
-          '/parcela'
+          codigoParcela
       )
       .pipe(map((response: any) => response.return));
   }
