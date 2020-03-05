@@ -8,6 +8,8 @@ import { Logger, I18nService, AuthenticationService, untilDestroyed } from '@app
 
 const log = new Logger('Login');
 
+import Swal from 'sweetalert2';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -17,6 +19,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   version: string | null = environment.version;
   error: string | undefined;
   loginForm!: FormGroup;
+  esquecisenhaForm!: FormGroup;
   isLoading = false;
 
   constructor(
@@ -58,6 +61,28 @@ export class LoginComponent implements OnInit, OnDestroy {
       );
   }
 
+  recuperarSenha() {
+    this.isLoading = true;
+    const senha$ = this.authenticationService.esquecisenha(this.esquecisenhaForm.value);
+    senha$
+      .pipe(
+        finalize(() => {
+          this.esquecisenhaForm.markAsPristine();
+          this.isLoading = false;
+        }),
+        untilDestroyed(this)
+      )
+      .subscribe(
+        response => {
+          Swal.fire('Sucesso', response.mesagem, 'success');
+        },
+        error => {
+          log.debug(`Login error: ${error}`);
+          this.error = error;
+        }
+      );
+  }
+
   consultarContrato(codigo: number, remember: any) {
     this.authenticationService.consultarContrato(codigo, remember).subscribe(
       response => {
@@ -87,6 +112,13 @@ export class LoginComponent implements OnInit, OnDestroy {
       email: ['', Validators.required],
       senha: ['', Validators.required],
       remember: true
+    });
+
+    this.esquecisenhaForm = this.formBuilder.group({
+      cpf: ['', Validators.required],
+      dataNasc: ['', Validators.email],
+      novaSenha: ['', Validators.required],
+      confirmSenha: ['', Validators.required]
     });
   }
 }

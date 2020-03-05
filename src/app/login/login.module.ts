@@ -7,9 +7,18 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { LoginRoutingModule } from './login-routing.module';
 import { LoginComponent } from './login.component';
 import { AngularSvgIconModule } from 'angular-svg-icon';
+import { NgxMaskModule } from 'ngx-mask';
 
 @NgModule({
-  imports: [CommonModule, ReactiveFormsModule, TranslateModule, NgbModule, LoginRoutingModule, AngularSvgIconModule],
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    TranslateModule,
+    NgbModule,
+    LoginRoutingModule,
+    AngularSvgIconModule,
+    NgxMaskModule
+  ],
   declarations: [LoginComponent]
 })
 export class LoginModule {}

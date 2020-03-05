@@ -48,6 +48,17 @@ export class AuthenticationService {
     );
   }
 
+  esquecisenha(form: any): Observable<any> {
+    return this.httpClient.post(environment.API_REDBOX_PROD + '/convidado/esqueceusenha', form).pipe(
+      map((response: any) => {
+        if (response) {
+          response = response.return;
+          return response;
+        }
+      })
+    );
+  }
+
   consultarContrato(contrato: number, remember: any): Observable<any> {
     // Replace by proper authentication call
     return this.httpClient

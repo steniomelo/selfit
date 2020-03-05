@@ -53,13 +53,13 @@
         </div>
       </div>
       <div class="col-12 col-sm-5 bg-light d-flex justify-content-center align-items-center">
-        <div class="col-12 col-sm-10 px-0">
+        <div class="col-12 col-sm-10 px-0" *ngIf="!esquecisenha">
           <h5 class="card-title text-center mb-5">
             Acesse com seus dados
           </h5>
           <form (ngSubmit)="login()" [formGroup]="loginForm" novalidate>
             <div class="alert alert-danger" [hidden]="!error || isLoading" translate>
-              Username or password incorrect.
+              Nome ou senha incorretos.
             </div>
             <div class="form-group">
               <label class="d-block">
@@ -76,7 +76,7 @@
                   class="text-danger"
                   translate
                 >
-                  Username is required
+                  E-mail é obrigatório
                 </small>
               </label>
               <label class="d-block">
@@ -94,7 +94,7 @@
                   class="text-danger"
                   translate
                 >
-                  Password is required
+                  Senha é obrigatória
                 </small>
               </label>
               <!--<div class="form-check">
@@ -110,7 +110,77 @@
             </button>
 
             <footer class="text-center mt-5">
-              <a href="#">Esqueci minha senha</a>
+              <a (click)="esquecisenha = true">Esqueci minha senha</a>
+            </footer>
+          </form>
+        </div>
+
+        <div class="col-12 col-sm-10 px-0" *ngIf="esquecisenha">
+          <h5 class="card-title text-center mb-5">
+            Esqueci a senha
+          </h5>
+          <form (ngSubmit)="recuperarSenha()" [formGroup]="esquecisenhaForm" novalidate>
+            <div class="alert alert-danger" [hidden]="!error || isLoading" translate>
+              Dados incorretos.
+            </div>
+            <div class="form-group">
+              <label class="d-block">
+                <input
+                  type="text"
+                  class="form-control"
+                  formControlName="cpf"
+                  mask="000.000.000-00"
+                  [placeholder]="'CPF' | translate"
+                />
+                <span hidden translate>CPF</span>
+              </label>
+              <label class="d-block">
+                <input
+                  type="text"
+                  class="form-control"
+                  formControlName="dataNasc"
+                  [dropSpecialCharacters]="false"
+                  mask="00/00/0000"
+                  [placeholder]="'Data de nascimento' | translate"
+                  required
+                />
+                <span hidden translate>data de nascimento</span>
+              </label>
+
+              <label class="d-block">
+                <input
+                  type="password"
+                  class="form-control"
+                  formControlName="novaSenha"
+                  [placeholder]="'Nova senha' | translate"
+                  required
+                />
+                <span hidden translate>nova senha</span>
+              </label>
+              <label class="d-block">
+                <input
+                  type="password"
+                  class="form-control"
+                  formControlName="confirmSenha"
+                  [placeholder]="'Confirmar senha' | translate"
+                  required
+                />
+                <span hidden translate>confirmar senha</span>
+              </label>
+              <!--<div class="form-check">
+                    <label class="form-check-label">
+                      <input type="checkbox" class="form-check-input" formControlName="remember" />
+                      <span translate>Remember me</span>
+                    </label>
+                  </div>-->
+            </div>
+            <button class="btn btn-danger w-100" type="submit" [disabled]="loginForm.invalid || isLoading">
+              <i class="fas fa-cog fa-spin" [hidden]="!isLoading"></i>
+              <span translate>Vamos lá...</span>
+            </button>
+
+            <footer class="text-center mt-5">
+              <a (click)="esquecisenha = false">Fazer login</a>
             </footer>
           </form>
         </div>
