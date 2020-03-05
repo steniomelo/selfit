@@ -15,20 +15,23 @@
     <ul class="list-group list-group-flush">
       <li class="list-group-item align-items-sm-center flex-column flex-sm-row">
         <h4 class="text-danger flex-grow-1">
-          {{ treinos.programa.length > 0 ? treinos.programa[0].nome : 'Estamos montando seu treino...' }}
+          {{ treinos.programa?.length > 0 ? treinos.programa[0]?.nome : 'Estamos montando seu treino...' }}
         </h4>
         <div class="flex-grow-1 " *ngIf="treinos.programa.length > 0">
           <strong>Instrutor responsável</strong>
-          <p>{{ treinos.programa[0].professor }}</p>
+          <p>{{ treinos.programa[0]?.professor }}</p>
         </div>
-        <div class="flex-grow-1" *ngIf="treinos.programa.length > 0">
+        <div class="flex-grow-1" *ngIf="treinos.programa?.length > 0">
           <button class="btn btn-danger mr-2 d-none d-sm-inline"><i class="fas fa-print"></i></button>
           <!-- <button class="btn btn-danger">Solicitar mudança de série</button> -->
         </div>
       </li>
 
-      <ng-container *ngIf="treinos.programa.length > 0 && treinos.programa[0].programatreinoficha[0]">
-        <li class="list-group-item  " *ngFor="let ficha of treinos.programa[0].programatreinoficha[0]; let i = index">
+      <ng-container *ngIf="treinos.programa?.length > 0 && (treinos.programa[0]?.programatreinoficha)[0]">
+        <li
+          class="list-group-item  "
+          *ngFor="let ficha of (treinos.programa[0]?.programatreinoficha)[0]; let i = index"
+        >
           <div class="flex-grow-1">
             <div class="d-flex align-items-start">
               <div class="flex-grow-1">

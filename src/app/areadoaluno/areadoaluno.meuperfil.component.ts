@@ -129,6 +129,15 @@ export class AreadoalunoMeuperfilComponent implements OnInit {
   }
 
   editarPerfil() {
+    const estado = this.editForm.controls['estado'].value;
+    const cidade = this.editForm.controls['cidade'].value;
+
+    console.log(estado);
+    console.log(cidade);
+
+    this.editForm.controls['estado'].setValue(estado.codigo);
+    this.editForm.controls['cidade'].setValue(cidade.codigo);
+
     this.areadoalunoService
       .editarPerfil(this.editForm.value)
       .pipe(

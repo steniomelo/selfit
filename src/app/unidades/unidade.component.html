@@ -7,7 +7,9 @@
         <p>{{ unidade.cidade.nome + '-' + unidade.estado.nome }}</p>
       </div>
       <div class="btn-matriculese ml-auto">
-        <button class="btn btn-danger  btn-block">Matricule-se</button>
+        <button class="btn btn-danger  btn-block" (click)="matriculese(unidade, unidade.unidadePlanos[0])">
+          Matricule-se
+        </button>
       </div>
     </div>
   </header>
@@ -44,7 +46,9 @@
                   <strong>Domingos e Feriados</strong><br />
                   <span *ngIf="unidade.horario_3">{{ unidade.horario_3 }}</span>
                 </p>
-                <button class="btn btn-danger btn-block">Matricule-se</button>
+                <button class="btn btn-danger btn-block" (click)="matriculese(unidade, unidade.unidadePlanos[0])">
+                  Matricule-se
+                </button>
               </div>
             </div>
           </div>
@@ -172,7 +176,12 @@
                 </ul>
               </div>
               <footer class="card-footer">
-                <button class="btn btn-lg btn-danger btn-block">Matricule-se</button>
+                <button
+                  class="btn btn-lg btn-danger btn-block "
+                  (click)="matriculese(unidade, unidade.unidadePlanos[0])"
+                >
+                  Matricule-se
+                </button>
               </footer>
             </div>
           </div>
@@ -196,7 +205,12 @@
                 </ul>
               </div>
               <footer class="card-footer">
-                <button class="btn btn-lg btn-danger btn-block">Matricule-se</button>
+                <button
+                  class="btn btn-lg btn-danger btn-block"
+                  (click)="matriculese(unidade, unidade.unidadePlanos[1])"
+                >
+                  Matricule-se
+                </button>
               </footer>
             </div>
           </div>

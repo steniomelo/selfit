@@ -74,6 +74,7 @@ export class UnidadesListarComponent implements OnInit {
     const uf = this.route.snapshot.params.uf;
 
     if (!uf) {
+      this.getUnidades();
       this.getLocation();
     } else {
       if (Number(uf)) {

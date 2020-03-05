@@ -1,4 +1,6 @@
 <div class="container matricula">
+  <ngx-spinner></ngx-spinner>
+
   <header class="matricula__header">
     <h1>Matrícula online</h1>
   </header>
@@ -6,48 +8,240 @@
   <div class="matricula__content">
     <div class="row">
       <div class="col-sm-8">
-        <h3>Dados pessoais</h3>
+        <form [formGroup]="matriculaForm1">
+          <ng-container *ngIf="etapa == 1">
+            <h3>Dados pessoais</h3>
 
-        <form action="">
-          <div class="row">
-            <div class="col-sm-6">
-              <label for="nome">*Nome</label>
-              <input type="text" id="nome" class="form-control" placeholder="Nome completo" />
-            </div>
-            <div class="col-sm-6">
-              <label for="email">*E-mail</label>
-              <input type="email" id="email" class="form-control" placeholder="Ex.: aluno@selfit.com.br" />
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-sm-5">
-              <label for="datanasc">*Data de nascimento</label>
-              <input type="text" id="datanasc" class="form-control" placeholder="  /  /    " />
-            </div>
-            <div class="col-sm-7">
-              <label for="email">*CPF</label>
-              <input type="text" id="cpf" class="form-control" placeholder="Ex.: aluno@selfit.com.br" />
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-sm-5 d-flex flex-column">
-              <label for="genero" class="d-block">*Gênero</label>
-              <div class="d-flex flex-fill align-items-center">
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="genero" id="inlineRadio1" value="option1" />
-                  <label class="form-check-label" for="inlineRadio1">Feminino</label>
-                </div>
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="genero" id="inlineRadio2" value="option2" />
-                  <label class="form-check-label" for="inlineRadio2">Masculino</label>
-                </div>
+            <div class="row">
+              <div class="col-sm-6">
+                <label for="nome">*Nome</label>
+                <input type="text" id="nome" class="form-control" formControlName="nome" placeholder="Nome completo" />
+              </div>
+              <div class="col-sm-6">
+                <label for="email">*E-mail</label>
+                <input
+                  type="email"
+                  id="email"
+                  class="form-control"
+                  formControlName="email"
+                  placeholder="Ex.: aluno@selfit.com.br"
+                />
               </div>
             </div>
-            <div class="col-sm-7">
-              <label for="email">*CPF</label>
-              <input type="text" id="cpf" class="form-control" placeholder="Ex.: aluno@selfit.com.br" />
+            <div class="row">
+              <div class="col-sm-5">
+                <label for="datanasc">*Data de nascimento</label>
+                <input
+                  type="text"
+                  id="datanasc"
+                  formControlName="datanasc"
+                  class="form-control"
+                  [dropSpecialCharacters]="false"
+                  mask="00/00/0000"
+                />
+              </div>
+              <div class="col-sm-7">
+                <label for="cpf">*CPF</label>
+                <input type="text" id="cpf" class="form-control" formControlName="cpf" mask="000.000.000-00" />
+              </div>
             </div>
-          </div>
+            <div class="row">
+              <div class="col-sm-5 d-flex flex-column">
+                <label for="genero" class="d-block">*Gênero</label>
+                <div class="d-flex flex-fill align-items-center">
+                  <div class="form-check form-check-inline">
+                    <input
+                      class="form-check-input"
+                      formControlName="genero"
+                      type="radio"
+                      name="genero"
+                      id="inlineRadio1"
+                      value="f"
+                    />
+                    <label class="form-check-label" for="inlineRadio1">Feminino</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input
+                      class="form-check-input"
+                      formControlName="genero"
+                      type="radio"
+                      name="genero"
+                      id="inlineRadio2"
+                      value="m"
+                    />
+                    <label class="form-check-label" for="inlineRadio2">Masculino</label>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-7">
+                <label for="celular">*Celular</label>
+                <input
+                  type="text"
+                  id="celular"
+                  formControlName="celular"
+                  class="form-control"
+                  placeholder="( )"
+                  mask="(99) 99999.9999"
+                />
+              </div>
+            </div>
+          </ng-container>
+        </form>
+        <form [formGroup]="matriculaForm2">
+          <ng-container *ngIf="etapa == 2">
+            <h3>Endereço</h3>
+
+            <div class="row">
+              <div class="col-sm-6">
+                <label for="cep">*CEP</label>
+                <input
+                  type="text"
+                  id="cep"
+                  formControlName="cep"
+                  (change)="getCep($event.target.value)"
+                  class="form-control"
+                />
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-7">
+                <label for="end">*Endereço</label>
+                <input type="text" id="end" formControlName="end" class="form-control" />
+              </div>
+              <div class="col-sm-5">
+                <label for="numero">*Número</label>
+                <input type="text" id="numero" formControlName="numero" class="form-control" />
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-sm-7">
+                <label for="complemento">*Complemento</label>
+                <input type="text" id="complemento" formControlName="complemento" class="form-control" />
+              </div>
+              <div class="col-sm-5">
+                <label for="bairro">*Bairro</label>
+                <input type="text" id="bairro" formControlName="bairro" class="form-control" />
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-sm-7">
+                <label for="estado">*Estado</label>
+                <input type="text" id="estado" formControlName="estado" class="form-control" />
+              </div>
+              <div class="col-sm-5">
+                <label for="cidade">*Cidade</label>
+                <input type="text" id="cidade" formControlName="cidade" class="form-control" />
+              </div>
+            </div>
+
+            <h3>Pagamento</h3>
+
+            <ul ngbNav #nav="ngbNav" class="nav-tabs" (activeIdChange)="changePayment($event)">
+              <li ngbNavItem>
+                <a ngbNavLink><b>Cartão de crédito</b></a>
+                <ng-template ngbNavContent>
+                  <br />
+                  <br />
+                  <div class="row">
+                    <div class="col-sm-7">
+                      <label for="cpf">*CPF do Títular do cartão</label>
+                      <input
+                        type="text"
+                        id="cpf"
+                        mask="000.000.000-00"
+                        placeholder="XXX.XXX.XXX-XX"
+                        formControlName="cpftitular"
+                        class="form-control"
+                      />
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-5">
+                      <label for="nome">*Nome impresso no cartão</label>
+                      <input type="text" id="nome" formControlName="nomecartao" class="form-control" />
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-sm-7">
+                      <label for="numero">*Número do cartão</label>
+                      <input
+                        type="text"
+                        id="numero"
+                        formControlName="numerocartao"
+                        placeholder="0000 0000 0000 0000"
+                        [hiddenInput]="true"
+                        [showMaskTyped]="true"
+                        placeHolderCharacter="*"
+                        mask="0000 XXXX XXXX XXXX"
+                        class="form-control"
+                      />
+                    </div>
+                    <div class="col-sm-5">
+                      <label for="vencimento">*Vencimento</label>
+                      <input
+                        type="text"
+                        id="vencimento"
+                        [dropSpecialCharacters]="false"
+                        [showMaskTyped]="true"
+                        placeholder="MM/AA"
+                        mask="09/09"
+                        formControlName="vencimento"
+                        class="form-control"
+                      />
+                    </div>
+                  </div>
+
+                  <!--<div class="row">
+                  <div class="col-sm-7">
+                    <label for="parcelas" class="d-block">*Parcelas de adesão</label>
+                    <select name="parcelas" formControlName="parcela" id="">
+                      <option value="">Selecione</option>
+                      <option value="1">Selecione</option>
+                      <option value="2">Selecione</option>
+                      <option value="3">Selecione</option>
+                    </select>
+                  </div>
+                </div>-->
+                </ng-template>
+              </li>
+              <li ngbNavItem>
+                <a ngbNavLink><b>Boleto</b></a>
+                <ng-template ngbNavContent>
+                  <br />
+                  <br />
+                  <h5>
+                    <strong>Importante</strong>: O valor deste boleto é referente ao VALOR TOTAL do plano escolhido.
+                  </h5>
+                  <ul>
+                    <li>
+                      O plano escolhido terá duração de 12 meses e será renovado automaticamente conforme as condições
+                      contratuais; Pagamento somente à vista;
+                    </li>
+                    <li>
+                      O boleto vence em 03 dias úteis; Imprima o boleto ou pague pela internet com o código de barras;
+                    </li>
+                    <li>O boleto está disponível apenas para pagamento total do plano.</li>
+                    <li>
+                      Ao contratar o plano pela internet, você terá o direito de arrependimento em até 7 dias corridos,
+                      contados a partir da data de matrícula.
+                    </li>
+                  </ul>
+                </ng-template>
+              </li>
+            </ul>
+            <div [ngbNavOutlet]="nav"></div>
+            <div class="">
+              <div class="form-check">
+                <input class="form-check-input" formControlName="aceite" type="checkbox" id="aceite" />
+                <label class="form-check-label" for="aceite">
+                  <small>Li e aceito o termo de adesão e as normas de utilização.*</small>
+                </label>
+              </div>
+            </div>
+          </ng-container>
         </form>
       </div>
       <div class="col-sm-4">
@@ -57,35 +251,43 @@
           </div>
           <div class="card-header">
             <small>Plano</small>
-            <h4>Self plus</h4>
+            <h4>{{ plano.plano.nome }}</h4>
           </div>
           <div class="card-header">
             <small>Unidade</small>
-            <h4>Campinas - Taquaral</h4>
+            <h4>{{ unidade.nome }}</h4>
           </div>
           <div class="card-body">
             <div class="infos">
               <div class="d-flex">
                 <small>Adesão</small>
-                <small class="ml-auto">Grátis</small>
+                <small class="ml-auto">{{ plano.adesao | currency: 'BRL' }}</small>
               </div>
               <div class="d-flex">
                 <small>Anuidade</small>
-                <small class="ml-auto">R$ 99,90</small>
+                <small class="ml-auto">{{ plano.manutencao | currency: 'BRL' }}</small>
               </div>
               <div class="d-flex">
                 <strong>Mensalidade*</strong>
-                <span class="ml-auto text-danger">R$ 69,90</span>
+                <span class="ml-auto text-danger">{{ plano.mensalidade | currency: 'BRL' }}</span>
               </div>
               <div class="d-flex">
                 <small>Renovação em:</small>
-                <small class="ml-auto">11/12/2010</small>
+                <small class="ml-auto">{{ dataRenovacao }}</small>
               </div>
               <div class="d-flex">
                 <small>Parcelas a vencer:</small>
                 <small class="ml-auto">
                   <i class="fas fa-chevron-down"></i>
                 </small>
+              </div>
+              <div>
+                <ol class="list-unstyled">
+                  <li *ngFor="let parcela of parcelas" class="d-flex">
+                    <strong>{{ parcela.nome }}</strong>
+                    <span class="ml-auto">{{ parcela.valor | currency: 'BRL' }}</span>
+                  </li>
+                </ol>
               </div>
               <br />
               <div>
@@ -98,7 +300,22 @@
           </div>
 
           <div class="card-footer">
-            <button class="btn btn-block btn-lg btn-danger">Próximo</button>
+            <button
+              class="btn btn-block btn-lg btn-danger"
+              *ngIf="etapa == 1"
+              (click)="etapa = 2"
+              [disabled]="matriculaForm1.invalid"
+            >
+              Próximo
+            </button>
+            <button
+              class="btn btn-block btn-lg btn-danger"
+              *ngIf="etapa == 2"
+              (click)="efetuarMatricula()"
+              [disabled]="matriculaForm2.invalid"
+            >
+              Concluir matrícula
+            </button>
             <button class="btn btn-block btn-lg btn-outline-danger">Cancelar</button>
           </div>
         </div>

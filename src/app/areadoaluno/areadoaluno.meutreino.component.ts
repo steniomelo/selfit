@@ -35,7 +35,7 @@ export class AreadoalunoMeutreinoComponent implements OnInit {
     this.areadoalunoService.getTreinos(this.credentials.codigo).subscribe(
       response => {
         this.treinos = response;
-        if (this.treinos.programa > 0) {
+        if (this.treinos && this.treinos.programa > 0) {
           this.getAtividades();
         } else {
           this.spinner.hide();

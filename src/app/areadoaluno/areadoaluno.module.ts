@@ -12,6 +12,7 @@ import { AreadoalunoTransferenciaComponent } from './areadoaluno.transferencia.c
 import { AreadoalunoDocumentosComponent } from './areadoaluno.documentos.component';
 import { AreadoalunoPagamentosComponent } from './areadoaluno.pagamentos.component';
 import { AreadoalunoCancelamentoComponent } from './areadoaluno.cancelamento.component';
+import { AreadoalunoDetalhesComponent } from './areadoaluno.detalhes.component';
 
 import { AngularSvgIconModule } from 'angular-svg-icon';
 
@@ -40,6 +41,7 @@ import { NgxMaskModule } from 'ngx-mask';
     AreadoalunoDocumentosComponent,
     AreadoalunoPagamentosComponent,
     AreadoalunoCancelamentoComponent,
+    AreadoalunoDetalhesComponent,
     SetSituacaoPipe
   ]
 })

@@ -39,4 +39,8 @@ export class SharedService {
         catchError(() => of('Error, could not load joke :-('))
       );
   }
+
+  getCep(cep: number): Observable<any> {
+    return this.httpClient.get(environment.API_REDBOX_PROD + '/consulta/' + cep + '/cep');
+  }
 }

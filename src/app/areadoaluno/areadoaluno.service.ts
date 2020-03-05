@@ -50,10 +50,7 @@ export class AreadoalunoService {
   getTreinos(codigoCliente: number): Observable<any> {
     return this.httpClient
       .get(environment.API_REDBOX_PROD + '/turmas/consultarPrograma?codigocliente=' + codigoCliente)
-      .pipe(
-        map((response: any) => response.return),
-        catchError(() => of('Nenhum treino encontrado'))
-      );
+      .pipe(map((response: any) => response.return));
   }
 
   getAtividades(fichaCliente: number): Observable<any> {

@@ -11,6 +11,7 @@ import { AreadoalunoTransferenciaComponent } from './areadoaluno.transferencia.c
 import { AreadoalunoDocumentosComponent } from './areadoaluno.documentos.component';
 import { AreadoalunoPagamentosComponent } from './areadoaluno.pagamentos.component';
 import { AreadoalunoCancelamentoComponent } from './areadoaluno.cancelamento.component';
+import { AreadoalunoDetalhesComponent } from './areadoaluno.detalhes.component';
 
 const routes: Routes = [
   {
@@ -24,7 +25,8 @@ const routes: Routes = [
       { path: 'transferencia', component: AreadoalunoTransferenciaComponent },
       { path: 'documentos', component: AreadoalunoDocumentosComponent },
       { path: 'pagamentos', component: AreadoalunoPagamentosComponent },
-      { path: 'cancelamento', component: AreadoalunoCancelamentoComponent }
+      { path: 'cancelamento', component: AreadoalunoCancelamentoComponent },
+      { path: 'detalhes', component: AreadoalunoDetalhesComponent }
     ],
     data: { title: extract('Área do Aluno') }
   }

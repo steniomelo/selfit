@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { UnidadesService } from './unidades.service';
 import { NgxSpinnerService } from 'ngx-spinner';
 
@@ -32,7 +32,8 @@ export class UnidadeComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private unidadesService: UnidadesService,
-    private spinner: NgxSpinnerService
+    private spinner: NgxSpinnerService,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -51,5 +52,11 @@ export class UnidadeComponent implements OnInit {
         console.log('ERRO', error);
       }
     );
+  }
+
+  matriculese(unidade: any, plano: any) {
+    this.router.navigateByUrl('/matricula', {
+      state: { unidade: unidade, plano: plano }
+    });
   }
 }

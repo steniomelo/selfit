@@ -29,10 +29,11 @@ export class ErrorHandlerInterceptor implements HttpInterceptor {
     }
 
     if (response.error) {
+      console.log(response);
       if (response.error.msgValidacao) {
         Swal.fire('Erro', response.error.msgValidacao, 'error');
       } else {
-        Swal.fire('Erro', response.error.error, 'error');
+        Swal.fire('Erro', response.error.erro, 'error');
       }
     } else {
       Swal.fire('Erro', 'Houve um erro inesperado!', 'error');
