@@ -1,0 +1,56 @@
+<div class="areadoaluno__meutreino areadoaluno__interna container">
+  <header class="areadoaluno__interna__header">
+    <div class="areadoaluno__breadcrumbs">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a routerLink="/areadoaluno">Conta</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Self Move</li>
+        </ol>
+      </nav>
+    </div>
+    <h1 class="areadoaluno__interna__header-title">Self Move</h1>
+  </header>
+
+  <div *ngIf="treinos" class="areadoaluno__interna__content">
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item align-items-sm-center flex-column flex-sm-row">
+        <h4 class="text-danger flex-grow-1">
+          {{ treinos.grade?.length > 0 ? treinos.grade[0]?.nome : 'Estamos montando seu treino...' }}
+        </h4>
+        <div class="flex-grow-1 " *ngIf="treinos.grade.length > 0">
+          <strong>Instrutor responsável</strong>
+          <p>{{ treinos.grade[0]?.professor }}</p>
+        </div>
+        <div class="flex-grow-1" *ngIf="treinos.grade?.length > 0">
+          <button class="btn btn-danger mr-2 d-none d-sm-inline"><i class="fas fa-print"></i></button>
+          <!-- <button class="btn btn-danger">Solicitar mudança de série</button> -->
+        </div>
+      </li>
+
+      <ng-container *ngIf="treinos.grade?.length > 0 && (treinos.grade[0]?.gradetreinoficha)[0]">
+        <li class="list-group-item  " *ngFor="let ficha of (treinos.grade[0]?.gradetreinoficha)[0]; let i = index">
+          <div class="flex-grow-1">
+            <div class="d-flex align-items-start">
+              <div class="flex-grow-1">
+                <strong class="text-danger">{{ ficha.nome }}</strong>
+                <p>{{ ficha.tipoexecucao }}</p>
+              </div>
+
+              <button type="button" class="btn btn-link">
+                <i class="fas fa-chevron-down"></i>
+              </button>
+            </div>
+
+            <div id="{{ 'collapse' + i }}">
+              <li class="list-group-item  " *ngFor="let atividade of ficha.atividades">
+                <strong>{{ atividade.nome }}</strong
+                ><br />
+                <small> </small>
+              </li>
+            </div>
+          </div>
+        </li>
+      </ng-container>
+    </ul>
+  </div>
+</div>

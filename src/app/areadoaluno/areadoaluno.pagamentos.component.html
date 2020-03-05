@@ -39,8 +39,10 @@
               <tbody>
                 <tr class="table-active" *ngFor="let parcela of parcelasPendentes">
                   <th scope="row" class="align-middle">{{ parcela.descricao }}</th>
-                  <td class="align-middle">{{ parcela.datavencimento }}</td>
-                  <td class="align-middle"><button class="btn btn-danger">Pagar</button></td>
+                  <td class="align-middle">{{ parcela.datavencimento | date: 'dd/MM/yyyy' }}</td>
+                  <td class="align-middle">
+                    <button class="btn btn-danger" (click)="gerarBoletoParcela(parcela)">Pagar</button>
+                  </td>
                 </tr>
               </tbody>
             </table>
@@ -72,7 +74,7 @@
               <tbody>
                 <tr class="table-active" *ngFor="let parcela of parcelasPagas">
                   <th scope="row" class="align-middle">{{ parcela.descricao }}</th>
-                  <td class="align-middle">{{ parcela.datavencimento }}</td>
+                  <td class="align-middle">{{ parcela.datavencimento | date: 'dd/MM/yyyy' }}</td>
                 </tr>
               </tbody>
             </table>

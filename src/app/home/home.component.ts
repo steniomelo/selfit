@@ -10,6 +10,7 @@ import { HomeService } from './home.service';
 })
 export class HomeComponent implements OnInit {
   quote: string | undefined;
+  noticias: any;
   isLoading = false;
   slideConfig = {
     slidesToShow: 3,
@@ -53,6 +54,18 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     this.isLoading = true;
 
-    //this.getLocation();
+    //this.getNoticias();
+  }
+
+  getNoticias() {
+    this.homeService.getNoticias().subscribe(
+      response => {
+        console.log(response);
+        this.noticias = response;
+      },
+      error => {
+        console.log('ERRO', error);
+      }
+    );
   }
 }

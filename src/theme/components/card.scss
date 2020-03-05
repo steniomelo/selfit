@@ -72,4 +72,18 @@
       }
     }
   }
+
+  &.cards-black {
+    .card {
+      background-color: $black;
+
+      .card-content {
+        color: white;
+        strong {
+          color: white;
+          font-size: 18px;
+        }
+      }
+    }
+  }
 }

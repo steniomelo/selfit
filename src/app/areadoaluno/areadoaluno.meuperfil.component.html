@@ -110,7 +110,7 @@
             <ng-container *ngIf="!editNascimento">
               <div class="item-content">
                 <strong>Data de nascimento</strong>
-                <p>{{ credentials.datanascimento }}</p>
+                <p>{{ credentials.datanascimento | date: 'dd/MM/yyyy' }}</p>
               </div>
               <div class="item-action ml-auto">
                 <button class="btn btn-link" (click)="editNascimento = true">Editar</button>
@@ -126,7 +126,7 @@
                     class="form-control"
                     formControlName="datanasc"
                     placeholder="Data de nascimento"
-                    value="{{ credentials.datanascimento }}"
+                    value="{{ credentials.datanascimento | date: 'dd/MM/yyyy' }}"
                   />
                 </div>
                 <button class="btn btn-primary">Salvar</button>

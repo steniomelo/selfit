@@ -68,6 +68,24 @@ export class AreadoalunoPagamentosComponent implements OnInit {
     );
   }
 
+  gerarBoletoParcela(parcela: any) {
+    this.spinner.show();
+    this.areadoalunoService
+      .gerarBoletoParcela(this.credentialsService.credentials.codigopessoa, parcela.codigo)
+      .subscribe(
+        response => {
+          console.log(response);
+          this.spinner.hide();
+
+          console.log('Parcelas pagas', this.parcelasPagas);
+          console.log('Parcelas pendentes', this.parcelasPendentes);
+        },
+        error => {
+          this.spinner.hide();
+        }
+      );
+  }
+
   setCardnumber(e: any) {
     let res;
     if (e.length <= 4) {

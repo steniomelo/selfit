@@ -21,4 +21,8 @@ export class HomeService {
       );
     });
   }
+
+  getNoticias(): Observable<any> {
+    return this.httpClient.get('http://selfit.inzn.com.br/wp-json/wp/v2/posts');
+  }
 }

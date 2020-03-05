@@ -53,6 +53,12 @@ export class AreadoalunoService {
       .pipe(map((response: any) => response.return));
   }
 
+  getTurmasAmbientes(): Observable<any> {
+    return this.httpClient
+      .get(environment.API_REDBOX_PROD + '/turmas/consultarTurmasAmbientes')
+      .pipe(map((response: any) => response.return));
+  }
+
   getAtividades(fichaCliente: number): Observable<any> {
     return this.httpClient
       .get(environment.API_REDBOX_PROD + '/turmas/consultarAtividades?fichacliente=' + fichaCliente)
@@ -88,5 +94,18 @@ export class AreadoalunoService {
     return this.httpClient
       .post(environment.API_REDBOX_PROD + '/contrato/alterarCartaoDeCredito', dados)
       .pipe(map((response: any) => response));
+  }
+
+  gerarBoletoParcela(codigoPessoa: number, codigoParcela: number): Observable<any> {
+    return this.httpClient
+      .get(
+        environment.API_PROSELF_UNI +
+          '/prest/negociacao/producao/gerarBoletoParcela?codigoPessoa=' +
+          codigoPessoa +
+          '&codigoParcela=' +
+          codigoParcela +
+          '/parcela'
+      )
+      .pipe(map((response: any) => response.return));
   }
 }
