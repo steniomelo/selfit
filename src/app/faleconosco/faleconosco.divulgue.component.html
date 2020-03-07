@@ -22,7 +22,7 @@
             </div>
 
             <div class="col-sm-6">
-              <form>
+              <form (ngSubmit)="(faleconosco)" [formGroup]="faleconoscoForm">
                 <div class="form-group">
                   <input type="text" class="form-control" placeholder="Nome" />
                 </div>

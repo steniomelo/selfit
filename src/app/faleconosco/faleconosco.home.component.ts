@@ -24,4 +24,8 @@ export class FaleconoscoHomeComponent implements OnInit {
       mensagem: ['', Validators.required]
     });
   }
+
+  faleconosco() {
+    console.log('Enviou');
+  }
 }
