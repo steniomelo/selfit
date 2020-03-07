@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { finalize } from 'rxjs/operators';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-faleconosco-home',
@@ -7,7 +7,21 @@ import { finalize } from 'rxjs/operators';
   styleUrls: ['./faleconosco.component.scss']
 })
 export class FaleconoscoHomeComponent implements OnInit {
-  constructor() {}
+  faleconoscoForm!: FormGroup;
 
-  ngOnInit() {}
+  constructor(private formBuilder: FormBuilder) {}
+
+  ngOnInit() {
+    this.createForm();
+  }
+
+  private createForm() {
+    this.faleconoscoForm = this.formBuilder.group({
+      nome: ['', Validators.required],
+      email: ['', Validators.email],
+      aluno: ['', Validators.required],
+      assunto: ['', Validators.required],
+      mensagem: ['', Validators.required]
+    });
+  }
 }

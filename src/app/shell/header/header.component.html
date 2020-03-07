@@ -29,7 +29,7 @@
       />
     </a>
 
-    <span class="navbar-brand mr-auto" *ngIf="logado && isAreadoaluno" translate>
+    <span routerLink="/areadoaluno" class="navbar-brand mr-auto" *ngIf="logado && isAreadoaluno" translate>
       <i class="fas fa-user" *ngIf="username"></i> Olá, {{ username }}
     </span>
 

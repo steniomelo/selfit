@@ -62,11 +62,12 @@
                 <strong>E-mail</strong>
                 <div class="form-group">
                   <input
-                    type="text"
+                    type="email"
                     class="form-control"
                     formControlName="email"
                     placeholder="E-mail"
                     value="{{ credentials.email }}"
+                    required
                   />
                 </div>
                 <button class="btn btn-primary">Salvar</button>
@@ -96,6 +97,7 @@
                     class="form-control"
                     formControlName="cpf"
                     placeholder="CPF"
+                    mask="000.000.000-00"
                     value="{{ credentials.cpf }}"
                   />
                 </div>
@@ -127,6 +129,7 @@
                     formControlName="datanasc"
                     placeholder="Data de nascimento"
                     value="{{ credentials.datanascimento | date: 'dd/MM/yyyy' }}"
+                    mask="00/00/0000"
                   />
                 </div>
                 <button class="btn btn-primary">Salvar</button>
@@ -192,6 +195,7 @@
                     formControlName="cep"
                     placeholder="CEP"
                     value="{{ credentials.cep }}"
+                    mask="00000-000"
                   />
                 </div>
                 <button class="btn btn-primary">Salvar</button>
@@ -299,7 +303,14 @@
               <div class="item-content">
                 <strong>Celular</strong>
                 <div class="form-group">
-                  <input type="text" class="form-control" formControlName="telcelular" placeholder="Celular" />
+                  <input
+                    type="text"
+                    class="form-control"
+                    formControlName="telcelular"
+                    placeholder="Celular"
+                    placeholder="( )"
+                    mask="(00) 00000.0000"
+                  />
                 </div>
                 <button class="btn btn-primary">Salvar</button>
               </div>

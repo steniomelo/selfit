@@ -29,44 +29,52 @@
             </div>
 
             <div class="col-sm-6">
-              <form action="">
+              <form (ngSubmit)="(faleconosco)" [formGroup]="faleconoscoForm">
                 <div class="form-group">
-                  <input type="text" class="form-control" placeholder="Nome" />
+                  <input type="text" class="form-control" formControlName="nome" placeholder="Nome" required />
                 </div>
                 <div class="form-group">
-                  <input type="email" class="form-control" placeholder="E-mail" />
+                  <input type="email" class="form-control" formControlName="email" placeholder="E-mail" required />
                 </div>
 
                 <div class="form-group">
                   <div class="custom-control custom-radio custom-control-inline">
                     <input
                       type="radio"
-                      id="customRadioInline1"
-                      name="customRadioInline1"
+                      id="soualuno"
+                      name="aluno"
                       class="custom-control-input"
+                      formControlName="aluno"
+                      value="s"
+                      required
                     />
-                    <label class="custom-control-label" for="customRadioInline1">Sou aluno</label>
+                    <label class="custom-control-label" for="soualuno">Sou aluno</label>
                   </div>
                   <div class="custom-control custom-radio custom-control-inline">
                     <input
                       type="radio"
-                      id="customRadioInline2"
-                      name="customRadioInline1"
+                      id="naosoualuno"
+                      name="aluno"
                       class="custom-control-input"
+                      formControlName="aluno"
+                      value="n"
+                      required
                     />
-                    <label class="custom-control-label" for="customRadioInline2">Não sou aluno</label>
+                    <label class="custom-control-label" for="naosoualuno">Não sou aluno</label>
                   </div>
                 </div>
 
                 <div class="form-group">
-                  <input type="text" class="form-control" placeholder="Assunto" />
+                  <input type="text" class="form-control" formControlName="assunto" placeholder="Assunto" required />
                 </div>
 
                 <div class="form-group">
-                  <textarea class="form-control" placeholder="Assunto"></textarea>
+                  <textarea class="form-control" formControlName="mensagem" placeholder="Mensagem" required></textarea>
                 </div>
 
-                <button class="btn btn-lg btn-block btn-danger">Enviar contato</button>
+                <button class="btn btn-lg btn-block btn-danger" type="submit" [disabled]="faleconoscoForm.invalid">
+                  Enviar contato
+                </button>
               </form>
             </div>
           </div>

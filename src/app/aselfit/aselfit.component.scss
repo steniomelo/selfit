@@ -3,8 +3,24 @@
 
 .aselfit__section--selfintense {
   background: url("../../assets/layout/aselfit-section-1.png") no-repeat;
-  background-size: cover;
+  background-size: 60%;
   background-position: center right;
+}
+
+.aselfit__section--selfextreme {
+  background: url("../../assets/layout/aselfit-section-2.jpg") no-repeat;
+  background-size: 60%;
+  background-position: center left;
+}
+.aselfit__section--selfmove {
+  background: url("../../assets/layout/aselfit-section-3.jpg") no-repeat;
+  background-size: 60%;
+  background-position: center right;
+}
+.aselfit__section--selfspeed {
+  background: url("../../assets/layout/aselfit-section-4.jpg") no-repeat;
+  background-size: 60%;
+  background-position: center left;
 }
 
 .aselfit__apresentacao {
