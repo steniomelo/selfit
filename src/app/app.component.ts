@@ -37,6 +37,13 @@ export class AppComponent implements OnInit, OnDestroy {
 
     const onNavigationEnd = this.router.events.pipe(filter(event => event instanceof NavigationEnd));
 
+    this.router.events.subscribe(evt => {
+      if (!(evt instanceof NavigationEnd)) {
+        return;
+      }
+      window.scrollTo(0, 0);
+    });
+
     // Change page title on navigation or language change, based on route data
     merge(this.translateService.onLangChange, onNavigationEnd)
       .pipe(

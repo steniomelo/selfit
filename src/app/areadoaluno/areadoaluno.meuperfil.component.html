@@ -154,13 +154,11 @@
               <div class="item-content">
                 <strong>Gênero</strong>
                 <div class="form-group">
-                  <input
-                    type="text"
-                    class="form-control"
-                    formControlName="sexo"
-                    placeholder="Sexo"
-                    value="{{ credentials.sexocliente }}"
-                  />
+                  <select name="estado" class="form-control" formControlName="sexo">
+                    <option value="M">Masculino</option>
+                    <option value="F">Feminino</option>
+                    <option value="O">Outros</option>
+                  </select>
                 </div>
                 <button class="btn btn-primary">Salvar</button>
               </div>

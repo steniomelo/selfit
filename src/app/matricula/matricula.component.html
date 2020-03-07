@@ -13,11 +13,11 @@
             <h3>Dados pessoais</h3>
 
             <div class="row">
-              <div class="col-sm-6">
+              <div class="col-sm-6 form-group">
                 <label for="nome">*Nome</label>
                 <input type="text" id="nome" class="form-control" formControlName="nome" placeholder="Nome completo" />
               </div>
-              <div class="col-sm-6">
+              <div class="col-sm-6 form-group">
                 <label for="email">*E-mail</label>
                 <input
                   type="email"
@@ -29,7 +29,7 @@
               </div>
             </div>
             <div class="row">
-              <div class="col-sm-5">
+              <div class="col-sm-5 form-group">
                 <label for="datanasc">*Data de nascimento</label>
                 <input
                   type="text"
@@ -40,13 +40,13 @@
                   mask="00/00/0000"
                 />
               </div>
-              <div class="col-sm-7">
+              <div class="col-sm-7 form-group">
                 <label for="cpf">*CPF</label>
                 <input type="text" id="cpf" class="form-control" formControlName="cpf" mask="000.000.000-00" />
               </div>
             </div>
             <div class="row">
-              <div class="col-sm-5 d-flex flex-column">
+              <div class="col-sm-5 d-flex flex-column form-group">
                 <label for="genero" class="d-block">*Gênero</label>
                 <div class="d-flex flex-fill align-items-center">
                   <div class="form-check form-check-inline">
@@ -73,7 +73,7 @@
                   </div>
                 </div>
               </div>
-              <div class="col-sm-7">
+              <div class="col-sm-7 form-group">
                 <label for="celular">*Celular</label>
                 <input
                   type="text"
@@ -81,7 +81,7 @@
                   formControlName="celular"
                   class="form-control"
                   placeholder="( )"
-                  mask="(99) 99999.9999"
+                  mask="(00) 00000.0000"
                 />
               </div>
             </div>
@@ -92,7 +92,7 @@
             <h3>Endereço</h3>
 
             <div class="row">
-              <div class="col-sm-6">
+              <div class="col-sm-6 form-group">
                 <label for="cep">*CEP</label>
                 <input
                   type="text"
@@ -104,33 +104,33 @@
               </div>
             </div>
             <div class="row">
-              <div class="col-sm-7">
+              <div class="col-sm-7 form-group">
                 <label for="end">*Endereço</label>
                 <input type="text" id="end" formControlName="end" class="form-control" />
               </div>
-              <div class="col-sm-5">
+              <div class="col-sm-5 form-group">
                 <label for="numero">*Número</label>
                 <input type="text" id="numero" formControlName="numero" class="form-control" />
               </div>
             </div>
 
             <div class="row">
-              <div class="col-sm-7">
-                <label for="complemento">*Complemento</label>
+              <div class="col-sm-7 form-group">
+                <label for="complemento">Complemento</label>
                 <input type="text" id="complemento" formControlName="complemento" class="form-control" />
               </div>
-              <div class="col-sm-5">
+              <div class="col-sm-5 form-group">
                 <label for="bairro">*Bairro</label>
                 <input type="text" id="bairro" formControlName="bairro" class="form-control" />
               </div>
             </div>
 
             <div class="row">
-              <div class="col-sm-7">
+              <div class="col-sm-7 form-group">
                 <label for="estado">*Estado</label>
                 <input type="text" id="estado" formControlName="estado" class="form-control" />
               </div>
-              <div class="col-sm-5">
+              <div class="col-sm-5 form-group">
                 <label for="cidade">*Cidade</label>
                 <input type="text" id="cidade" formControlName="cidade" class="form-control" />
               </div>
@@ -145,7 +145,7 @@
                   <br />
                   <br />
                   <div class="row">
-                    <div class="col-sm-7">
+                    <div class="col-sm-7 form-group">
                       <label for="cpf">*CPF do Títular do cartão</label>
                       <input
                         type="text"
@@ -158,14 +158,14 @@
                     </div>
                   </div>
                   <div class="row">
-                    <div class="col-sm-5">
+                    <div class="col-sm-5 form-group">
                       <label for="nome">*Nome impresso no cartão</label>
                       <input type="text" id="nome" formControlName="nomecartao" class="form-control" />
                     </div>
                   </div>
 
                   <div class="row">
-                    <div class="col-sm-7">
+                    <div class="col-sm-7 form-group">
                       <label for="numero">*Número do cartão</label>
                       <input
                         type="text"
@@ -178,7 +178,7 @@
                         class="form-control"
                       />
                     </div>
-                    <div class="col-sm-5">
+                    <div class="col-sm-5 form-group">
                       <label for="vencimento">*Vencimento</label>
                       <input
                         type="text"
@@ -302,7 +302,7 @@
             <button
               class="btn btn-block btn-lg btn-danger"
               *ngIf="etapa == 1"
-              (click)="etapa = 2"
+              (click)="setEtapa(2)"
               [disabled]="matriculaForm1.invalid"
             >
               Próximo
@@ -315,7 +315,12 @@
             >
               Concluir matrícula
             </button>
-            <button class="btn btn-block btn-lg btn-outline-danger" routerLink="/home">Cancelar</button>
+            <button class="btn btn-block btn-lg btn-outline-danger" *ngIf="etapa == 2" (click)="setEtapa(1)">
+              Voltar
+            </button>
+            <button class="btn btn-block btn-lg btn-outline-danger" *ngIf="etapa == 1" routerLink="/home">
+              Cancelar
+            </button>
           </div>
         </div>
       </div>

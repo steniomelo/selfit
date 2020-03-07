@@ -30,7 +30,9 @@
           <div class="form-group">
             <select name="unidade" formControlName="unidade" class="form-control" (change)="selectUnidade()">
               <option value="">Selecione uma unidade</option>
-              <option *ngFor="let unidade of unidades" [ngValue]="unidade">{{ unidade.nome }}</option>
+              <option *ngFor="let unidade of unidades" [ngValue]="unidade">{{
+                unidade.estado.nome + ' - ' + unidade.cidade.nome + ' - ' + unidade.nome
+              }}</option>
             </select>
           </div>
         </div>

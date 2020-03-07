@@ -297,4 +297,9 @@ export class MatriculaComponent implements OnInit {
       }
     );
   }
+
+  setEtapa(etapa: number) {
+    this.etapa = etapa;
+    window.scrollTo(0, 0);
+  }
 }

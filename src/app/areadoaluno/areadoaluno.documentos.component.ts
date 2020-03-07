@@ -38,7 +38,12 @@ export class AreadoalunoDocumentosComponent implements OnInit {
           console.log(response);
           //this.spinner.hide();
 
-          return (window.location.href = response.dados);
+          //return (window.location.href = response.dados);
+          window.open(
+            response.dados,
+            '_blank' // <- This is what makes it open in a new window.
+          );
+          this.spinner.hide();
         },
         error => {
           console.log(error);
