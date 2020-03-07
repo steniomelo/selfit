@@ -73,7 +73,7 @@ export class AreadoalunoService {
       .post(environment.API_REDBOX_PROD + '/prest/negociacao/producao/consultarValorCancelamentoContrato', {
         codigoContrato: codigoContrato
       })
-      .pipe(map((response: any) => response.dados));
+      .pipe(map((response: any) => response));
   }
 
   cancelarContrato(codigoContrato: number): Observable<any> {

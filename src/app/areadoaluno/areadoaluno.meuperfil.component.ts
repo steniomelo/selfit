@@ -51,7 +51,7 @@ export class AreadoalunoMeuperfilComponent implements OnInit {
     this.editForm = this.formBuilder.group({
       codigoPessoa: [this.credentials.codigopessoa],
       nome: ['', Validators.required],
-      email: ['', Validators.required],
+      email: ['', Validators.email],
       cpf: ['', Validators.required],
       datanasc: ['', Validators.required],
       sexo: [this.credentials.sexocliente, Validators.required],

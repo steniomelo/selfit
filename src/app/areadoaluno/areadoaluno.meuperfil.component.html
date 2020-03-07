@@ -70,7 +70,7 @@
                     required
                   />
                 </div>
-                <button class="btn btn-primary">Salvar</button>
+                <button class="btn btn-primary" [disabled]="editForm.controls.email.invalid">Salvar</button>
               </div>
               <div class="item-action ml-auto">
                 <button class="btn btn-link" (click)="editEmail = false">Cancelar</button>

@@ -19,6 +19,7 @@ export class AreadoalunoCancelamentoComponent implements OnInit {
   valorCancelamentoSub: Subscription;
   cancelamentoForm!: FormGroup;
   credentials: any;
+  contratoCancelado: any;
 
   constructor(
     private areadoalunoService: AreadoalunoService,
@@ -48,7 +49,11 @@ export class AreadoalunoCancelamentoComponent implements OnInit {
 
     this.valorCancelamentoSub = this.areadoalunoService.consultarValorCancelamento(codigoContrato).subscribe(
       response => {
-        this.valorCancelamento = response;
+        this.valorCancelamento = response.dados;
+        if (!this.valorCancelamento) {
+          this.contratoCancelado = response.mensagemResponseTO.descricao;
+          Swal.fire('Aviso', response.mensagemResponseTO.descricao, 'warning');
+        }
         this.spinner.hide();
       },
       error => {

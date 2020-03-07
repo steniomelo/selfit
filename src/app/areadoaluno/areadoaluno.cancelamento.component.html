@@ -8,13 +8,26 @@
         </ol>
       </nav>
     </div>
-    <h1 class="areadoaluno__interna__header-title">Cancelamento</h1>
-    <h2 class="text-danger">Você quer mesmo cancelar? :(</h2>
-    <p>Valor de cancelamento de acordo com seu contrato</p>
-    <button class="btn btn-outline-danger btn-lg">{{ valorCancelamento | currency: 'BRL' }}</button>
+
+    <ng-container *ngIf="valorCancelamento">
+      <h1 class="areadoaluno__interna__header-title">Cancelamento</h1>
+      <h2 class="text-danger">Você quer mesmo cancelar? :(</h2>
+      <p>Valor de cancelamento de acordo com seu contrato</p>
+      <button class="btn btn-outline-danger btn-lg">{{ valorCancelamento | currency: 'BRL' }}</button>
+    </ng-container>
+
+    <ng-container *ngIf="!valorCancelamento">
+      <h1 class="areadoaluno__interna__header-title">Cancelamento</h1>
+      <h2 class="text-danger">{{ contratoCancelado }}</h2>
+    </ng-container>
   </header>
 
-  <form [formGroup]="cancelamentoForm" (ngSubmit)="confirmarCancelamento()" class="areadoaluno__interna__content">
+  <form
+    [formGroup]="cancelamentoForm"
+    *ngIf="valorCancelamento"
+    (ngSubmit)="confirmarCancelamento()"
+    class="areadoaluno__interna__content"
+  >
     <ul class="list-group list-group-flush">
       <hr />
       <li class="list-group-item ">
