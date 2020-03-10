@@ -156,6 +156,35 @@
       <div class="unidade__plans__cards col-sm-10 mx-auto">
         <div class="d-flex no-gutters flex-column flex-sm-row">
           <div class="col-sm-6 mr-4">
+            <div class="card card-white">
+              <div class="card-header">
+                <h1>Plus</h1>
+                <strong>{{ unidade.unidadePlanos[1].mensalidade }}*</strong>
+                <small>mensais</small>
+              </div>
+              <div class="card-body">
+                <div class="text-center">
+                  <h5 class="text-center">Este plano inclui</h5>
+                </div>
+                <ul class="list-unstyled mt-4">
+                  <li *ngFor="let unidadeplanoinclusos of unidade.unidadePlanos[1].planoInclusos">
+                    <i class="fas fa-check"></i>
+                    <span *ngIf="!unidadeplanoinclusos.riscado">{{ unidadeplanoinclusos.incluso.texto }}</span>
+                    <del *ngIf="unidadeplanoinclusos.riscado">{{ unidadeplanoinclusos.incluso.texto }}</del>
+                  </li>
+                </ul>
+              </div>
+              <footer class="card-footer">
+                <button
+                  class="btn btn-lg btn-danger btn-block"
+                  (click)="matriculese(unidade, unidade.unidadePlanos[1])"
+                >
+                  Matricule-se
+                </button>
+              </footer>
+            </div>
+          </div>
+          <div class="col-sm-6 ">
             <div class="card">
               <div class="card-header">
                 <span class="badge badge-light">Recomendado</span>
@@ -179,35 +208,6 @@
                 <button
                   class="btn btn-lg btn-danger btn-block "
                   (click)="matriculese(unidade, unidade.unidadePlanos[0])"
-                >
-                  Matricule-se
-                </button>
-              </footer>
-            </div>
-          </div>
-          <div class="col-sm-6">
-            <div class="card card-white">
-              <div class="card-header">
-                <h1>Plus</h1>
-                <strong>{{ unidade.unidadePlanos[1].mensalidade }}*</strong>
-                <small>mensais</small>
-              </div>
-              <div class="card-body">
-                <div class="text-center">
-                  <h5 class="text-center">Este plano inclui</h5>
-                </div>
-                <ul class="list-unstyled mt-4">
-                  <li *ngFor="let unidadeplanoinclusos of unidade.unidadePlanos[1].planoInclusos">
-                    <i class="fas fa-check"></i>
-                    <span *ngIf="!unidadeplanoinclusos.riscado">{{ unidadeplanoinclusos.incluso.texto }}</span>
-                    <del *ngIf="unidadeplanoinclusos.riscado">{{ unidadeplanoinclusos.incluso.texto }}</del>
-                  </li>
-                </ul>
-              </div>
-              <footer class="card-footer">
-                <button
-                  class="btn btn-lg btn-danger btn-block"
-                  (click)="matriculese(unidade, unidade.unidadePlanos[1])"
                 >
                   Matricule-se
                 </button>

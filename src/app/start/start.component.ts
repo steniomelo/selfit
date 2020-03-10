@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 
 @Component({
   selector: 'app-start',
@@ -6,7 +6,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./start.component.scss']
 })
 export class StartComponent implements OnInit {
+  @ViewChild('video', null) video: ElementRef;
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.video.nativeElement.muted = true;
+  }
 }
