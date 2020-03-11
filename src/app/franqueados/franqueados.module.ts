@@ -11,6 +11,7 @@ import { SharedModule } from '@app/shared';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgxMaskModule } from 'ngx-mask';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { ScrollToModule } from '@nicky-lenaers/ngx-scroll-to';
 
 @NgModule({
   imports: [
@@ -23,7 +24,8 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     SharedModule,
     ReactiveFormsModule,
     NgxMaskModule,
-    NgxSpinnerModule
+    NgxSpinnerModule,
+    ScrollToModule
   ],
   declarations: [FranqueadosComponent]
 })

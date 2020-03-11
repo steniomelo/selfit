@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { TranslateModule } from '@ngx-translate/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ScrollToModule } from '@nicky-lenaers/ngx-scroll-to';
 // import { Angulartics2Module } from 'angulartics2';
 
 import { CoreModule } from '@app/core';
@@ -43,6 +44,7 @@ import { NgxMaskModule } from 'ngx-mask';
     NgxSpinnerModule,
     BrowserAnimationsModule,
     NgxMaskModule.forRoot(),
+    ScrollToModule.forRoot(),
     // Angulartics2Module.forRoot(),
     AppRoutingModule // must be imported as the last module as it contains the fallback route
   ],

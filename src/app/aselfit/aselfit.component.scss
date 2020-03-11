@@ -31,7 +31,7 @@
     border-radius: 0;
 
     .card-body {
-      padding-bottom: 80px;
+      padding-bottom: 0px;
     }
   }
 
@@ -51,7 +51,7 @@
 .aselfit__section {
   padding-bottom: 300px;
   .aselfit__section-header {
-    background-color: $blue;
+    background-color: rgb(62, 61, 65);
     color: white;
     padding: 10px;
   }
@@ -67,7 +67,7 @@
     .card {
       border-radius: 10px;
       .card-body {
-        padding: 70px;
+        padding: 0px;
       }
     }
     .col__image {
@@ -79,7 +79,7 @@
   .aselfit__section {
     padding-bottom: 0;
     .aselfit__section-header {
-      background-color: $blue;
+      background-color: rgb(62, 61, 65);
       color: white;
       padding: 10px;
     }
