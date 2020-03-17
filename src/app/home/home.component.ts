@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { finalize } from 'rxjs/operators';
+import { finalize, catchError } from 'rxjs/operators';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { HomeService } from './home.service';
+
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-home',
@@ -9,6 +12,8 @@ import { HomeService } from './home.service';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+  form!: FormGroup;
+
   quote: string | undefined;
   noticias: any;
   isLoading = false;
@@ -49,12 +54,42 @@ export class HomeComponent implements OnInit {
     ]
   };
 
-  constructor(private homeService: HomeService) {}
+  constructor(private homeService: HomeService, private formBuilder: FormBuilder) {}
 
   ngOnInit() {
     this.isLoading = true;
+    this.createForm();
 
     //this.getNoticias();
+  }
+
+  private createForm() {
+    this.form = this.formBuilder.group({
+      email: ['', Validators.email]
+    });
+  }
+
+  enviar() {
+    const form$ = this.homeService.newsletter(this.form.value);
+    form$
+      .pipe(
+        catchError((error): any => {
+          Swal.fire('Erro', error, 'error');
+        })
+      )
+      .subscribe(
+        response => {
+          console.log(response);
+          if (response.return) {
+            Swal.fire('E-mail cadastrado com sucesso', ' ', 'success');
+          } else {
+            Swal.fire('Erro', response.error, 'error');
+          }
+        },
+        error => {
+          console.log(error);
+        }
+      );
   }
 
   getNoticias() {

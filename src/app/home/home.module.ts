@@ -8,6 +8,7 @@ import { AngularSvgIconModule } from 'angular-svg-icon';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SharedModule } from '@app/shared';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
@@ -17,7 +18,8 @@ import { SharedModule } from '@app/shared';
     AngularSvgIconModule,
     SlickCarouselModule,
     NgbModule,
-    SharedModule
+    SharedModule,
+    ReactiveFormsModule
   ],
   declarations: [HomeComponent]
 })

@@ -11,13 +11,33 @@ import { CoreModule } from '@app/core';
 export class FaleconoscoService {
   constructor(private httpClient: HttpClient) {}
 
-  criarTicket(): Observable<any> {
+  criarTicket(dados: any): Observable<any> {
     return this.httpClient
       .cache()
-      .get(environment.API_REDBOX_PROD + '/trilogo/criarticket')
+      .post(environment.API_REDBOX_PROD + '/contato/faleConosco', dados)
       .pipe(
         map((response: any) => response.return),
-        catchError(() => of('Não foi possível obter os estados'))
+        catchError(() => of('Não foi possível enviar sua mensagem'))
+      );
+  }
+
+  divulgueSuamarca(dados: any): Observable<any> {
+    return this.httpClient
+      .cache()
+      .post(environment.API_REDBOX_PROD + '/contato/divulgueSuaMarca', dados)
+      .pipe(
+        map((response: any) => response.return),
+        catchError(() => of('Não foi possível enviar sua mensagem'))
+      );
+  }
+
+  franqueados(dados: any): Observable<any> {
+    return this.httpClient
+      .cache()
+      .post(environment.API_REDBOX_PROD + '/contato/franquia', dados)
+      .pipe(
+        map((response: any) => response.return),
+        catchError(() => of('Não foi possível enviar sua mensagem'))
       );
   }
 }

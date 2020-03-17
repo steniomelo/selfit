@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FaleconoscoService } from './faleconosco.service';
+import Swal from 'sweetalert2';
+import { pipe } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 
 @Component({
   selector: 'app-faleconosco-divulgue',
@@ -7,13 +11,39 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
   styleUrls: ['./faleconosco.component.scss']
 })
 export class FaleconoscoDivulgueComponent implements OnInit {
-  faleconoscoForm!: FormGroup;
+  divulgueForm!: FormGroup;
 
-  constructor() {}
+  constructor(private formBuilder: FormBuilder, private faleconoscoService: FaleconoscoService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.createForm();
+  }
 
-  faleconosco() {
-    console.log('Enviou');
+  private createForm() {
+    this.divulgueForm = this.formBuilder.group({
+      nome: ['', Validators.required],
+      email: ['', Validators.email],
+      telefone: ['', Validators.required],
+      site: ['', Validators.required],
+      proposta: ['', Validators.required]
+    });
+  }
+
+  divulgueSuamarca() {
+    const divulgue$ = this.faleconoscoService.divulgueSuamarca(this.divulgueForm.value);
+    divulgue$
+      .pipe(
+        catchError((error): any => {
+          Swal.fire('Erro', error, 'error');
+        })
+      )
+      .subscribe(
+        response => {
+          Swal.fire('Mensagem enviada com sucesso', response.mesagem, 'success');
+        },
+        error => {
+          console.log(error);
+        }
+      );
   }
 }

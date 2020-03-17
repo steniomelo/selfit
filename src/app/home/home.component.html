@@ -31,18 +31,22 @@
             <span class="newsletter-bar__title">Receba nossas novidades e promoções</span>
           </div>
           <div class="col-7">
-            <div class="input-group newsletter-bar__input">
-              <input
-                type="email"
-                class="form-control"
-                placeholder="Seu e-mail"
-                aria-label="Seu e-mail"
-                aria-describedby="button-addon2"
-              />
-              <div class="input-group-append">
-                <button class="btn btn-primary" type="button" id="button-addon2">Enviar</button>
+            <form (ngSubmit)="enviar()" [formGroup]="form">
+              <div class="input-group newsletter-bar__input">
+                <input
+                  type="email"
+                  class="form-control"
+                  placeholder="Seu e-mail"
+                  formControlName="email"
+                  aria-label="Seu e-mail"
+                  aria-describedby="button-addon2"
+                  autocomplete="email"
+                />
+                <div class="input-group-append">
+                  <button class="btn btn-primary" type="submit" id="button-addon2">Enviar</button>
+                </div>
               </div>
-            </div>
+            </form>
           </div>
         </div>
       </div>
@@ -143,21 +147,21 @@
   </header>
   <div>
     <ngx-slick-carousel #slickModal="slick-carousel" class="structure__list " [config]="slideConfig">
-      <div ngxSlickItem class="structure__list__item col-sm-4" routerLink="/unidade">
+      <div ngxSlickItem class="structure__list__item col-sm-4" routerLink="/aselfit">
         <figure>
-          <img src="assets/content/programa1.jpg" class="structure__list__item-image img-responsive" alt="" />
+          <img src="assets/content/SelfitMove.png" class="structure__list__item-image img-responsive" alt="" />
           <figcaption>
             <h3 class="structure__list__item-title">Self Move</h3>
             <div class="structure__list__item-content">
               <p>Área com a maior animação da academia! Equipada para aulas divertidas e cheias de energia.</p>
-              <!--<a href="#"><i class="fas fa-angle-right"></i> Saiba mais</a>-->
+              <a routerLink="/aselfit"><i class="fas fa-angle-right"></i> Saiba mais</a>
             </div>
           </figcaption>
         </figure>
       </div>
-      <div ngxSlickItem class="structure__list__item col-sm-4" routerLink="/unidade">
+      <div ngxSlickItem class="structure__list__item col-sm-4" routerLink="/aselfit">
         <figure>
-          <img src="assets/content/programa2.jpg" class="structure__list__item-image img-responsive" alt="" />
+          <img src="assets/content/SelfitSpeed.png" class="structure__list__item-image img-responsive" alt="" />
           <figcaption>
             <h3 class="structure__list__item-title">Self Speed</h3>
             <div class="structure__list__item-content">
@@ -165,14 +169,14 @@
                 Área exclusiva com aulas super variadas de bike que trabalham diferentes estímulos através de um treino
                 gamificado.
               </p>
-              <!--<a href="#"><i class="fas fa-angle-right"></i> Saiba mais</a>-->
+              <a routerLink="/aselfit"><i class="fas fa-angle-right"></i> Saiba mais</a>
             </div>
           </figcaption>
         </figure>
       </div>
-      <div ngxSlickItem class="structure__list__item col-sm-4" routerLink="/unidade">
+      <div ngxSlickItem class="structure__list__item col-sm-4" routerLink="/aselfit">
         <figure>
-          <img src="assets/content/structure-mark.jpg" class="structure__list__item-image img-responsive" alt="" />
+          <img src="assets/content/SelfitIntense.png" class="structure__list__item-image img-responsive" alt="" />
           <figcaption>
             <h3 class="structure__list__item-title">Self Intense</h3>
             <div class="structure__list__item-content">
@@ -180,35 +184,39 @@
                 Área para quem gosta de treino funcional! Exercícios que proporcionam o ganho de força, equilíbrio,
                 flexibilidade, resistência e agilidade.
               </p>
-              <!--<a href="#"><i class="fas fa-angle-right"></i> Saiba mais</a>-->
+              <a routerLink="/aselfit"><i class="fas fa-angle-right"></i> Saiba mais</a>
             </div>
           </figcaption>
         </figure>
       </div>
-      <!--<div ngxSlickItem class="structure__list__item col-sm-4" routerLink="/unidade">
+      <div ngxSlickItem class="structure__list__item col-sm-4" routerLink="/aselfit">
         <figure>
-          <img src="assets/content/structure-mark.jpg" class="structure__list__item-image img-responsive" alt="" />
+          <img src="assets/content/SelfitExtreme.png" class="structure__list__item-image img-responsive" alt="" />
           <figcaption>
-            <h3 class="structure__list__item-title">Self Intense</h3>
+            <h3 class="structure__list__item-title">Self Extreme</h3>
             <div class="structure__list__item-content">
-              <p>Área para quem gosta de treino funcional! Exercícios que proporcionam o ganho de força, equilíbrio, flexibilidade, resistência e agilidade.</p>
-              <a href="#"><i class="fas fa-angle-right"></i> Saiba mais</a>
+              <p>
+                Área para alunos curtirem um treino intervalado de alta intesidade (HIIT)
+              </p>
+              <a routerLink="/aselfit"><i class="fas fa-angle-right"></i> Saiba mais</a>
             </div>
           </figcaption>
         </figure>
-      </div>-->
-      <!--<div ngxSlickItem class="structure__list__item col-sm-4" routerLink="/unidade">
+      </div>
+      <div ngxSlickItem class="structure__list__item col-sm-4" routerLink="/aselfit">
         <figure>
-          <img src="assets/content/structure-mark.jpg" class="structure__list__item-image img-responsive" alt="" />
+          <img src="assets/content/SelfitVelo.png" class="structure__list__item-image img-responsive" alt="" />
           <figcaption>
-            <h3 class="structure__list__item-title">Self Speed</h3>
+            <h3 class="structure__list__item-title">Self Velo</h3>
             <div class="structure__list__item-content">
-              <p>Sala equipada com aparelhos para exercícios cardio</p>
-              <a href="#"><i class="fas fa-angle-right"></i> Saiba mais</a>
+              <p>
+                Esse espaço tem foco no treino cardio para aqueles que querem suar muito.
+              </p>
+              <a routerLink="/aselfit"><i class="fas fa-angle-right"></i> Saiba mais</a>
             </div>
           </figcaption>
         </figure>
-      </div>-->
+      </div>
     </ngx-slick-carousel>
   </div>
 </div>

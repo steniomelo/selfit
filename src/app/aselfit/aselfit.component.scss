@@ -3,27 +3,34 @@
 
 .aselfit__section--selfintense {
   background: url("../../assets/layout/aselfit-section-1.png") no-repeat;
-  background-size: 60%;
   background-position: center right;
 }
 
 .aselfit__section--selfextreme {
   background: url("../../assets/layout/aselfit-section-2.jpg") no-repeat;
-  background-size: 60%;
   background-position: center left;
 }
 .aselfit__section--selfmove {
-  background: url("../../assets/layout/aselfit-section-3.jpg") no-repeat;
-  background-size: 60%;
-  background-position: center right;
+  background: url("../../assets/content/SelfitMove.png") no-repeat;
+  background-position: center;
 }
 .aselfit__section--selfspeed {
   background: url("../../assets/layout/aselfit-section-4.jpg") no-repeat;
-  background-size: 60%;
   background-position: center left;
 }
 
+.aselfit__section--velo {
+  background: url("../../assets/content/SelfitVelo.png") no-repeat;
+  background-position: center right;
+}
+
 .aselfit__apresentacao {
+  .container {
+    .row {
+      position: relative;
+    }
+  }
+  position: relative;
   .card {
     background-color: $red;
     color: white;
@@ -50,6 +57,7 @@
 
 .aselfit__section {
   padding-bottom: 300px;
+  background-size: cover;
   .aselfit__section-header {
     background-color: rgb(62, 61, 65);
     color: white;
@@ -63,20 +71,31 @@
 }
 
 @include media-breakpoint-up(sm) {
+  .aselfit__section--selfmove {
+    background-position: right -350px;
+  }
   .aselfit__apresentacao {
     .card {
       border-radius: 10px;
       .card-body {
         padding: 0px;
+        padding-right: 150px;
       }
     }
     .col__image {
       margin-top: 0;
-      margin-left: -100px;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 99;
+      margin-left: 30px;
+      //margin-left: -100px;
     }
   }
 
   .aselfit__section {
+    background-size: 60%;
+
     padding-bottom: 0;
     .aselfit__section-header {
       background-color: rgb(62, 61, 65);
