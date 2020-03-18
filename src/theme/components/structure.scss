@@ -97,8 +97,9 @@
 
       .structure__list__item-content {
         opacity: 0;
-        margin-bottom: -70px;
+        margin-bottom: -10px;
         @include transition();
+        height: 0;
 
         a {
           color: white;
@@ -117,6 +118,8 @@
         .structure__list__item-content {
           opacity: 1;
           position: relative;
+          height: auto;
+          margin-bottom: -70px;
         }
       }
     }

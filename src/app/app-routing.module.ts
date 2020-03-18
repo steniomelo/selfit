@@ -12,7 +12,8 @@ const routes: Routes = [
     { path: 'aselfit', loadChildren: './aselfit/aselfit.module#AselfitModule' },
     { path: 'matricula', loadChildren: './matricula/matricula.module#MatriculaModule' },
     { path: 'franqueados', loadChildren: './franqueados/franqueados.module#FranqueadosModule' },
-    { path: 'investidores', loadChildren: './investidores/investidores.module#InvestidoresModule' }
+    { path: 'investidores', loadChildren: './investidores/investidores.module#InvestidoresModule' },
+    { path: 'sac', loadChildren: './sac/sac.module#SacModule' }
   ]),
   // Fallback when no prior route is matched
   { path: '**', redirectTo: '', pathMatch: 'full' }
