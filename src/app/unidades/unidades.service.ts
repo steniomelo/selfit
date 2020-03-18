@@ -32,8 +32,14 @@ export class UnidadesService {
   }
 
   getUnidades(params?: HttpParams): Observable<any> {
-    console.log(params);
     return this.httpClient.get(environment.API_SITE + '/unidade/', { params });
+  }
+
+  getUnidadesGeolocalizacao(): Observable<any> {
+    return this.httpClient.get(environment.API_REDBOX_PROD + '/unidades/geolocalizacao').pipe(
+      map((response: any) => response.return),
+      catchError(() => of('Não foi possível obter as unidades'))
+    );
   }
 
   getUnidade(slug: string): Observable<any> {

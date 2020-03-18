@@ -1,6 +1,11 @@
 @import "src/theme/theme-variables";
 @import "~bootstrap/scss/mixins/breakpoints";
 
+#map {
+  height: 500px;
+  width: 100%;
+}
+
 .unidade__header {
   background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 10%, rgba(#161616, 0.76) 50%, rgba(0, 0, 0, 0.2) 100%),
     url("./../../assets/content/franqueados-bg.jpg") no-repeat;

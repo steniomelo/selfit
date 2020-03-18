@@ -45,6 +45,7 @@
     "@ngx-translate/core": "^11.0.1",
     "@nicky-lenaers/ngx-scroll-to": "^3.0.1",
     "@sweetalert2/ngx-sweetalert2": "^7.2.0",
+    "@types/googlemaps": "^3.37.7",
     "angular-svg-icon": "^8.0.0",
     "angulartics2": "^7.2.4",
     "bootstrap": "^4.1.1",
