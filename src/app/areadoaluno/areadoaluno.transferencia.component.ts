@@ -8,6 +8,7 @@ import { AreadoalunoService } from './areadoaluno.service';
 import { NgxSpinnerService } from 'ngx-spinner';
 
 import Swal from 'sweetalert2';
+import { AuthenticationService } from '@app/core';
 
 @Component({
   selector: 'app-areadoaluno-transferencia',
@@ -24,6 +25,7 @@ export class AreadoalunoTransferenciaComponent implements OnInit {
 
   constructor(
     private credentialsService: CredentialsService,
+    private authenticationService: AuthenticationService,
     private sharedService: SharedService,
     private formBuilder: FormBuilder,
     private areadoalunoService: AreadoalunoService,
@@ -86,9 +88,26 @@ export class AreadoalunoTransferenciaComponent implements OnInit {
     this.areadoalunoService.transferirAluno(data).subscribe(
       response => {
         console.log(response);
+        if (response.msgValidacao) {
+          Swal.fire('Não foi possível transferir de unidade', response.msgValidacao, 'error');
+        } else {
+          Swal.fire('Sucesso', 'Sua transferência de unidade foi realizada com sucesso!', 'success');
+          this.getDadosAtualizados();
+        }
+        this.spinner.hide();
+      },
+      error => {
         this.spinner.hide();
 
-        Swal.fire('Sucesso', 'Sua transferência de unidade foi realizada com sucesso!', 'success');
+        console.log(error);
+      }
+    );
+  }
+
+  getDadosAtualizados() {
+    this.authenticationService.atualizarDados(this.credentials.email).subscribe(
+      response => {
+        console.log(response);
       },
       error => {
         this.spinner.hide();

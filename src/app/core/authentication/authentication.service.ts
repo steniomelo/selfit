@@ -73,6 +73,26 @@ export class AuthenticationService {
       );
   }
 
+  atualizarDados(email: string): Observable<any> {
+    this.data = {
+      email: email,
+      senha: 'N/A',
+      typeFind: 'Digital'
+    };
+
+    return this.httpClient.post(environment.API_REDBOX_PROD + '/convidado/logarareaaluno', this.data).pipe(
+      map((response: any) => {
+        if (response) {
+          console.log('Atualizar Dados >>>>', response);
+          // this.credentialsService.setCredentials(response.return, context.remember);
+          // response = response.return;
+          // response.remember = context.remember;
+          return response;
+        }
+      })
+    );
+  }
+
   /**
    * Logs out the user and clear credentials.
    * @return True if the user was logged out successfully.
