@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 import { environment } from '@env/environment';
 import { CredentialsService } from '@app/core/authentication/credentials.service';
@@ -22,6 +22,7 @@ export class AreadoalunoTransferenciaComponent implements OnInit {
   unidadeSelectedPlano: any;
   transferenciaForm!: FormGroup;
   isLoading = false;
+  @Output() atualizar = new EventEmitter();
 
   constructor(
     private credentialsService: CredentialsService,
@@ -105,9 +106,19 @@ export class AreadoalunoTransferenciaComponent implements OnInit {
   }
 
   getDadosAtualizados() {
-    this.authenticationService.atualizarDados(this.credentials.email).subscribe(
+    this.authenticationService.atualizarDados(this.credentials.cpf).subscribe(
       response => {
-        console.log(response);
+        this.authenticationService.consultarContrato(this.credentials.codigo, true).subscribe(
+          response => {
+            this.credentials = this.credentialsService.credentials;
+            this.atualizar.emit(true);
+          },
+          error => {
+            this.spinner.hide();
+
+            console.log(error);
+          }
+        );
       },
       error => {
         this.spinner.hide();

@@ -15,7 +15,8 @@ export class ApiPrefixInterceptor implements HttpInterceptor {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
-        chave: environment.chave
+        chave: environment.chave,
+        retornar: 'true'
       })
     };
     request = request.clone({

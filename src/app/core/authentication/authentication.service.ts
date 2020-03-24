@@ -73,9 +73,9 @@ export class AuthenticationService {
       );
   }
 
-  atualizarDados(email: string): Observable<any> {
+  atualizarDados(cpf: string): Observable<any> {
     this.data = {
-      email: email,
+      email: cpf.split('.').join(''),
       senha: 'N/A',
       typeFind: 'Digital'
     };
@@ -83,8 +83,8 @@ export class AuthenticationService {
     return this.httpClient.post(environment.API_REDBOX_PROD + '/convidado/logarareaaluno', this.data).pipe(
       map((response: any) => {
         if (response) {
-          console.log('Atualizar Dados >>>>', response);
-          // this.credentialsService.setCredentials(response.return, context.remember);
+          //console.log('Atualizar Dados >>>>', response);
+          this.credentialsService.setCredentials(response.return, true);
           // response = response.return;
           // response.remember = context.remember;
           return response;

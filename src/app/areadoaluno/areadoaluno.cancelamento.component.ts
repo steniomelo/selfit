@@ -75,41 +75,50 @@ export class AreadoalunoCancelamentoComponent implements OnInit {
         bool = true;
         break;
       default:
-        Swal.fire({
-          title: 'Tem certeza que deseja cancelar ?',
-          text:
-            'Se o motivo do cancelamento for mudança de cidade ou questões médicas, o mesmo deverá ser feito diretamente na sua unidade.',
-          showCancelButton: true,
-          confirmButtonColor: '#dc3545',
-          cancelButtonColor: '#ccc',
-          confirmButtonText: 'Efetuar cancelamento',
-          allowOutsideClick: () => !Swal.isLoading()
-        }).then(result => {
-          console.log('Result', result);
-          if (result.value) {
-            this.spinner.show();
+        if (!this.credentials.plano.pagarcomboleto) {
+          Swal.fire({
+            title: 'Tem certeza que deseja cancelar ?',
+            text:
+              'Se o motivo do cancelamento for mudança de cidade ou questões médicas, o mesmo deverá ser feito diretamente na sua unidade.',
+            showCancelButton: true,
+            confirmButtonColor: '#dc3545',
+            cancelButtonColor: '#ccc',
+            confirmButtonText: 'Efetuar cancelamento',
+            allowOutsideClick: () => !Swal.isLoading()
+          }).then(result => {
+            console.log('Result', result);
+            console.log('Credentials', this.credentials);
+            if (result.value) {
+              this.spinner.show();
 
-            return this.areadoalunoService.cancelarContrato(this.credentials.codigocontrato).subscribe(
-              response => {
-                if (response.mensagemResponseTO.erro) {
-                  Swal.fire('Erro', response.mensagemResponseTO.descricao, 'error');
-                  this.spinner.hide();
-                } else {
-                  Swal.fire('Ok!', 'Solicitação de cancelamento realizada com sucesso', 'success');
-                  this.spinner.hide();
+              return this.areadoalunoService.cancelarContrato(this.credentials.codigocontrato).subscribe(
+                response => {
+                  if (response.mensagemResponseTO.erro) {
+                    Swal.fire('Erro', response.mensagemResponseTO.descricao, 'error');
+                    this.spinner.hide();
+                  } else {
+                    Swal.fire('Ok!', 'Solicitação de cancelamento realizada com sucesso', 'success');
+                    this.spinner.hide();
+                  }
+                  return response;
+                },
+                error => {
+                  console.log(error);
                 }
-                return response;
-              },
-              error => {
-                console.log(error);
-              }
-            );
+              );
 
-            Swal.fire('Ok!', 'Solicitação de cancelamento realizada com sucesso', 'success');
-            // this.return.emit(this.request.moedaId);
-            //this.msgReturn(this.request.moedaId);
-          }
-        });
+              Swal.fire('Ok!', 'Solicitação de cancelamento realizada com sucesso', 'success');
+              // this.return.emit(this.request.moedaId);
+              //this.msgReturn(this.request.moedaId);
+            }
+          });
+        } else {
+          Swal.fire(
+            'Atenção',
+            'Clientes com o pagamento de boletos precisam se dirigir até a academia para efetuação do cancelamento. Obrigado.',
+            'warning'
+          );
+        }
     }
 
     return bool;

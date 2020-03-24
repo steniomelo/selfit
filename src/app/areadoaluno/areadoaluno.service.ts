@@ -99,11 +99,11 @@ export class AreadoalunoService {
   gerarBoletoParcela(codigoPessoa: number, codigoParcela: number): Observable<any> {
     return this.httpClient
       .get(
-        environment.API_PROSELF_UNI +
-          '/prest/negociacao/producao/gerarBoletoParcela?codigoPessoa=' +
-          codigoPessoa +
-          '&codigoParcela=' +
-          codigoParcela
+        environment.API_REDBOX_PROD + '/alunos/enviaremailboleto/' + codigoPessoa + '/' + codigoParcela
+        // '/prest/negociacao/producao/gerarBoletoParcela?codigoPessoa=' +
+        // codigoPessoa +
+        // '&codigoParcela=' +
+        // codigoParcela
       )
       .pipe(map((response: any) => response.return));
   }
