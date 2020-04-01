@@ -15,6 +15,11 @@ body {
   }
 }
 
+.neoasssist-widget-frame {
+  width: 70px !important;
+  height: 70px !important;
+}
+
 @import "components/featured";
 @import "components/buttons";
 @import "components/input";
